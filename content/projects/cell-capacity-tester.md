@@ -7,6 +7,7 @@ status: "complete"
 tags: ["battery building", "testing", "21700 cells", "18650", "aliexpress", "internal resistance", "capacity tester"]
 blurb: "Finding a proper 8-slot cell capacity tester that actually discharges all slots at 1A simultaneously. Here is a review and guide on modifying and using this generic 8-channel tester from AliExpress."
 weight: 2
+date: 2025-08-01
 ---
 
 When harvesting lithium-ion cells from old e-bike packs, you need a reliable way to test capacity and internal resistance. Most 8-slot capacity testers on Amazon have a major flaw: if you load all eight slots, they throttle the charge and discharge rates down to 0.5A, which takes forever when you have hundreds of cells. 

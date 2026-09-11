@@ -1,11 +1,13 @@
 ---
 title: "DIY Brushless ESC & Motor Control Lab"
+thumbnail: "/images/projects/bldc-motor-lab-html-image5.png"
 category: "electronics"
 categoryLabel: "Electronics"
 status: "ongoing"
 tags: ["ESC", "BLDC", "microcontroller", "mosfets", "sensorless", "lab work", "oscilloscope"]
 blurb: "An exploration into building a custom sensorless brushless motor controller (ESC) from scratch using an Arduino, discrete half-bridges, and back-EMF sensing."
 weight: 1
+date: 2026-01-01
 ---
 
 ## Introduction

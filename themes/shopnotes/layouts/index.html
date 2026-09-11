@@ -9,10 +9,6 @@
     <a href="https://www.printables.com/@milton" target="_blank" rel="noopener noreferrer" class="btn">Printables</a>
     <a href="https://www.linkedin.com/in/nathan-milton/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn</a>
   </div>
-  <div class="spec-row">
-    <div class="spec-cell"><div class="num">{{ .Site.Params.statProjects }}</div><div class="label">Projects</div></div>
-    <div class="spec-cell"><div class="num">{{ .Site.Params.statCategories }}</div><div class="label">Categories</div></div>
-  </div>
 </div>
 
 <div class="filter-wrap">
@@ -37,14 +33,19 @@
   <div class="section-label category-group featured-label" data-category="all">Featured Projects</div>
   <div class="grid category-group featured-grid" data-category="all">
     {{ range $featured }}
-    <div class="card featured-card" data-category="{{ .Params.category }}">
+    <div class="card featured-card{{ with .Params.status }} status-{{ . }}{{ end }}" data-category="{{ .Params.category }}">
       <div class="card-top">
-        <span class="status {{ .Params.status }}">
-          {{ if eq .Params.status "complete" }}Complete
-          {{ else if eq .Params.status "ongoing" }}In progress
-          {{ else if eq .Params.status "on-hold" }}On hold
-          {{ else }}Idea{{ end }}
-        </span>
+        <div class="card-status-date">
+          <span class="status {{ .Params.status }}">
+            {{ if eq .Params.status "complete" }}Complete
+            {{ else if eq .Params.status "ongoing" }}In progress
+            {{ else if eq .Params.status "on-hold" }}On hold
+            {{ else }}Idea{{ end }}
+          </span>
+          {{ if not .Date.IsZero }}
+          <span class="card-date">{{ .Date.Format "1/2006" }}</span>
+          {{ end }}
+        </div>
         <span class="featured-badge">★ Featured</span>
       </div>
       {{ if .Params.thumbnail }}
@@ -72,14 +73,19 @@
     <div class="section-label category-group" data-category="{{ $cat }}">{{ index $catLabels $cat }}</div>
     <div class="grid category-group" data-category="{{ $cat }}">
       {{ range $catProjects.ByWeight }}
-      <div class="card{{ if .Params.featured }} featured-card{{ end }}" data-category="{{ .Params.category }}">
+      <div class="card{{ if .Params.featured }} featured-card{{ end }}{{ with .Params.status }} status-{{ . }}{{ end }}" data-category="{{ .Params.category }}">
         <div class="card-top">
-          <span class="status {{ .Params.status }}">
-            {{ if eq .Params.status "complete" }}Complete
-            {{ else if eq .Params.status "ongoing" }}In progress
-            {{ else if eq .Params.status "on-hold" }}On hold
-            {{ else }}Idea{{ end }}
-          </span>
+          <div class="card-status-date">
+            <span class="status {{ .Params.status }}">
+              {{ if eq .Params.status "complete" }}Complete
+              {{ else if eq .Params.status "ongoing" }}In progress
+              {{ else if eq .Params.status "on-hold" }}On hold
+              {{ else }}Idea{{ end }}
+            </span>
+            {{ if not .Date.IsZero }}
+            <span class="card-date">{{ .Date.Format "1/2006" }}</span>
+            {{ end }}
+          </div>
           {{ if .Params.featured }}
           <span class="featured-badge">★ Featured</span>
           {{ else }}

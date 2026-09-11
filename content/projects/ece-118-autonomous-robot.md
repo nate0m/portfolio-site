@@ -7,6 +7,7 @@ status: "complete"
 tags: ["autonomous robot", "state machine", "beacon detector", "Li-ion battery", "laser cutting"]
 blurb: "A fully autonomous robot built in five weeks for ECE 118 at UCSC. Navigates a structured field, avoids obstacles, locates an opponent's IR beacon, and launches ping-pong balls. Three-tier plywood chassis, custom 3s2p Li-ion battery, a 27-million-gain analog beacon detector, and hierarchical state machine firmware."
 weight: 1
+date: 2026-06-01
 featured: true
 featuredWeight: 1
 ---
@@ -18,6 +19,8 @@ Sluggers of the Lost Project
 Team #29
 
 Nathan Milton, Natalie Leforge, Nat Micheal
+
+I was personally responsible for all mechical and electrical design, fabrication, and integration. My teammates were primarily responsible for the software, though we all contributed. 
 
 ## Introduction
 

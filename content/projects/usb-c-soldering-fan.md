@@ -1,11 +1,13 @@
 ---
 title: "USB-C Soldering Fume Fan"
+thumbnail: "/images/projects/usb-c-soldering-fan-html-image7.png"
 category: "fab"
 categoryLabel: "Fabrication & 3D Printing"
 status: "complete"
 tags: ["Noctua 120mm", "USB-C PD", "AutoCAD", "Printables", "3D printing"]
 blurb: "A 120mm Noctua fume-extraction fan for the soldering bench, powered off the same USB-C PD power bank that runs the iron. Went through several prototypes chasing a reliable PD trigger board before publishing it on Printables. Then ran into a new problem: the power bank can't do PD on two ports at once."
 weight: 2
+date: 2025-06-01
 ---
 
 ## Introduction

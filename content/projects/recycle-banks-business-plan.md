@@ -7,6 +7,7 @@ status: "on-hold"
 tags: ["battery bank", "business plan", "recycling", "21700 cells", "3D printing", "load testing", "cell recovery"]
 blurb: "A comprehensive business plan and project log for building portable, high-capacity battery banks from salvaged e-bike cells. Covers cell harvesting, terminal cleaning, 3D printed case designs, and USB-C PD load testing."
 weight: 2
+date: 2025-05-01
 featured: true
 featuredWeight: 3
 ---

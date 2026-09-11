@@ -1,11 +1,13 @@
 ---
 title: "Laptop Server"
+thumbnail: "/images/projects/laptop-nas-build-html-image1.png"
 category: "homelab"
 categoryLabel: "Home Lab"
 status: "ongoing"
 tags: ["TrueNAS Scale", "FreeCAD", "laser cutting", "NAS", "hard drives"]
 blurb: "Turning a spare laptop and loose USB drives into an enclosed, unified homelab NAS. Build log tracking M.2 to SATA storage expansion, FreeCAD case design, laser-cut acrylic planning, and custom 12V/5V power delivery."
 weight: 1
+date: 2025-02-01
 ---
 
 My current home server is just an old laptop with a couple of hard drives plugged into a USB dock. It runs TrueNAS Scale and handles backups fine, but I am rapidly running out of storage. 

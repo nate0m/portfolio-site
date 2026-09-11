@@ -6,14 +6,19 @@
 </div>
 <div class="grid">
   {{ range .Pages.ByWeight }}
-  <div class="card">
+  <div class="card{{ with .Params.status }} status-{{ . }}{{ end }}">
     <div class="card-top">
-      <span class="status {{ .Params.status }}">
-        {{ if eq .Params.status "complete" }}Complete
-        {{ else if eq .Params.status "ongoing" }}In progress
-        {{ else if eq .Params.status "on-hold" }}On hold
-        {{ else }}Idea{{ end }}
-      </span>
+      <div class="card-status-date">
+        <span class="status {{ .Params.status }}">
+          {{ if eq .Params.status "complete" }}Complete
+          {{ else if eq .Params.status "ongoing" }}In progress
+          {{ else if eq .Params.status "on-hold" }}On hold
+          {{ else }}Idea{{ end }}
+        </span>
+        {{ if not .Date.IsZero }}
+        <span class="card-date">{{ .Date.Format "1/2006" }}</span>
+        {{ end }}
+      </div>
       <span class="cat">{{ index (split .Params.categoryLabel " ") 0 }}</span>
     </div>
     {{ if .Params.thumbnail }}

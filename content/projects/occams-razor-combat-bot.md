@@ -1,11 +1,13 @@
 ---
 title: "\"Occam's Razor\"  1lb Combat Bot"
+thumbnail: "/images/projects/occams-razor-combat-bot-html-image10.png"
 category: "robotics"
 categoryLabel: "Robotics"
 status: "complete"
 tags: ["antweight", "brushless", "2S lipo", "FreeCAD", "combat robotics"]
 blurb: "An antweight combat bot built around a 1000KV brushless motor, N20 gear motors, Lego tires, and a Malenki Nano brain on a 2S lipo. Currently about 70g over the 450g weight limit. Won the UCSC winter inner-group competition, mostly because every other bot KO'd itself."
 weight: 1
+date: 2026-04-01
 ---
 
 ## Introduction

@@ -1,11 +1,13 @@
 ---
 title: "Honda Element Solar & Camper Setup"
+thumbnail: "/images/projects/honda-element-solar-setup-residential-panel.jpg"
 category: "vehicle"
 categoryLabel: "Vehicles"
 status: "complete"
 tags: ["solar", "MPPT", "1500W inverter", "DIY battery", "Honda Element"]
 blurb: "Repurposed a dilapidated van solar setup into a plywood-boxed power station for a Honda Element, built in three days for a three-week Pacific Northwest road trip. 100W panel, MPPT controller, 1500W inverter, and a 4-cell DIY lithium pack. Kept a 12V fridge running the whole way."
 weight: 1
+date: 2025-05-01
 ---
 
 In May 2025, I took off on a three-week road trip up the Pacific Northwest coast in my Honda Element. Three days before leaving, I decided I needed a reliable power setup. I had a pile of leftover solar gear sitting in the garage from an old camper van build. Most of it was dusty and slightly neglected, but the core hardware was still good. With some help from my cousin, we spent three days turning those loose components into a self-contained wooden power box.

@@ -10,7 +10,7 @@
   --ink-soft: #544D42;
   --rust: #B5501F;
   --brass: #B4841A;
-  --patina: #4F6349;
+  --patina: #2E7A3F;
   --line: #B7AE99;
   --line-soft: #CFC8B4;
   --card: #F1EDE1;
@@ -94,7 +94,7 @@ nav a:hover { color: var(--ink); }
   position: relative;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 88px 28px 56px;
+  padding: 44px 28px 56px;
   overflow: hidden;
 }
 
@@ -288,6 +288,19 @@ nav a:hover { color: var(--ink); }
   margin-bottom: 14px;
 }
 
+.card-status-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: .02em;
+}
+
 .status {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10.5px;
@@ -306,7 +319,7 @@ nav a:hover { color: var(--ink); }
   border-radius: 50%;
 }
 
-.status.complete { background: rgba(79, 99, 73, 0.12); color: var(--patina); }
+.status.complete { background: rgba(46, 122, 63, 0.15); color: var(--patina); font-weight: 500; }
 .status.complete::before { background: var(--patina); }
 .status.ongoing { background: rgba(180, 132, 26, 0.14); color: var(--brass); }
 .status.ongoing::before { background: var(--brass); }
@@ -369,6 +382,28 @@ nav a:hover { color: var(--ink); }
 .card.featured-card:hover {
   border-color: var(--rust);
   box-shadow: 4px 4px 0 rgba(181, 80, 31, 0.35);
+}
+
+.card.status-ongoing:not(.featured-card):hover,
+.card:not(.featured-card):has(.status.ongoing):hover {
+  border-color: var(--brass);
+  box-shadow: 4px 4px 0 rgba(180, 132, 26, 0.38);
+}
+
+.card.status-ongoing:not(.featured-card) h3 a:hover,
+.card:not(.featured-card):has(.status.ongoing) h3 a:hover {
+  color: var(--brass);
+}
+
+.card.status-complete:not(.featured-card):hover,
+.card:not(.featured-card):has(.status.complete):hover {
+  border-color: var(--patina);
+  box-shadow: 4px 4px 0 rgba(46, 122, 63, 0.38);
+}
+
+.card.status-complete:not(.featured-card) h3 a:hover,
+.card:not(.featured-card):has(.status.complete) h3 a:hover {
+  color: var(--patina);
 }
 
 .featured-badge {

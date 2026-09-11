@@ -1,11 +1,13 @@
 ---
 title: "Home Server Setup & Services"
+thumbnail: "/images/projects/server-setup-services-html-image1.png"
 category: "homelab"
 categoryLabel: "Home Lab"
 status: "ongoing"
 tags: ["TrueNAS Scale", "Jellyfin", "Ollama", "Tailscale", "Immich"]
 blurb: "TrueNAS Scale server running Jellyfin, Immich, Ollama with Open WebUI, and qBittorrent behind a Mullvad WireGuard tunnel. Built around a $40 OfferUp tower with an RTX 3080. Kept accessible on the locked-down UCSC campus network through Linux Wi-Fi sharing and Tailscale."
 weight: 2
+date: 2025-02-01
 ---
 
 I plugged in the forty-dollar OfferUp tower, hit the power switch, and watched the LEDs flash on for a split second before the power supply sparked and died. A thick cloud of white smoke rolled across my living room floor, smelling distinctly like burnt corn. Miraculously, the RTX 3080 survived. Once I swapped in a clean power supply, this sketchily sourced machine became the foundation of my current home server.

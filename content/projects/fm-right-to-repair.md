@@ -6,6 +6,7 @@ status: "complete"
 tags: ["Onewheel", "BMS", "OWIE chip", "right to repair", "RS485"]
 blurb: "A Onewheel that wouldn't turn on after sitting in a garage for months. The BMS was dead, an easy fix on paper. Future Motion's firmware locks replacement BMS units out with an 'incompatible hardware' error even from the same model board. The fix was an open-source OWIE chip that spoofs the RS485 handshake."
 weight: 1
+date: 2026-04-01
 ---
 
 It should have been easy to fix this board. But because of FM's (Future Motion’s) adversarial attitude towards right to repair (RTR) it was harder than it should have been.

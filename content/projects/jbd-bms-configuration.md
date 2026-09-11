@@ -1,11 +1,13 @@
 ---
 title: "JBD BMS Configuration Guide"
+thumbnail: "/images/projects/jbd-bms-configuration-html-image4.png"
 category: "ebike"
 categoryLabel: "E-Bikes & Batteries"
 status: "complete"
 tags: ["BMS", "battery building", "JBD", "wiring"]
 blurb: "JBD smart BMS configuration can be confusing due to translation issues in their app. This is a quick reference guide on wiring the balance leads and correcting the default LiFePO4 chemistry settings to charge Li-ion cells fully."
 weight: 3
+date: 2025-08-01
 ---
 
 ## Introduction
