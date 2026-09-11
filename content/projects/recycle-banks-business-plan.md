@@ -1,11 +1,14 @@
 ---
 title: "ReCycle Banks: Business Plan & Project Log"
+thumbnail: "/images/projects/recycle-banks-business-plan-html-image7.png"
 category: "ebike"
 categoryLabel: "E-Bikes & Batteries"
 status: "on-hold"
 tags: ["battery bank", "business plan", "recycling", "21700 cells", "3D printing", "load testing", "cell recovery"]
 blurb: "A comprehensive business plan and project log for building portable, high-capacity battery banks from salvaged e-bike cells. Covers cell harvesting, terminal cleaning, 3D printed case designs, and USB-C PD load testing."
-weight: 10
+weight: 2
+featured: true
+featuredWeight: 3
 ---
 
 # ReCycle Banks: Business Plan & Project Log

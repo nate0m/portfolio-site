@@ -1,5 +1,5 @@
 ---
-title: "Cell Capacity Tester"
+title: "Cell Capacity Tester Review"
 thumbnail: "/images/projects/cell-capacity-tester-001.png"
 category: "ebike"
 categoryLabel: "E-Bikes & Batteries"

@@ -354,6 +354,32 @@ nav a:hover { color: var(--ink); }
   color: var(--ink-soft);
 }
 
+/* ---------- featured builds ---------- */
+.featured-label {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: .09em;
+}
+
+.card.featured-card {
+  border: 1px solid var(--line);
+  position: relative;
+}
+
+.card.featured-card:hover {
+  border-color: var(--rust);
+  box-shadow: 4px 4px 0 rgba(181, 80, 31, 0.35);
+}
+
+.featured-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--rust);
+  font-weight: 600;
+}
+
 .hidden { display: none !important; }
 
 /* ---------- footer ---------- */
@@ -442,9 +468,24 @@ footer .site { color: var(--rust); text-decoration: none; }
 .project-body {
   font-size: 16px;
   line-height: 1.7;
-  padding-bottom: 60px;
+  padding-bottom: 0;
   grid-column: 2;
   min-width: 0;
+}
+
+.project-body > :last-child {
+  margin-bottom: 0;
+}
+
+.project-body > :last-child img,
+.project-body > :last-child iframe,
+.project-body > :last-child table {
+  margin-bottom: 0;
+}
+
+body.is-single footer,
+main:has(.project-single) + footer {
+  margin-top: 36px;
 }
 
 @media (max-width: 1024px) {
@@ -466,6 +507,25 @@ footer .site { color: var(--rust); text-decoration: none; }
   margin-top: 40px;
   margin-bottom: 12px;
   font-size: 22px;
+}
+
+.project-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 14.5px;
+}
+
+.project-body th,
+.project-body td {
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.project-body th {
+  background: var(--paper-dim);
+  font-weight: 600;
 }
 
 .project-body img {

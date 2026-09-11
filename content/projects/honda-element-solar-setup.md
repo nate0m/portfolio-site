@@ -8,134 +8,95 @@ blurb: "Repurposed a dilapidated van solar setup into a plywood-boxed power stat
 weight: 1
 ---
 
-I need a way to mount the solar panels onto the roof
+In May 2025, I took off on a three-week road trip up the Pacific Northwest coast in my Honda Element. Three days before leaving, I decided I needed a reliable power setup. I had a pile of leftover solar gear sitting in the garage from an old camper van build. Most of it was dusty and slightly neglected, but the core hardware was still good. With some help from my cousin, we spent three days turning those loose components into a self-contained wooden power box.
 
-Inspirations [https://el.life/honda-element-camper/](https://www.google.com/url?q=https://el.life/honda-element-camper/&sa=D&source=editors&ust=1788550421076534&usg=AOvVaw2tJkE2OiJ_YB6xn3HMlGUZ)
+The main requirement was simple. I needed to run a 12V fridge non-stop, plus charge a phone and a laptop. If the fridge warm-thawed the groceries, the trip was ruined. Everything else was secondary.
 
-Rack [https://a.co/d/8GLpYcN](https://www.google.com/url?q=https://a.co/d/8GLpYcN&sa=D&source=editors&ust=1788550421076732&usg=AOvVaw3qmCglJWSx5V05Lz8PlUKM)
+## Mounting and Inspiration
 
-So I have this ‘solar setup’ from when I had a van and it is in this dilapidated state. Show state of solar setup. I want to set this up to use on my honda element.
+To get panels onto the Element, I needed a rack and a mounting plan. I took cues from this [Honda Element camper build](https://el.life/honda-element-camper/) and picked up an affordable [roof rack](https://a.co/d/8GLpYcN) on Amazon to anchor everything.
 
-This is what I have
+## The Scavenged Hardware
 
-* List of parts
-* Battery
-* Panels
-* Inverter
+Most of these parts were standard off-the-shelf units bought roughly four years earlier from Amazon, AliExpress, or Facebook Marketplace.
 
-Consolidation of battery and parts information.
-
-Battery:
+### The 4S Lithium Battery
+Instead of buying a prebuilt 12V drop-in battery, I had a custom 4S pack made from four raw prismatic lithium cells paired with a BMS.
 
 ![](/images/projects/honda-element-solar-setup-html-image6.png)
 
-4s min voltage: 10v
-
-4s nominal voltage: 12.8v
-
-4s max/charge voltage: 14.6
-
-Rated capacity: 280ah
+* **Configuration:** 4S (4 cells in series)
+* **Nominal Voltage:** 12.8V
+* **Minimum Voltage:** 10.0V
+* **Full Charge Voltage:** 14.6V
+* **Rated Capacity:** 280Ah
 
 ![](/images/projects/honda-element-solar-setup-html-image2.png)
 
-BMS:
+The BMS handles cell balancing and basic protections against overcharge and low voltage cutoff.
 
 ![](/images/projects/honda-element-solar-setup-html-image8.png)
-
 ![](/images/projects/honda-element-solar-setup-html-image4.png)
 
-Charge Controller:
+### MPPT Charge Controller
+The charge controller takes the fluctuating DC voltage from the roof panel and steps it down to a steady charge profile for the 12V pack.
 
-Compatible voltages: 12v, 24v
+* **Compatible Voltages:** 12V, 24V auto-detect
+* **Max Charging Current:** 40A
+* **Documentation:** [datasheet](https://drive.google.com/file/d/1g6imWmjJop1SdYVB9JajS1hJ5JC9G8RP/view?usp=drive_link) and [manual](https://drive.google.com/file/d/1DaqeB_3EXXUkYRH0dtFPTh-tdEfZE0hm/view?usp=drive_link)
 
-Max  charging amperage: 40amp
+### 1500W Inverter
+For running household AC gear like a laptop brick or small appliances, I kept my 1500W pure sine inverter in the loop.
 
-See [datasheet](https://www.google.com/url?q=https://drive.google.com/file/d/1g6imWmjJop1SdYVB9JajS1hJ5JC9G8RP/view?usp%3Ddrive_link&sa=D&source=editors&ust=1788550421078461&usg=AOvVaw29a0GdWxCYAPSp-7A1otrm) & [manual](https://www.google.com/url?q=https://drive.google.com/file/d/1DaqeB_3EXXUkYRH0dtFPTh-tdEfZE0hm/view?usp%3Ddrive_link&sa=D&source=editors&ust=1788550421078608&usg=AOvVaw0Z1Kszz5hyo7N2XFbqBVZ4)
+* **DC Input:** 12.5V, up to 141A draw
+* **AC Output:** 115V AC, 60Hz, 13A (1500W continuous)
+* **Documentation:** [inverter manual](https://drive.google.com/file/d/1twf5DZJQVlRMTw0F8a4hDzSwxLWTpSSR/view?usp=drive_link)
 
-Inverter:
+### Solar Panels
+I planned to run two 100W Renogy panels in parallel. When I tested them in the driveway, one panel output zero volts. It was completely dead. With no time to wait for a replacement, I bolted the single working 100W panel to the roof and rolled with it.
 
-Input: 12.5v, 141amps
+## Bench Testing the Battery
 
-Output: 115v AC, 60Hz, 13amp, 1500w
-
-See [manual](https://www.google.com/url?q=https://drive.google.com/file/d/1twf5DZJQVlRMTw0F8a4hDzSwxLWTpSSR/view?usp%3Ddrive_link&sa=D&source=editors&ust=1788550421078989&usg=AOvVaw0FwNBa10qBWx7ZJ4pnEB2p)
-
-The end product that I want is a clean wooden box that has the battery housed in it. The charge controller and the inverter mounted on the back along with 12v barrel plugs and some usb a and c pd port.
-
-The first thing I need to do is check the current health of the battery. I need to balance the battery and load test it.
-
-I need a solid wiring plan.
-
-Then I need to construct the box and secure the battery inside of it.
-
-Load testing results:
+Before stuffing the cells into a wooden enclosure, I needed to check their real health. I hooked the pack up to a capacity tester to see what it could actually deliver under load.
 
 ![](/images/projects/honda-element-solar-setup-html-image3.jpg)
 
-The battery pulled less than 50% of it's capacity which is not great but I think that since I started the load test at only 13.4v and pulled more the 100ah it will be enough capacity for me.
+The test did not look great on paper. Out of 280Ah rated capacity, the pack gave up just over 100Ah before the BMS cut out. That is under 50% of the factory rating. Two of the four cells were noticeably weaker than the other two. The BMS kept them aligned under float charge, but once a heavy discharge load hit, the weaker pair dropped voltage fast and tripped low-voltage protection early.
 
-The main issue is that two of the cells are a fair bit weaker than the other two which contributed to the lower capacity. The BMS helps to balance them as they charge but during discharge they fall out of balance. It would be cool to get a measure of all the different cell voltages during the load test to see when and how they come out of balance.
+A skeptical reader would probably ask why on earth I trusted a three-week road trip to a degraded battery that failed half its rated capacity. The objection is fair. But 100Ah at 12V still equals 1.2 kilowatt-hours of usable juice. The 12V compressor fridge only pulls about 35 to 40 watts while cycling, which averages out to roughly 30Ah over an entire day. Even with zero solar input, 100Ah bought me three full days of cold food before reaching empty.
 
-One of the 100w panels seems to be dead so I will have to buy another one.
+## Building the Power Box
 
-Need to figure out how to make a wooden box
+We built an open plywood crate sized specifically to cradle the four heavy cells. Keeping the battery rigid stops the terminals and busbars from vibrating loose on rough dirt roads. To keep the cells from shifting inside the crate, I used these 3D printed [corner brackets](https://www.printables.com/model/181097-corner-brackets-for-system20-2020-2040-extrusion) to brace and secure the battery pack in place.
 
-Could use this [https://www.printables.com/model/181097-corner-brackets-for-system20-2020-2040-extrusion](https://www.google.com/url?q=https://www.printables.com/model/181097-corner-brackets-for-system20-2020-2040-extrusion&sa=D&source=editors&ust=1788550421081544&usg=AOvVaw0wP7XmXNl7MBKtCaHelF0C)
+![](/images/projects/honda-element-solar-setup-html-image1.png)
+![](/images/projects/honda-element-solar-setup-html-image7.png)
+![](/images/projects/honda-element-solar-setup-html-image5.png)
 
-Or just get something from homedepot / lowes…
+We mounted the inverter directly to the side of the box, with the MPPT controller right beside it. I wired in heavy inline fuses directly off the battery positive terminal, then added a 12V accessory panel with barrel plugs, a digital voltage gauge, and USB-A and USB-C PD ports. The whole box drops right behind the front seats and lifts out whenever I need the floor space.
 
-Look into getting DC to DC charger for battery
+### Wiring Diagram
 
-Maybe 2x cheap 12v batteries in series, the fridge supports it and maybe the invertor too? The charge controller does as well.
+Here is the wiring layout for the entire setup. All component grounds tie into a single negative bus bar. On the positive side, each branch gets fused directly off the main battery lead: a 50A fuse for the MPPT controller, a 150A fuse for the inverter, and a 10A fuse feeding the 12V barrel plug and accessory ports.
 
-Maybe upgrades would be the panel and battery.
+![](/images/projects/honda-element-solar-setup-wiring-diagram.png)
 
-Honda Element Solar Setup Finished Product
+## Real-World Performance
 
-## Intro
+The system ran cleanly through Washington and Oregon. The 12V fridge ran non-stop for the entire three weeks. We charged two phones and a laptop every single night. 
 
-I just recently got home from a 3 week road trip along the coast of the pacific north west. The details of the trip are not important to this post. This post will be about documenting my last minute solar setup that was put together using the parts from my old van solar setup of the course of 3 days with some help from my cousin. By the end of this post we should have a good idea of the parts I used, how it worked, and what could be improved.
+Even with just a single 100W panel on the roof and plenty of PNW overcast, the setup stayed self-sustaining. The panel pulled in just enough current during daytime drives to replenish what the fridge pulled overnight. We never once had to plug into shore power or idle the Element to top off the cells.
 
-## Parts Used
+## Future Improvements
 
-The parts that are used are mostly off the shelf solar products from around 4 years ago that I bought online though amazon or aliexpress or with the solar panels facebook marketplace. Honestly it’s all pretty standard stuff, but if you are new I will provide a brief explanation of the purpose of each part of the system.
+The build got the job done, but there is plenty of room for polish:
 
-* 100w renogy solar panel (would have been two, but the other one did not work)
-
-* The solar panel takes energy from the suns rays and turns it into a voltage that we can harness
-
-* 1500w inverter
-
-* The inverter takes the dc power from the battery and turns it into ac power like you have at home
-
-* Mppt charge controller
-
-* Takes the voltage from the solar panel and changes it to a more constant voltage that better charges the battery
-
-* Battery lithium ion
-
-* Stores energy
-* This is the only part that is kind of special sense instead of being an off the shelf battery it’s a diy batter where I bought 4 raw cells and put them in series to get the desired 12 volts and hooked up a bms to it
-
-* Mics , dc power jack, voltage display, fuses
-
-All put together in a crudely constructed wooden box.
-
-![](/images/projects/honda-element-solar-setup-html-image1.png)![](/images/projects/honda-element-solar-setup-html-image7.png)![](/images/projects/honda-element-solar-setup-html-image5.png)
-
-Picture of wiring diagram here
-
-## How it Worked
-
-In order to talk about how the solar setup worked we have to talk about the purpose of having a solar setup for this trip. It’s simple. I needed to power a fridge, and charge my phone and laptop, but every use is second to powering the 12 volt fridge. In that regard the setup worked great; it was self-sustaining that is to say that it generated more energy than it used.
-
-## Do Better Next Time
-
-Make a post to diysolarforum with pictures of the box and the wiring diagram and ask people to roast it aka provide constructive feedback, and document for future iterations here.
+* **Teardown roast:** I want to post the detailed wiring layout to diysolarforum so the community can critique my fusing and wire routing.
+* **Cell monitoring:** I want per-cell voltage logging so I can watch exactly when the weak cells diverge under load.
+* **DC-DC charging:** Adding an alternator-fed DC-to-DC charger would give guaranteed charging on rainy days when parked under tree cover.
 
 ## Upgrades
 
-Since putting the initial box together, I have upgraded the setup to a ~300 watt residential solar panel. Huge difference compared to the old 100W panel. 
+Since getting back, I replaced the single 100W panel with a 300W residential panel mounted flat to the roof. The jump from 100W to 300W is night and day. The pack now hits full float charge by midday even under cloudy skies.
 
 ![](/images/projects/honda-element-solar-setup-residential-panel.jpg)

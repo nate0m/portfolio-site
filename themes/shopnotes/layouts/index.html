@@ -29,8 +29,40 @@
 </div>
 
 <div id="projects">
-  {{/* Group projects by category, preserving weight order */}}
+  {{/* Featured projects */}}
   {{ $projects := where .Site.RegularPages "Section" "projects" }}
+  {{ $featured := where $projects ".Params.featured" true }}
+  {{ $featured = sort $featured ".Params.featuredWeight" "asc" }}
+  {{ if $featured }}
+  <div class="section-label category-group featured-label" data-category="all">Featured Projects</div>
+  <div class="grid category-group featured-grid" data-category="all">
+    {{ range $featured }}
+    <div class="card featured-card" data-category="{{ .Params.category }}">
+      <div class="card-top">
+        <span class="status {{ .Params.status }}">
+          {{ if eq .Params.status "complete" }}Complete
+          {{ else if eq .Params.status "ongoing" }}In progress
+          {{ else if eq .Params.status "on-hold" }}On hold
+          {{ else }}Idea{{ end }}
+        </span>
+        <span class="featured-badge">★ Featured</span>
+      </div>
+      {{ if .Params.thumbnail }}
+      <div class="card-thumb">
+        <a href="{{ .RelPermalink }}"><img src="{{ (strings.TrimPrefix "/" .Params.thumbnail) | relURL }}" alt="Thumbnail for {{ .Title }}"></a>
+      </div>
+      {{ end }}
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Params.blurb }}</p>
+      <div class="tags">
+        {{ range .Params.tags }}<span class="tag">{{ . }}</span>{{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{/* Group projects by category, preserving weight order */}}
   {{ $categories := slice "ebike" "electronics" "robotics" "fab" "vehicle" "homelab" "repair" }}
   {{ $catLabels := dict "ebike" "E-Bikes & Batteries" "electronics" "Electronics" "robotics" "Robotics" "fab" "Fabrication & 3D Printing" "vehicle" "Vehicles" "homelab" "Home Lab" "repair" "Right-to-Repair" }}
 
@@ -40,7 +72,7 @@
     <div class="section-label category-group" data-category="{{ $cat }}">{{ index $catLabels $cat }}</div>
     <div class="grid category-group" data-category="{{ $cat }}">
       {{ range $catProjects.ByWeight }}
-      <div class="card" data-category="{{ .Params.category }}">
+      <div class="card{{ if .Params.featured }} featured-card{{ end }}" data-category="{{ .Params.category }}">
         <div class="card-top">
           <span class="status {{ .Params.status }}">
             {{ if eq .Params.status "complete" }}Complete
@@ -48,7 +80,11 @@
             {{ else if eq .Params.status "on-hold" }}On hold
             {{ else }}Idea{{ end }}
           </span>
+          {{ if .Params.featured }}
+          <span class="featured-badge">★ Featured</span>
+          {{ else }}
           <span class="cat">{{ index (split .Params.categoryLabel " ") 0 }}</span>
+          {{ end }}
         </div>
         {{ if .Params.thumbnail }}
         <div class="card-thumb">

@@ -8,9 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/portfolio-site/css/main.min.55394a604ae42fbc4bbe5ef2e475f6d06cedc3193c479de4ab2f15af66561e98.css">
+<link rel="stylesheet" href="/portfolio-site/css/main.min.4ad5c870b383634ca8a18f6de1307a6f7a43b65c2ee17deb70ef24e694c0f3d6.css">
 </head>
-<body><header>
+<body class="is-single"><header>
   <div class="header-inner">
     <a href="https://username.github.io/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
     <nav>
@@ -94,6 +94,7 @@
 <h2 id="the-power-bank-problem">The Power Bank Problem</h2>
 <p>After wrapping up the build, I hit a snag with my specific power bank. It cannot output PD (Power Delivery) on multiple ports simultaneously. If I plug the fan into the second port, the entire bank drops to 5V. That ruins the setup because the soldering iron needs PD to get enough wattage to stay hot. Even if I used a non-PD 5V supply for the fan, it would still disable PD for the iron.</p>
 <p>I think the simplest solution going forward is to bite the bullet and add a single 21700 cell inside the fan case that charges via USB-C. I&rsquo;ll just need to wire it to a <a href="https://en.wikipedia.org/wiki/Boost_converter">boost converter</a> to step the single cell voltage up to the 12V needed for the fan.</p>
+<p>I plan on revisiting this project for a full redesign with the internal battery as this was one of my first personal CAD projects and has lots of room for impovement.</p>
 
     </div>
   </div>

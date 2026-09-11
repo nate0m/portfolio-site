@@ -1,5 +1,5 @@
 ---
-title: "\"Occam's Razor\" — 1lb Combat Bot"
+title: "\"Occam's Razor\"  1lb Combat Bot"
 category: "robotics"
 categoryLabel: "Robotics"
 status: "complete"

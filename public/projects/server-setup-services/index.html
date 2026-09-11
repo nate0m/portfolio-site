@@ -8,9 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/portfolio-site/css/main.min.55394a604ae42fbc4bbe5ef2e475f6d06cedc3193c479de4ab2f15af66561e98.css">
+<link rel="stylesheet" href="/portfolio-site/css/main.min.4ad5c870b383634ca8a18f6de1307a6f7a43b65c2ee17deb70ef24e694c0f3d6.css">
 </head>
-<body><header>
+<body class="is-single"><header>
   <div class="header-inner">
     <a href="https://username.github.io/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
     <nav>
@@ -36,69 +36,65 @@
   </div>
   <div class="project-content-wrap">
     <aside class="project-toc">
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-early-setup-a-laptop-on-a-shelf">The Early Setup: A Laptop on a Shelf</a></li>
+    <li><a href="#the-40-offerup-tower">The $40 OfferUp Tower</a></li>
+    <li><a href="#running-self-hosted-services">Running Self-Hosted Services</a>
+      <ul>
+        <li><a href="#jellyfin">Jellyfin</a></li>
+        <li><a href="#ollama-and-open-webui">Ollama and Open WebUI</a></li>
+        <li><a href="#qbittorrent-and-wireguard">qBittorrent and WireGuard</a></li>
+        <li><a href="#immich">Immich</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-ucsc-campus-network-workaround">The UCSC Campus Network Workaround</a></li>
+  </ul>
+</nav>
     </aside>
     <div class="project-body">
-      <p>About my server setup: it is a laptop with a couple of harddrives plugged into the usb port it’s good enough but is running out of storage, I need to add a drive or two, but the usb drive thingy that I have can only hold two drives. I am thinking about maybe a m.2 to sata thing idk I need to figure out how to add more drive and how to make the unit more unified because as it stands its just a laptop plugged into drives. I would be nice to have the whole thing in a case or something (3d printing??).</p>
-<p>Current setup:</p>
+      <p>I plugged in the forty-dollar OfferUp tower, hit the power switch, and watched the LEDs flash on for a split second before the power supply sparked and died. A thick cloud of white smoke rolled across my living room floor, smelling distinctly like burnt corn. Miraculously, the RTX 3080 survived. Once I swapped in a clean power supply, this sketchily sourced machine became the foundation of my current home server.</p>
+<h2 id="the-early-setup-a-laptop-on-a-shelf">The Early Setup: A Laptop on a Shelf</h2>
+<p>Before the tower, my entire homelab was just an old laptop connected to a two-bay USB hard drive enclosure.</p>
 <p><img src="/portfolio-site/images/projects/server-setup-services-html-image2.png" alt=""  />
+
 <img src="/portfolio-site/images/projects/server-setup-services-html-image4.png" alt=""  />
+
 <img src="/portfolio-site/images/projects/server-setup-services-html-image3.png" alt=""  />
 </p>
-<p>Maybe usb3 to gb ethernet adapter if necessary check specs of ethernet port but I doubt that it is gb</p>
-<p>Harddrive from server part deals on ebay? (harddrive options):</p>
-<p><a href="https://www.google.com/url?q=https://www.ebay.com/str/ServerPartDeals&amp;sa=D&amp;source=editors&amp;ust=1788550371928251&amp;usg=AOvVaw02gGCV-A1taL3mxT8zF84h">https://www.ebay.com/str/ServerPartDeals</a></p>
-<p><a href="https://www.google.com/url?q=https://a.co/d/dWIB5Ud&amp;sa=D&amp;source=editors&amp;ust=1788550371928504&amp;usg=AOvVaw2R0UNgPrJmgQ3Xl6Oz9EHm">https://a.co/d/dWIB5Ud</a></p>
-<p>What is in the system now:</p>
-<p><a href="https://www.google.com/url?q=https://a.co/d/7RFR8He&amp;sa=D&amp;source=editors&amp;ust=1788550371928749&amp;usg=AOvVaw3SYKcvkBUI-1fuxrWGs5Je">https://a.co/d/7RFR8He</a></p>
-<p>M.2 to sata adapter + power supply for more drives: (check compatibility with setup aka zfs raid and truenas scale and this specific m.2 port)</p>
-<p><a href="https://www.google.com/url?q=https://www.amazon.com/s?k%3Dm.2%2Bto%2Bsata%26i%3Delectronics%26crid%3D3NELBZ0CLTHUJ%26sprefix%3Dm.2%2Bto%2Bsata%252Celectronics%252C167&amp;sa=D&amp;source=editors&amp;ust=1788550371929194&amp;usg=AOvVaw2vpha0odRXggGLPgZU3iTs">https://www.amazon.com/s?k=m.2+to+sata&amp;i=electronics&amp;crid=3NELBZ0CLTHUJ&amp;sprefix=m.2+to+sata%2Celectronics%2C167</a></p>
-<p><a href="https://www.google.com/url?q=https://www.newegg.com/p/pl?d%3Dm.2%2Bto%2Bsata%2Badapter&amp;sa=D&amp;source=editors&amp;ust=1788550371929394&amp;usg=AOvVaw0VOaKhCZ0Upje5SR0Xkyg7">https://www.newegg.com/p/pl?d=m.2+to+sata+adapter</a></p>
-<p>Then I will have to put the os onto a sata ssd. Need to figure out how to back up truenas scale.</p>
-<p><a href="https://www.google.com/url?q=https://www.truenas.com/community/threads/how-to-clone-current-boot-drive-truenas-scale-os-to-new-ssd.114345/&amp;sa=D&amp;source=editors&amp;ust=1788550371929815&amp;usg=AOvVaw33dACeXTxPkJIjGJsaOYHa">https://www.truenas.com/community/threads/how-to-clone-current-boot-drive-truenas-scale-os-to-new-ssd.114345/</a></p>
-<p>Maxim required space for the truenas scale os is 16gb according to the docs.</p>
-<p><a href="https://www.google.com/url?q=https://www.truenas.com/docs/scale/gettingstarted/scalehardwareguide/&amp;sa=D&amp;source=editors&amp;ust=1788550371930263&amp;usg=AOvVaw2BceRyCoHKOFW1poO99B_7">https://www.truenas.com/docs/scale/gettingstarted/scalehardwareguide/</a></p>
-<p>Therefore I only need a low capacity ssd for each system which will reduce the price</p>
-<p>Cheapest one on amazon i found quickly</p>
-<p><a href="https://www.google.com/url?q=https://a.co/d/9RXETYB&amp;sa=D&amp;source=editors&amp;ust=1788550371930673&amp;usg=AOvVaw1kSNbva4-7gmr9XA4H78DY">https://a.co/d/9RXETYB</a></p>
+<p>It ran TrueNAS Scale and worked fine for basic network storage, but it ran out of room fast. The USB dock was maxed out with two drives, including an existing <a href="https://a.co/d/7RFR8He">hard drive</a>. USB connections are notorious for dropping out during sustained ZFS pool scrubs, so adding more drives meant finding a real expansion path.</p>
+<p>I spent time researching M.2 to SATA adapters on <a href="https://www.amazon.com/s?k=m.2&#43;to&#43;sata&amp;i=electronics&amp;crid=3NELBZ0CLTHUJ&amp;sprefix=m.2&#43;to&#43;sata%2Celectronics%2C167">Amazon</a> and <a href="https://www.newegg.com/p/pl?d=m.2&#43;to&#43;sata&#43;adapter">Newegg</a>, and pricing out refurbished enterprise drives on <a href="https://www.ebay.com/str/ServerPartDeals">ServerPartDeals</a> and <a href="https://a.co/d/dWIB5Ud">Amazon</a>. According to the <a href="https://www.truenas.com/docs/scale/gettingstarted/scalehardwareguide/">TrueNAS hardware guide</a>, the OS only needs about 16GB of boot storage. That meant I could clone the OS using this <a href="https://www.truenas.com/community/threads/how-to-clone-current-boot-drive-truenas-scale-os-to-new-ssd.114345/">boot drive cloning guide</a> onto a dirt-cheap <a href="https://a.co/d/9RXETYB">boot SSD</a> and save money.</p>
+<p>Then I stumbled on a deal that changed the plan.</p>
+<h2 id="the-40-offerup-tower">The $40 OfferUp Tower</h2>
+<p>I found a desktop tower on OfferUp for forty dollars, which cost me about ninety minutes of driving.</p>
 <p><img src="/portfolio-site/images/projects/server-setup-services-html-image1.png" alt=""  />
 </p>
-<p>I ended up buying this computer on OfferUp with the intention of pulling all of the components out and jerryrigging a way to put my laptop mother board into it along with all of the hard drives. But after thinking about it a bit more I think that I am just going to use this whole computer as the NAS and use the laptop for something else idk yet. I got the computer for $40 plus an hour and a half of driving.</p>
-<p>Components:<br>
-4th gen i7</p>
-<p>4x4gb ddr3</p>
-<p>Some gpu idk what 1060 6gb</p>
-<p>1250watt psu</p>
-<p>The main reason I wanted this computer was the case and the power supply. The case has tons of 3.5’ hard drive bays which is perfect for a NAS, and the power supply is 1250watt which I am going to swap with the 600watt that is in my personal rig which will be perfect for when I upgrade the GPU in that system.</p>
-<p>I would still like to do the four hard drives hooked up to the laptop but it would just be for fun / proof of concept since I have not seen others make a NAS out of a laptop using an NVMe M.2 to SATA adapter before.</p>
-<p>For running deepseek</p>
-<p><a href="https://www.google.com/url?q=https://www.youtube.com/watch?time_continue%3D1%26v%3Db2HeHDUbkec%26embeds_referring_euri%3Dhttps%253A%252F%252Fapps.truenas.com%252F%26source_ve_path%3DMjg2NjY&amp;sa=D&amp;source=editors&amp;ust=1788550371932503&amp;usg=AOvVaw2sg7sDqPBa0WJIW01QRp-a">https://www.youtube.com/watch?time_continue=1&amp;v=b2HeHDUbkec&amp;embeds_referring_euri=https%3A%2F%2Fapps.truenas.com%2F&amp;source_ve_path=Mjg2NjY</a></p>
-<p>Obviously need to do more research into running llms with truenas scale as the OS, might have to learn some docker maybe..</p>
-<p>I put the 3080 and most of the hard drives into the 4th gen i7 system after removing the power supply and cleaning a bit and replugging everything from the power supply back in, and guess what? Everything lit up for a moment, then the power supply fucking exploded. I mean it didn’t literally explode, but it made a sparking noise and release a cloud of smoke, and this wasn’t like a little puff of white smoke, I mean my living room where I was building the computer was straight pillowed in a smoke that smelt like over cooked corn for some reason. After removing the power supply and examining the other components they ‘seem’ fine but I will only be able to know for sure when the new power supply comes in the main tomorrow. Hopely the 3080 isn’t fried. That would be so unfortunate lol.</p>
-<p>Ok i hooked up everything with the new power supply and all the components seem to be working. I was only able to get into hte bios so idk if the gpu is working but judging from the leds and fans it seems fine. Now it is time to install truenas scale onto it and figure out the best way to transfer everything.</p>
-<p>I would like to move away from all of the xvolumes that I currently have set up on the nas as I think that the longer they persist the larger of a headache I will have to deal with later when I have to get rid of them.</p>
-<p>For the future when you need more drives</p>
-<p>Search 5.25&quot; harddrive bay</p>
-<p><a href="https://www.google.com/url?q=https://www.reddit.com/r/truenas/comments/1mmtagm/35_hdd_bays_please_help/?utm_source%3Dshare%26utm_medium%3Dweb3x%26utm_name%3Dweb3xcss%26utm_term%3D1%26utm_content%3Dshare_button&amp;sa=D&amp;source=editors&amp;ust=1788550371934786&amp;usg=AOvVaw2zxnavWrywBQILTaHlJ8VC">https://www.reddit.com/r/truenas/comments/1mmtagm/35_hdd_bays_please_help/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button</a></p>
-<p>Got everything transferred over and working, but jellyfin would not start. Something to do with the gpu because when I disabled it in the jellyfin config it was able to start.</p>
-<p>See this for fixing jellyfin with gpu <a href="https://www.google.com/url?q=https://forums.truenas.com/t/nvidia-gpu-not-found-prevents-jellyfin-container-from-opening/32580/2&amp;sa=D&amp;source=editors&amp;ust=1788550371935325&amp;usg=AOvVaw1LagJl0C2tfkmSe_JF2DBM">https://forums.truenas.com/t/nvidia-gpu-not-found-prevents-jellyfin-container-from-opening/32580/2</a></p>
-<p>Also for some reason I am unable to update immich and jellyfin I get an <code>can not update while running</code> error but the application is stopped, weird…</p>
-<p>Maybe this will help?</p>
-<p><a href="https://www.google.com/url?q=https://forums.truenas.com/t/24-10-1-cant-upgrade-apps/28340/3&amp;sa=D&amp;source=editors&amp;ust=1788550371935885&amp;usg=AOvVaw2J23vZQp0PwK3KGcmkrEMf">https://forums.truenas.com/t/24-10-1-cant-upgrade-apps/28340/3</a></p>
-<p>Setting up ollama and open web ui for llm stuff is pretty cool. The gpu has 10gb of vram use this command to monitor it <code>nvidia-smi</code> maybe find a better way to do this in the future.</p>
-<p>Setting up mullvad on the nas using this tutorial. Will have to go in after the 9th of august to refresh all the keys in /etc/wireguard/wg0.conf</p>
-<p><a href="https://www.google.com/url?q=https://forums.truenas.com/t/guide-qbittorrent-app-with-wireguard-vpn/6003&amp;sa=D&amp;source=editors&amp;ust=1788550371936493&amp;usg=AOvVaw0jBKHqRavK_3-x2Na6yfOA">https://forums.truenas.com/t/guide-qbittorrent-app-with-wireguard-vpn/6003</a></p>
-<p>September 15, 2025</p>
-<p>So I moved to ucsc and I was worried about if I would be able to get the server working here, and the good news is that I did and also the network sharing that allows me to access my printer as well. I was going to use Windows ICS which allows you to share a wifi internet connection through the ethernet port along with a switch to get the server on wifi then use tailscale to access the nas from my wireless devices. This would have worked as a concept but my windows install is being very unstable right now, so instead I did it with the tried and true, linux. I followed this tutorial for gnome but did it on kde because it is basically the same process.</p>
-<p><a href="https://www.google.com/url?q=https://askubuntu.com/questions/359856/share-wireless-internet-connection-through-ethernet&amp;sa=D&amp;source=editors&amp;ust=1788550371937518&amp;usg=AOvVaw1crZuJd2bl40FeMQECo12h">https://askubuntu.com/questions/359856/share-wireless-internet-connection-through-ethernet</a></p>
-<p>Then all I had to do was change the shared ip range of tailscale in the truenas app configuration and now it basically functions like it did at home as long as I am connected to tailscale.</p>
-<p>Other than that I haven&rsquo;t tested bittorrent yet, so I will see if that works eventually.  </p>
-<p>September 16, 2025</p>
-<p>I think that I can do this same thing with a raspi then I won’t always have to have dbox on when box is one, ya know..</p>
-<p>March 11th, 2026</p>
-<p>Immich migration.</p>
-<p><a href="https://www.google.com/url?q=https://www.reddit.com/r/immich/comments/1izrmv3/how_to_migrate_immich_from_ixapps_to_datasets/&amp;sa=D&amp;source=editors&amp;ust=1788550371938611&amp;usg=AOvVaw0OKiOy3BdwCnThsBhm2Fry">https://www.reddit.com/r/immich/comments/1izrmv3/how_to_migrate_immich_from_ixapps_to_datasets/</a></p>
-<p>Look for a migration script.</p>
+<p>The hardware inside was a mixed bag:</p>
+<ul>
+<li><strong>CPU:</strong> Intel 4th-gen Core i7</li>
+<li><strong>RAM:</strong> 16GB DDR3 (4x4GB sticks)</li>
+<li><strong>GPU:</strong> GTX 1060 6GB (pulled out immediately)</li>
+<li><strong>PSU:</strong> An unbranded 1250W unit that promptly died in smoke</li>
+</ul>
+<p>My original thought was to gut the case and transplant the laptop motherboard into it. Once I realized the chassis had plenty of native 3.5-inch drive bays, I decided to leave the desktop motherboard in place and turn the whole tower into the server. When I need even more storage down the road, I can convert the empty optical slots using this <a href="https://www.reddit.com/r/truenas/comments/1mmtagm/35_hdd_bays_please_help/">drive bay thread</a> for 5.25-inch adapters.</p>
+<p>I swapped in an RTX 3080 from my personal rig to handle local AI workloads and media transcoding.</p>
+<p>A skeptical reader would probably ask why on earth you would shove an RTX 3080 into an ancient fourth-gen i7 system with DDR3 memory. It would bottleneck horribly in modern games. But for a home server running local LLMs and media transcoding, CPU speed barely matters. The GPU handles the inference passes directly in its 10GB of VRAM, and the older platform gave me native SATA ports and drive bays for practically nothing.</p>
+<h2 id="running-self-hosted-services">Running Self-Hosted Services</h2>
+<p>With TrueNAS Scale installed on the tower and storage pools configured, I set up my core services.</p>
+<h3 id="jellyfin">Jellyfin</h3>
+<p>Jellyfin serves my media library, but getting hardware acceleration working took some troubleshooting. The container refused to boot until I worked through this <a href="https://forums.truenas.com/t/nvidia-gpu-not-found-prevents-jellyfin-container-from-opening/32580/2">Jellyfin GPU guide</a> to pass the NVIDIA driver runtime through properly. I also hit a frustrating &ldquo;cannot update while running&rdquo; bug during app upgrades, which pointed back to this <a href="https://forums.truenas.com/t/24-10-1-cant-upgrade-apps/28340/3">upgrade bug thread</a>.</p>
+<h3 id="ollama-and-open-webui">Ollama and Open WebUI</h3>
+<p>I use Ollama with Open WebUI to run local LLMs like DeepSeek, inspired by this <a href="https://www.youtube.com/watch?time_continue=1&amp;v=b2HeHDUbkec">DeepSeek guide</a>. The 3080 handles 7B and 8B parameter models quickly. I keep tabs on memory consumption from the shell with <code>nvidia-smi</code>.</p>
+<h3 id="qbittorrent-and-wireguard">qBittorrent and WireGuard</h3>
+<p>All download traffic routes through a containerized qBittorrent client pinned to a Mullvad WireGuard tunnel. I configured the network routing using this <a href="https://forums.truenas.com/t/guide-qbittorrent-app-with-wireguard-vpn/6003">qBittorrent VPN guide</a>. The setup binds the client directly to the VPN interface, so traffic drops instantly if the tunnel disconnects.</p>
+<h3 id="immich">Immich</h3>
+<p>Immich handles automatic photo backups from my phone. In March 2026, I started migrating away from old ix-volumes to standard ZFS datasets using this <a href="https://www.reddit.com/r/immich/comments/1izrmv3/how_to_migrate_immich_from_ixapps_to_datasets/">Immich dataset migration guide</a>. Dedicated datasets make snapshotting and disaster recovery much cleaner.</p>
+<h2 id="the-ucsc-campus-network-workaround">The UCSC Campus Network Workaround</h2>
+<p>In September 2025, I moved into campus housing at UCSC. University networks are notoriously restrictive: device isolation blocks local traffic, and there is no simple way to assign static LAN addresses to personal servers.</p>
+<p>I needed the server online, and I needed access to my network printer. I initially considered Windows Internet Connection Sharing (ICS), but my Windows partition was unstable.</p>
+<p>Instead, I set up ethernet sharing on Linux using KDE, following the principles in this <a href="https://askubuntu.com/questions/359856/share-wireless-internet-connection-through-ethernet">AskUbuntu network sharing guide</a>. My daily laptop connects to the campus Wi-Fi, then bridges the internet connection over its ethernet port into a small network switch connected to the server.</p>
+<p>From there, Tailscale bridges the gap. I configured the Tailscale subnet router in the TrueNAS app settings. Now, as long as my phone or laptop has Tailscale active, I can connect to my server services and files from anywhere on or off campus.</p>
+<p>The next step is moving the Wi-Fi bridge off my main laptop onto a dedicated Raspberry Pi, so the server stays reachable without keeping my daily machine docked.</p>
 
     </div>
   </div>

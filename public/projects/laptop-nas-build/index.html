@@ -8,9 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/portfolio-site/css/main.min.55394a604ae42fbc4bbe5ef2e475f6d06cedc3193c479de4ab2f15af66561e98.css">
+<link rel="stylesheet" href="/portfolio-site/css/main.min.4ad5c870b383634ca8a18f6de1307a6f7a43b65c2ee17deb70ef24e694c0f3d6.css">
 </head>
-<body><header>
+<body class="is-single"><header>
   <div class="header-inner">
     <a href="https://username.github.io/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
     <nav>
@@ -36,52 +36,69 @@
   </div>
   <div class="project-content-wrap">
     <aside class="project-toc">
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-current-setup">The Current Setup</a></li>
+    <li><a href="#storage-expansion-m2-to-sata">Storage Expansion: M.2 to SATA</a></li>
+    <li><a href="#initial-case-modeling-in-freecad">Initial Case Modeling in FreeCAD</a></li>
+    <li><a href="#pivoting-to-laser-cutting">Pivoting to Laser Cutting</a></li>
+    <li><a href="#laptop-lid--console-access">Laptop Lid &amp; Console Access</a></li>
+    <li><a href="#panel-layout-and-2d-vector-export">Panel Layout and 2D Vector Export</a></li>
+    <li><a href="#power-delivery-architecture">Power Delivery Architecture</a></li>
+  </ul>
+</nav>
     </aside>
     <div class="project-body">
-      <p>About my server setup: it is a laptop with a couple of harddrives plugged into the usb port it’s good enough but is running out of storage, I need to add a drive or two, but the usb drive thingy that I have can only hold two drives. I am thinking about maybe a m.2 to sata thing idk I need to figure out how to add more drive and how to make the unit more unified because as it stands its just a laptop plugged into drives. I would be nice to have the whole thing in a case or something (3d printing??).</p>
-<p>Current setup:</p>
+      <p>My current home server is just an old laptop with a couple of hard drives plugged into a USB dock. It runs TrueNAS Scale and handles backups fine, but I am rapidly running out of storage.</p>
+<p>The two-bay USB dock is completely full. Having loose drives, power bricks, and USB cables strewn across the desk is messy and precarious. I need to add more drives, get off USB, and build a unified enclosure that houses the laptop, the storage pool, cooling fans, and a dedicated power supply.</p>
+<h2 id="the-current-setup">The Current Setup</h2>
+<p>Right now, the hardware sits in the open on a shelf.</p>
 <p><img src="/portfolio-site/images/projects/laptop-nas-build-html-image5.png" alt=""  />
+
 <img src="/portfolio-site/images/projects/laptop-nas-build-html-image6.png" alt=""  />
+
 <img src="/portfolio-site/images/projects/laptop-nas-build-html-image7.png" alt=""  />
 </p>
-<p>M.2 to sata adapter + power supply for more drives: (check compatibility with setup aka zfs raid and truenas scale and this specific m.2 port)</p>
-<p><a href="https://www.google.com/url?q=https://www.amazon.com/s?k%3Dm.2%2Bto%2Bsata%26i%3Delectronics%26crid%3D3NELBZ0CLTHUJ%26sprefix%3Dm.2%2Bto%2Bsata%252Celectronics%252C167&amp;sa=D&amp;source=editors&amp;ust=1788550472095458&amp;usg=AOvVaw0fBopXvxRgWTz9ZCOrqffg">https://www.amazon.com/s?k=m.2+to+sata&amp;i=electronics&amp;crid=3NELBZ0CLTHUJ&amp;sprefix=m.2+to+sata%2Celectronics%2C167</a></p>
-<p><a href="https://www.google.com/url?q=https://www.newegg.com/p/pl?d%3Dm.2%2Bto%2Bsata%2Badapter&amp;sa=D&amp;source=editors&amp;ust=1788550472095729&amp;usg=AOvVaw1u0AHRdGM54wMuB4F1eusw">https://www.newegg.com/p/pl?d=m.2+to+sata+adapter</a></p>
-<p><a href="https://www.google.com/url?q=https://linustechtips.com/topic/1616173-nas-storage-upgrade-help-m2-to-sata-adatper/%23comment-16755459&amp;sa=D&amp;source=editors&amp;ust=1788550472096007&amp;usg=AOvVaw33bXmpm-G6ZDUOw08SWCqm">https://linustechtips.com/topic/1616173-nas-storage-upgrade-help-m2-to-sata-adatper/#comment-16755459</a></p>
-<p>I started designing the case a bit in freeCAD</p>
+<p>USB works for a quick prototype, but ZFS hates USB enclosures. If the USB controller glitches or disconnects for a second, the entire ZFS pool drops into a degraded state. To add more drives reliably, I need direct SATA connections.</p>
+<h2 id="storage-expansion-m2-to-sata">Storage Expansion: M.2 to SATA</h2>
+<p>Since the laptop does not have standard SATA ports on the motherboard, the plan is to adapt the internal M.2 PCIe slot into a multi-port SATA controller.</p>
+<p>I started digging through options on <a href="https://www.amazon.com/s?k=m.2&#43;to&#43;sata&amp;i=electronics&amp;crid=3NELBZ0CLTHUJ&amp;sprefix=m.2&#43;to&#43;sata%2Celectronics%2C167">Amazon</a> and <a href="https://www.newegg.com/p/pl?d=m.2&#43;to&#43;sata&#43;adapter">Newegg</a>. The key requirement is compatibility with TrueNAS Scale and ZFS. Many cheap M.2 SATA breakout boards use low-end JMicron or ASMedia port multipliers, which cause major instability under sustained parity scrubs.</p>
+<p>This <a href="https://linustechtips.com/topic/1616173-nas-storage-upgrade-help-m2-to-sata-adatper/#comment-16755459">Linus Tech Tips thread</a> broke down which chipsets negotiate genuine PCIe-to-SATA controller channels without bottlenecking the drives.</p>
+<h2 id="initial-case-modeling-in-freecad">Initial Case Modeling in FreeCAD</h2>
+<p>I started modeling a custom chassis in FreeCAD to hold the laptop, drives, and electronics in one compact footprint.</p>
 <p><img src="/portfolio-site/images/projects/laptop-nas-build-html-image8.png" alt=""  />
+
 <img src="/portfolio-site/images/projects/laptop-nas-build-html-image3.png" alt=""  />
 </p>
-<p>Its pretty rough right now, but a good start non the less. I got the harddrive cages off of printables, which also have a tray for each hard drive, and each cage holds two hard drives. I am trying to practice compositing different models into one thing. I also found models for some noctua fans, the buck converters, and the power plug.</p>
-<p>Noctua fans: 92x92x25 mm, <a href="https://www.google.com/url?q=https://a.co/d/i1cUoC0&amp;sa=D&amp;source=editors&amp;ust=1788550472096620&amp;usg=AOvVaw3ThpwG4YhDZOcJT3Au0ZVQ">https://a.co/d/i1cUoC0</a></p>
-<p>Hard Drive Cages: <a href="https://www.google.com/url?q=https://www.printables.com/model/788261-35-hdd-cage-caddy-for-anti-vibration-screws&amp;sa=D&amp;source=editors&amp;ust=1788550472096862&amp;usg=AOvVaw3GLtqPykIgyGrOTMDKBYPq">https://www.printables.com/model/788261-35-hdd-cage-caddy-for-anti-vibration-screws</a></p>
-<p>10/24/2025</p>
-<p>Going to laser cut the case now so all the face of the box will need to be separate and interlocking. I think there is an extension for FreeCAD that makes the interlocking part easy see forum post.</p>
-<p><a href="https://www.google.com/url?q=https://forum.freecad.org/viewtopic.php?t%3D99394&amp;sa=D&amp;source=editors&amp;ust=1788550472097392&amp;usg=AOvVaw2pMtI1dwcaBCYqYanx1O7L">https://forum.freecad.org/viewtopic.php?t=99394</a></p>
-<p>Probably just going to start from scratch sense I’m a bit better at FreeCAD now and this model is not very complicated. The complicated part will be designing for laser cutting since I don’t know how to do that yet.</p>
-<p>10/28/2025</p>
-<p>Did the check-in for the laser cutter, so now I just need to redesign the case for laser cutting. With that in mind I was thinking about ways to attach the hard drive cages to the case and it seems that headset inserts and acrylic are not incompatible.</p>
-<p><a href="https://www.google.com/url?q=https://newscrewdriver.com/2017/06/25/testing-heat-set-inserts-in-acrylic/&amp;sa=D&amp;source=editors&amp;ust=1788550472098266&amp;usg=AOvVaw2Vqv5bteNiHz44N0dLjxn6">https://newscrewdriver.com/2017/06/25/testing-heat-set-inserts-in-acrylic/</a></p>
-<p>I will design with this in mind. Although I don’t think that headset inserts will be necessary for the fans.</p>
-<p>11/02/2025</p>
-<p>Might do this instead for harddrives</p>
-<p><a href="https://www.google.com/url?q=https://www.printables.com/model/1372686-3u-hard-drive-bay-for-8x-35in-hdds-for-10-mini-rac&amp;sa=D&amp;source=editors&amp;ust=1788550472098806&amp;usg=AOvVaw1fwgTwbeBwCl0PJlcqf7iv">https://www.printables.com/model/1372686-3u-hard-drive-bay-for-8x-35in-hdds-for-10-mini-rac</a></p>
-<p>11/13/2025</p>
-<p><a href="https://www.google.com/url?q=https://www.truenas.com/community/threads/prevent-suspend-mode-when-installed-on-a-laptop.94729/&amp;sa=D&amp;source=editors&amp;ust=1788550472099131&amp;usg=AOvVaw1RxnfvO7oiWS5ShdLK6Z44">https://www.truenas.com/community/threads/prevent-suspend-mode-when-installed-on-a-laptop.94729/</a></p>
-<p>For disabling suspend which seems to be possible so I will make a shelf that can be removed then you can flip the screen up. Here is the current crude design. I have to redo the box.</p>
+<p>The initial concept was rough, but it helped block out spatial relationships. I brought in existing community models for key components:</p>
+<ul>
+<li><strong>Drive caddies:</strong> Found modular <a href="https://www.printables.com/model/788261-35-hdd-cage-caddy-for-anti-vibration-screws">3.5&quot; HDD cages on Printables</a> that use anti-vibration grommets and hold two drives per cage.</li>
+<li><strong>Cooling:</strong> Sized the exhaust for two 92x92x25 mm <a href="https://a.co/d/i1cUoC0">Noctua 92mm fans</a>.</li>
+<li><strong>Power:</strong> Left space for buck converters and a clean AC receptacle.</li>
+</ul>
+<p>A skeptical reader would probably ask why bother building a custom box around a laptop instead of just picking up a used Dell OptiPlex tower on eBay for eighty bucks. The objection is totally fair. A used desktop gives you standard PCIe slots, native SATA power, and zero CAD headaches. But the laptop has two distinct perks: the internal battery acts as a built-in uninterruptible power supply, and the whole system idles under ten watts. Plus, designing the case is half the point of the project.</p>
+<h2 id="pivoting-to-laser-cutting">Pivoting to Laser Cutting</h2>
+<p>Printing a full multi-drive chassis on a desktop 3D printer takes days of machine time. In late October 2025, I decided to switch from 3D printing the enclosure shell to laser cutting flat sheets with interlocking finger joints.</p>
+<p>The entire box now breaks down into flat panels. FreeCAD does not do tabbed sheet-metal style box joints natively, but this <a href="https://forum.freecad.org/viewtopic.php?t=99394">FreeCAD forum thread</a> covers an add-on workbench that automates finger joints between intersecting faces.</p>
+<p>I also looked into fastener options for flat acrylic. Driving screws directly into brittle acrylic is a recipe for cracked panels. I checked out this guide on <a href="https://newscrewdriver.com/2017/06/25/testing-heat-set-inserts-in-acrylic/">testing heat-set inserts in acrylic</a>. Heat-set brass inserts melt cleanly into acrylic pilot holes, giving durable machine threads to mount the drive caddies. The fans can just use through-bolts and nuts.</p>
+<p>For the drive bays, I am also considering this alternative <a href="https://www.printables.com/model/1372686-3u-hard-drive-bay-for-8x-35in-hdds-for-10-mini-rac">8-bay 3.5&quot; drive rack</a> if I decide to expand beyond four drives.</p>
+<h2 id="laptop-lid--console-access">Laptop Lid &amp; Console Access</h2>
+<p>Running a laptop as a 24/7 headless server brings an annoying quirk: by default, closing the lid triggers system suspend.</p>
+<p>According to this <a href="https://www.truenas.com/community/threads/prevent-suspend-mode-when-installed-on-a-laptop.94729/">TrueNAS forum thread on laptop suspend</a>, you can disable lid-close sleep in Debian via systemd logind configs. Even so, you still need physical access to the screen and keyboard whenever the network drops or BIOS settings need tweaking.</p>
 <p><img src="/portfolio-site/images/projects/laptop-nas-build-html-image4.png" alt=""  />
 </p>
-<p>11/19/2025</p>
+<p>I redesigned the enclosure layout with a removable upper shelf. The hard drives sit on the upper tier, and the shelf lifts out so you can swing the laptop screen up without dismantling the entire chassis.</p>
+<h2 id="panel-layout-and-2d-vector-export">Panel Layout and 2D Vector Export</h2>
+<p>By mid-November 2025, the laser-cut layout was coming together in CAD.</p>
 <p><img src="/portfolio-site/images/projects/laptop-nas-build-html-image1.png" alt=""  />
 </p>
-<p>See for piece of acrylic that will fit all required sheets</p>
-<p><a href="https://www.google.com/url?q=https://www.eplastics.com/ACRY20370-187PM24X96&amp;sa=D&amp;source=editors&amp;ust=1788550472099758&amp;usg=AOvVaw07gpiKsok5r8sV3vnaTvaE">https://www.eplastics.com/ACRY20370-187PM24X96</a></p>
-<p>Maybe I will make it out of wood instead.</p>
-<p>For svg output in freecad switch to draft workbench press the box button with a part selected and it will be projected as a drawing then export that drawing as an svg</p>
+<p>I mapped the outer panels to fit onto a 24&quot;x96&quot; sheet from <a href="https://www.eplastics.com/ACRY20370-187PM24X96">ePlastics</a>, though I might use Baltic birch plywood instead for better rigidity and lower cost.</p>
+<p>To get toolpaths out of FreeCAD for the laser cutter, the workflow is straightforward: switch to the Draft workbench, select a face, generate a 2D Shape2DView projection, and export that projection directly as an SVG.</p>
 <p><img src="/portfolio-site/images/projects/laptop-nas-build-html-image2.png" alt=""  />
 </p>
-<p>The plan is to use led power supplies along with two buck converters to get the necessary voltages for the hard drives. They will probably need to share a ground so I will have to figure that out.</p>
+<h2 id="power-delivery-architecture">Power Delivery Architecture</h2>
+<p>Laptops cannot power multiple 3.5&quot; desktop drives. A 3.5&quot; spinning disk requires both 12V for the spindle motor and 5V for the logic board, pulling up to 2A on spin-up.</p>
+<p>The plan is to install an enclosed 12V LED power supply inside the base of the chassis. The 12V rail will feed the drive spindle motors and the cooling fans directly. Two step-down buck converters will drop the 12V line to a steady 5V rail for the drive logic boards. All DC grounds will tie to a shared ground plane to prevent floating voltage references across the SATA connectors.</p>
 
     </div>
   </div>

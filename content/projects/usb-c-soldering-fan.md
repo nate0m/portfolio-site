@@ -59,3 +59,5 @@ The pictures of the finished product here are actually an early prototype. It us
 After wrapping up the build, I hit a snag with my specific power bank. It cannot output PD (Power Delivery) on multiple ports simultaneously. If I plug the fan into the second port, the entire bank drops to 5V. That ruins the setup because the soldering iron needs PD to get enough wattage to stay hot. Even if I used a non-PD 5V supply for the fan, it would still disable PD for the iron.
 
 I think the simplest solution going forward is to bite the bullet and add a single 21700 cell inside the fan case that charges via USB-C. I'll just need to wire it to a [boost converter](https://en.wikipedia.org/wiki/Boost_converter) to step the single cell voltage up to the 12V needed for the fan.
+
+I plan on revisiting this project for a full redesign with the internal battery as this was one of my first personal CAD projects and has lots of room for impovement.
