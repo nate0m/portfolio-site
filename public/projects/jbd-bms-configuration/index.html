@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JBD BMS Configuration Guide</title>
+<meta name="description" content="ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/portfolio-site/css/main.min.55394a604ae42fbc4bbe5ef2e475f6d06cedc3193c479de4ab2f15af66561e98.css">
+</head>
+<body><header>
+  <div class="header-inner">
+    <a href="https://username.github.io/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
+    <nav>
+      <a href="#projects">Projects</a>
+    </nav>
+  </div>
+</header>
+<main>
+<article class="project-single">
+  <div class="project-header">
+    <a href="/portfolio-site/" class="back-link">← Back to Projects</a>
+    <div class="hero-tag">E-Bikes &amp; Batteries</div>
+    <h1>JBD BMS Configuration Guide</h1>
+    <div class="card-top">
+      <span class="status complete">
+        Complete
+        
+      </span>
+    </div>
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag">BMS</span><span class="tag">battery building</span><span class="tag">JBD</span><span class="tag">wiring</span>
+    </div>
+  </div>
+  <div class="project-content-wrap">
+    <aside class="project-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#wiring-the-bms">Wiring the BMS</a>
+      <ul>
+        <li><a href="#balance-leads">Balance Leads</a></li>
+        <li><a href="#main-power-connections">Main Power Connections</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuring-the-mobile-app">Configuring the Mobile App</a>
+      <ul>
+        <li><a href="#fixing-the-chemistry-setting">Fixing the Chemistry Setting</a></li>
+        <li><a href="#basic-pack-parameters-origin-settings">Basic Pack Parameters (Origin Settings)</a></li>
+        <li><a href="#protection-parameters">Protection Parameters</a></li>
+        <li><a href="#capacity-voltage">Capacity Voltage</a></li>
+        <li><a href="#fixing-the-discharge-lock">Fixing the Discharge Lock</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </aside>
+    <div class="project-body">
+      <h2 id="introduction">Introduction</h2>
+<p>JBD BMS boards are popular, inexpensive battery management systems sold directly on Jiabaida’s website but more commonly bought on AliExpress. This is my first experience with a JBD BMS, and this is also my first fully custom battery build. I found that the JBD app used to set battery parameters is slightly unintuitive and confusing, largely due to language barriers. That is why I made this guide.</p>
+<p>My battery build is 20s, so I went with the Jiabaida SP22S003B. This model can accommodate up to 22s and has different wiring configurations depending on your string count. You can find the <a href="https://jiabaida-bms.com/blogs/content/jiabaida-sp22s003b-smart-bms-wiring-diagram?spm=a2g0o.detail.1000023.4.6d1330b03TSyat">official wiring diagrams here</a>.</p>
+<h2 id="wiring-the-bms">Wiring the BMS</h2>
+<h3 id="balance-leads">Balance Leads</h3>
+<p>Follow the wiring diagrams for the balance cables. If you are not populating all 22 possible balance wires, the logic boils down to this: pins 21 and 22 stay individual, while you bridge pins 20 down to 4 depending on how many cells you are putting in series.</p>
+<p><img src="/portfolio-site/images/projects/jbd-bms-configuration-html-image4.png" alt=""  />
+</p>
+<h3 id="main-power-connections">Main Power Connections</h3>
+<ul>
+<li><strong>B-</strong> goes to the main negative of your battery.</li>
+<li>Your negative charging and discharge cables go to <strong>C-</strong>.</li>
+<li>Your positive charging and discharging cables go directly to the main positive of the battery.</li>
+</ul>
+<h2 id="configuring-the-mobile-app">Configuring the Mobile App</h2>
+<p>The mobile app has a lot of pages. If you just want a quick reference, here are <a href="https://drive.google.com/drive/folders/1IQBeaJMPuecLqtSrkNLzn51EbKFfOwRp?usp=drive_link">all the settings that I used for Li-ion for this BMS</a>.</p>
+<p>Below are the specific settings I actually had to change to get my battery working right.</p>
+<h3 id="fixing-the-chemistry-setting">Fixing the Chemistry Setting</h3>
+<p><img src="/portfolio-site/images/projects/jbd-bms-configuration-html-image1.png" alt=""  />
+</p>
+<p>If you buy this BMS for Li-ion cells and have trouble with the cells only charging to 3.6V, you need to go to the <strong>Protection Param</strong> settings page. At the top right there is a button to switch between LFP and NPM chemistry. You want it set to LFP, meaning the button itself should say NPM to let you switch back.</p>
+<p>Even if you already see NPM on the button and your cells are still not charging above 3.6V, press the button once to switch it, then press it again to switch it back to LFP. That forced update fixed the charging limit for me.</p>
+<h3 id="basic-pack-parameters-origin-settings">Basic Pack Parameters (Origin Settings)</h3>
+<p><img src="/portfolio-site/images/projects/jbd-bms-configuration-html-image3.png" alt=""  />
+</p>
+<ul>
+<li><strong>Nominal capacity:</strong> The actual capacity of your battery.</li>
+<li><strong>Cycle capacity:</strong> Usually autofills.</li>
+<li><strong>Full charge capacity:</strong> Usually autofills.</li>
+<li><strong>Cell num:</strong> Usually autofills based on your wiring.</li>
+</ul>
+<h3 id="protection-parameters">Protection Parameters</h3>
+<p>Obviously set the correct chemistry first, then review these limits.</p>
+<p><img src="/portfolio-site/images/projects/jbd-bms-configuration-html-image5.png" alt=""  />
+
+<img src="/portfolio-site/images/projects/jbd-bms-configuration-html-image2.png" alt=""  />
+</p>
+<ul>
+<li><strong>CellHighVoltProtect:</strong> Set a little above the max voltage of a single cell.</li>
+<li><strong>CellHighVoltRecover:</strong> Set a little below the max voltage of a single cell.</li>
+<li><strong>CellHighVoltDelay:</strong> Leave as default.</li>
+<li><strong>CellLowVoltProtect:</strong> The absolute lowest you want a cell&rsquo;s voltage to go.</li>
+<li><strong>CellLowVoltRecover:</strong> A little above your CellLowVoltProtect value.</li>
+<li><strong>CellLowVoltDelay:</strong> Leave as default.</li>
+<li><strong>TotalVoltHighProtect:</strong> A little above the maximum total voltage of your battery.</li>
+<li><strong>TotalVoltHighRecover:</strong> A little below the maximum total voltage of your battery.</li>
+<li><strong>TotalVoltHighDelay:</strong> Leave as default.</li>
+<li><strong>TotalVoltLowProtect:</strong> A little below the minimum total voltage of your battery.</li>
+<li><strong>TotalVoltLowRecover:</strong> A little above the minimum total voltage of your battery.</li>
+<li><strong>TotalVoltLowDelay:</strong> Leave as default.</li>
+<li><strong>HwCellHighVoltProtect:</strong> Looks like the hardcoded hardware max voltage of a cell.</li>
+<li><strong>HwCellLowVoltProtect:</strong> Looks like the hardcoded hardware low voltage of a cell.</li>
+</ul>
+<h3 id="capacity-voltage">Capacity Voltage</h3>
+<p>These are self-explanatory threshold values for the state of charge estimation.</p>
+<p><img src="/portfolio-site/images/projects/jbd-bms-configuration-html-image6.png" alt=""  />
+</p>
+<h3 id="fixing-the-discharge-lock">Fixing the Discharge Lock</h3>
+<p>I also had an issue where I could not activate the discharge port from the app. I ended up going into the <strong>Function Settings</strong> and disabling the switch settings entirely, which automatically activated both the discharge and charge functionality without needing the app toggle.</p>
+
+    </div>
+  </div>
+</article>
+</main><footer>
+  <div class="footer-inner">
+    <div class="mono">Shop notes, pulled straight from the build log.<br>More write-ups landing at <a class="site mono" href="#">nathanmilton.com</a> as they get finished.</div>
+    <div class="mono">Updated continuously — batteries don't stop failing.</div>
+  </div>
+</footer>
+</body>
+</html>

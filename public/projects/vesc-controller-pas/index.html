@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/portfolio-site/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio-site/livereload" data-no-instant defer></script><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VESC Controller &amp; PAS Build Log</title>
+<meta name="description" content="ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/portfolio-site/css/main.min.12a8b1b8d9df69dcaf986322c9aae42b045d50b33594a4be10d4b3fea4c852e0.css">
+</head>
+<body><header>
+  <div class="header-inner">
+    <a href="http://localhost:1313/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
+    <nav>
+      <a href="#projects">Projects</a>
+    </nav>
+  </div>
+</header>
+<main>
+<article class="project-single">
+  <div class="project-header">
+    <a href="/portfolio-site/" class="back-link">← Back to Projects</a>
+    <div class="hero-tag">E-Bikes &amp; Batteries</div>
+    <h1>VESC Controller &amp; PAS Build Log</h1>
+    <div class="card-top">
+      <span class="status ongoing">
+        In progress
+        
+      </span>
+    </div>
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag">VESC</span><span class="tag">PAS</span><span class="tag">ebike controller</span><span class="tag">programming</span><span class="tag">lisp</span>
+    </div>
+  </div>
+  <div class="project-body">
+    <p>So i think that I just fried my flipsky controller it was the 100amp one. I was running it with a absolute max current of 100amps with my 52v20ah battery and it just started working backwards. Now I need to buy a new controller and I am deciding whether to go with another flipsky or something else. The killer feature that I was is PAS.</p>
+<p><a href="https://www.google.com/url?q=https://vesc-project.com/node/4049&amp;sa=D&amp;source=editors&amp;ust=1788550482131205&amp;usg=AOvVaw3k7vgd81rE7F-3I5d5GeDv">https://vesc-project.com/node/4049</a></p>
+<p>9/20/2025</p>
+<p>Just go the new 200amp flipsky controller in. It barely fits into the controller box of the murf. I’m going to solder the connections, configure it, and give it a try.</p>
+<p>I fucking fried the 200amp flipsky controller mother fucking fuck why do i suck at this shit some times. I got ahead of my self, fuck, I should have just went outside and took a break. But instead I wired to light in such a way that it shorted the controller, fuck. Ordered another 100amp.</p>
+<p>Check this when configuring new 100amp.</p>
+<p><img src="/portfolio-site/images/projects/vesc-controller-pas-html-image1.png" alt=""  />
+</p>
+<p>More on absolute current configuration</p>
+<p><a href="https://www.google.com/url?q=https://endless-sphere.com/sphere/threads/vesc-setup-motor-max-current.125628/&amp;sa=D&amp;source=editors&amp;ust=1788550482134174&amp;usg=AOvVaw0QLTNMj6_mo6pL0maCEWIc">https://endless-sphere.com/sphere/threads/vesc-setup-motor-max-current.125628/</a></p>
+<p>9/24/2025</p>
+<p>Vesc murf todo</p>
+<ul>
+<li>Battery switch (ordered)</li>
+<li>High gauge wire on batter male terminal ( not necessary )</li>
+<li>Wire hall and phase wires</li>
+<li>Brake sensors? (no brake sensors just regen)</li>
+<li>Wire display</li>
+<li>Program controller</li>
+<li>Design bracket to mount display</li>
+<li>PAS wiring</li>
+<li>Figure out headlight wiring</li>
+<li>Wire throttle(s) (throttle, and regen for brake sensor) (3.3v not 5v)</li>
+<li>Lisp script for pas</li>
+<li>Lisp script for display for pas level??????</li>
+</ul>
+<p>THIS IS ALL PAS STUFF</p>
+<p>More one pas sensors</p>
+<p>Here is a 4 wire pas sensor from grin</p>
+<p><a href="https://www.google.com/url?q=https://ebikes.ca/shop/electric-bicycle-parts/torque-sensors/pas-12p.html&amp;sa=D&amp;source=editors&amp;ust=1788550482137743&amp;usg=AOvVaw1oATH7-3eUjmBg7iNW5rTZ">https://ebikes.ca/shop/electric-bicycle-parts/torque-sensors/pas-12p.html</a></p>
+<p>This video seems helpful</p>
+<p><a href="https://www.google.com/url?q=https://www.youtube.com/watch?v%3DY11e8-VUZao&amp;sa=D&amp;source=editors&amp;ust=1788550482138422&amp;usg=AOvVaw2tkFQlS3yjzpkFv9ong7W2">https://www.youtube.com/watch?v=Y11e8-VUZao</a></p>
+<p>I managed to use a 3-wire sensor, using the ppm input and lisp programming, it works perfect!</p>
+<p>This is a comment on that video def worth looking into this would be these easiest solution?</p>
+<p>More info here</p>
+<p><a href="https://www.google.com/url?q=https://vesc-project.com/node/3689&amp;sa=D&amp;source=editors&amp;ust=1788550482139956&amp;usg=AOvVaw1CD0FqcwiBJGykisgryk3q">https://vesc-project.com/node/3689</a></p>
+<p>This is the way</p>
+<p><a href="https://www.google.com/url?q=https://www.youtube.com/watch?v%3DT8_jRWGsGnw%26t%3D1s&amp;sa=D&amp;source=editors&amp;ust=1788550482140615&amp;usg=AOvVaw1tMZEZItExInMIJVIu3qIt">https://www.youtube.com/watch?v=T8_jRWGsGnw&amp;t=1s</a></p>
+<p><a href="https://www.google.com/url?q=https://endless-sphere.com/sphere/threads/finally-pas-on-vesc-with-3-wire-sensor.124707/&amp;sa=D&amp;source=editors&amp;ust=1788550482141250&amp;usg=AOvVaw2qvavQPTP5oCXmqZv44qYJ">https://endless-sphere.com/sphere/threads/finally-pas-on-vesc-with-3-wire-sensor.124707/</a></p>
+<p>Similar</p>
+<p><a href="https://www.google.com/url?q=https://github.com/Gabrielerusso/vesc_pas_lisp_3&amp;sa=D&amp;source=editors&amp;ust=1788550482141781&amp;usg=AOvVaw2HEm1otfRhY2dCQoWrwyK7">https://github.com/Gabrielerusso/vesc_pas_lisp_3</a></p>
+<p>Deciding if I need to buy an anti spark switch or if I can rely on the app to turn the battery on and off, and just typing that out made me realise that I definitely do.</p>
+<p>FOR DISPLAY BRACKET</p>
+<p><img src="/portfolio-site/images/projects/vesc-controller-pas-html-image2.png" alt=""  />
+</p>
+<p>9/27/2025</p>
+<p>I think I figured out the light hiring for the harness</p>
+<p>Pink - battery +</p>
+<p>Brown - battery +</p>
+<p>Orange - battery -</p>
+<p>Wire with xt30 before anti spark to utilize battery fuse as safety mechanism</p>
+<p>Harness to controller comm</p>
+<p>Black - gnd</p>
+<p>Red - 3.3v</p>
+<p>Grey - 3.3v</p>
+<p>Blue - adc1</p>
+<p>Purple - adc2</p>
+<p>9/28/2025</p>
+<p>I am deciding to only have one throttle because I think I can do brake senor activate regen by wiring the brake senors to adc2 instead of a second throttle. If this does not work good then I guess I will just do two throttles.</p>
+<p>So now</p>
+<p>Purple - adc 1</p>
+<p>White - adc2</p>
+<p>Instead of</p>
+<p>Blue - adc1</p>
+<p>Purple - adc2</p>
+<p>This also leaves enough wires to run the rx, tx, 5v, and gnd for the display through the harness. So everything will go through the harness.</p>
+<p>So for that ill do</p>
+<p>Blue - 5v</p>
+<p>Green - tx</p>
+<p>Yellow - rx</p>
+<p>The headlight was wired incorrect the correct wiring is</p>
+<p>Orange - battery -</p>
+<p>Brown - battery +</p>
+<p>idrk is up with the pink wire :/</p>
+<p>This may be useful flipsky documentation for vesc</p>
+<p><a href="https://www.google.com/url?q=https://flipsky.net/blogs/vesc-tool/adc-control-introduction-adc-settings-in-vest-tool&amp;sa=D&amp;source=editors&amp;ust=1788550482149803&amp;usg=AOvVaw1ryEKWj7mjZW9kperT-kyk">https://flipsky.net/blogs/vesc-tool/adc-control-introduction-adc-settings-in-vest-tool</a></p>
+<p>10/01/2025</p>
+<p>1000w motor has 46poles confirmed by picture</p>
+<p>10/03/2025</p>
+<p>Got the display hooked up and went for a ride with the battery actually charged and boy this thing flies. But I am thinking that there is a bottle neck somewhere because at the beginning of the ride the acceleration seemed faster than after a few minutes of riding. I am thinking that it is the temperature of the controller (mosfet), the temperature of the motor (phase wires), or it&rsquo;s the battery voltage dropping?</p>
+<p>I also order a longer rails so I should be able to start using the 72v battery when that comes in and no one will be able to steal my battery.</p>
+<p>Maybe I can beef up the phase wires and add a temperature sensor at the same time.</p>
+<p>10/05/2025</p>
+<p>I am thinking about brake sensors that are granular for activating regen because as it stands now the brake sensor is binary meaning the regen is binary. I would be nice to have more control over the amount of regen without having to use a second or bidirectional throttle.</p>
+<p>3 pin brake sensors?</p>
+<p>So you only have to wire one.</p>
+<p><a href="https://www.google.com/url?q=https://a.co/d/5gKn5Cn&amp;sa=D&amp;source=editors&amp;ust=1788550482153826&amp;usg=AOvVaw2Pvc_DKKJfkBgHOQQzCyRX">https://a.co/d/5gKn5Cn</a></p>
+<p>10/21/2025</p>
+<p>Just got the 3 pin brake sensors in from china</p>
+<p>Now I just have to figure how I want planning to wire them up because I forgot</p>
+<p>10/22/2025</p>
+<p>I wired up the 3 pin brake sensors last night but when I went to configure everything in the vesc linux app it did not have the option for “current reverse brake adc2”; it would only let me configure adc2 as a button and not as a variable input like the throttle. This is weird because I had two throttles hooked up to my previous flipsky vesc but that one used the bluetooth android app, this one is using the linux app that does not have that option for some reason. It’s kinda frustrating. It’s always what you least expect that holds up a project. I need to do some research to figure out what to do :(.</p>
+<p>Also been thinking about hooking up an arduino to interpret throttle and pas singles into a single adc line. The place to start would be to use an arduino to turn the pwm single from the pas sensor into a constant voltage between 0-3V that the adc line can understand.</p>
+<p>12/23/2025</p>
+<p>What I need to do is use the ‘Current No Reverse Brake Button’ option and wire the brake sensors to the servo motor I am pretty sure. I don’t remember where I read it was the servo motor pins that you wire the button to but I am pretty sure that is it.</p>
+<p><a href="https://www.google.com/url?q=https://endless-sphere.com/sphere/threads/vesc-3-pin-brake-senor-setup-flipsky-75100.129020/%23post-1872467&amp;sa=D&amp;source=editors&amp;ust=1788550482160255&amp;usg=AOvVaw04sVTqyCkVB-3fxqWsDO6y">https://endless-sphere.com/sphere/threads/vesc-3-pin-brake-senor-setup-flipsky-75100.129020/#post-1872467</a></p>
+
+  </div>
+</article>
+</main><footer>
+  <div class="footer-inner">
+    <div class="mono">Shop notes, pulled straight from the build log.<br>More write-ups landing at <a class="site mono" href="#">nathanmilton.com</a> as they get finished.</div>
+    <div class="mono">Updated continuously — batteries don't stop failing.</div>
+  </div>
+</footer>
+</body>
+</html>

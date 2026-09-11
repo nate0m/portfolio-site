@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/portfolio-site/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio-site/livereload" data-no-instant defer></script><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECE 118: Autonomous Robot Project</title>
+<meta name="description" content="ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/portfolio-site/css/main.min.55394a604ae42fbc4bbe5ef2e475f6d06cedc3193c479de4ab2f15af66561e98.css">
+</head>
+<body><header>
+  <div class="header-inner">
+    <a href="http://localhost:1313/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
+    <nav>
+      <a href="#projects">Projects</a>
+    </nav>
+  </div>
+</header>
+<main>
+<article class="project-single">
+  <div class="project-header">
+    <a href="/portfolio-site/" class="back-link">← Back to Projects</a>
+    <div class="hero-tag">Robotics</div>
+    <h1>ECE 118: Autonomous Robot Project</h1>
+    <div class="card-top">
+      <span class="status complete">
+        Complete
+        
+      </span>
+    </div>
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag">autonomous robot</span><span class="tag">state machine</span><span class="tag">beacon detector</span><span class="tag">Li-ion battery</span><span class="tag">laser cutting</span>
+    </div>
+  </div>
+  <div class="project-content-wrap">
+    <aside class="project-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#final-bill-of-materials-bom">Final Bill of Materials (BOM)</a></li>
+    <li><a href="#mechanical-design">Mechanical Design</a>
+      <ul>
+        <li><a href="#design-philosophy">Design Philosophy</a></li>
+        <li><a href="#main-chassis">Main Chassis</a></li>
+        <li><a href="#motor-mount">Motor Mount</a></li>
+        <li><a href="#bumpers--tape-sensors">Bumpers &amp; Tape Sensors</a></li>
+        <li><a href="#ping-pong-ball-shooter">Ping Pong Ball Shooter</a></li>
+        <li><a href="#funnel">Funnel</a></li>
+      </ul>
+    </li>
+    <li><a href="#electronics">Electronics</a>
+      <ul>
+        <li><a href="#electronics-design-philosophy">Electronics Design Philosophy</a></li>
+        <li><a href="#power-and-communications">Power and Communications</a></li>
+        <li><a href="#power-block-diagram">Power Block Diagram</a></li>
+        <li><a href="#communication-block-diagram">Communication Block Diagram</a></li>
+        <li><a href="#voltage-regulator-board--schematic">Voltage Regulator Board / Schematic</a></li>
+        <li><a href="#custom-li-ion-battery">Custom Li-ion Battery</a></li>
+        <li><a href="#sensors">Sensors</a></li>
+        <li><a href="#beacon-detector-board--schematic">Beacon Detector Board / Schematic</a></li>
+      </ul>
+    </li>
+    <li><a href="#software-architecture">Software Architecture</a></li>
+    <li><a href="#programming--electrical-challenges">Programming &amp; Electrical Challenges</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </aside>
+    <div class="project-body">
+      <h1 id="ece-118">ECE 118</h1>
+<p>Sluggers of the Lost Project</p>
+<p>Team #29</p>
+<p>Nathan Milton, Natalie Leforge, Nat Micheal</p>
+<h2 id="introduction">Introduction</h2>
+<p>The goal of ECE-118&rsquo;s &ldquo;Sluggers of the Lost Goal&rdquo; project was to design, build, and program an autonomous robot capable of navigating a structured field, avoiding obstacles, locating an opponent beacon, and launching ping-pong balls to score points. Over five weeks, we developed a platform built around three core subsystems: a modular three-tier chassis housing the drivetrain, electronics, and flywheel launcher; a power and sensing system centered on a custom IR beacon detector, tape-following sensors, and bump detection; and a hierarchical state machine firmware architecture handling navigation, collision recovery, target acquisition, and firing. This report documents the design decisions, engineering tradeoffs, and lessons learned across each of these subsystems.</p>
+<h2 id="final-bill-of-materials-bom">Final Bill of Materials (BOM)</h2>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Item</td>
+					<td>Quantity</td>
+					<td>Notes</td>
+					<td>Cost Per</td>
+					<td>Total ($)</td>
+					<td>Link</td>
+					<td>BELS has?</td>
+			</tr>
+			<tr>
+					<td>Drive Motors</td>
+					<td>2</td>
+					<td>dc motors</td>
+					<td>15</td>
+					<td>30</td>
+					<td></td>
+					<td>TRUE</td>
+			</tr>
+			<tr>
+					<td>H-Bridge</td>
+					<td>1</td>
+					<td>have 2 motor outputs</td>
+					<td>3</td>
+					<td>3</td>
+					<td></td>
+					<td>TRUE</td>
+			</tr>
+			<tr>
+					<td>BLDC Motors &amp; ESCs</td>
+					<td>2</td>
+					<td>already had these</td>
+					<td>18</td>
+					<td>36</td>
+					<td><a href="https://www.google.com/url?q=https://a.co/d/04DfasfQ&amp;sa=D&amp;source=editors&amp;ust=1788548214397750&amp;usg=AOvVaw07gVwvunVIwbq2KwRYl85n">https://a.co/d/04DfasfQ</a></td>
+					<td>FALSE</td>
+			</tr>
+			<tr>
+					<td>Rollerblade Wheel</td>
+					<td>2</td>
+					<td>drive wheels</td>
+					<td>2</td>
+					<td>4</td>
+					<td></td>
+					<td>TRUE</td>
+			</tr>
+			<tr>
+					<td>Roller Skeg</td>
+					<td>2</td>
+					<td></td>
+					<td>1</td>
+					<td>2</td>
+					<td><a href="https://www.google.com/url?q=https://a.co/d/049BqWi2&amp;sa=D&amp;source=editors&amp;ust=1788548214399926&amp;usg=AOvVaw3hU9QvgI1UuXuqLrDbbGWj">https://a.co/d/049BqWi2</a></td>
+					<td>FALSE</td>
+			</tr>
+			<tr>
+					<td>Lego Tires</td>
+					<td>2</td>
+					<td>used for flywheel</td>
+					<td>0.1</td>
+					<td>0.2</td>
+					<td><a href="https://www.google.com/url?q=https://www.bricklink.com/v2/catalog/catalogitem.page?P%3D15413%26idColor%3D11%23T%3DS%26C%3D11%26O%3D%257B%2522color%2522:11,%2522iconly%2522:0%257D&amp;sa=D&amp;source=editors&amp;ust=1788548214400889&amp;usg=AOvVaw11OQyGcCbDSYJqaO2qRH2Q">link</a></td>
+					<td>FALSE</td>
+			</tr>
+			<tr>
+					<td>Servo Motor</td>
+					<td>1</td>
+					<td>used for loading</td>
+					<td>4</td>
+					<td>4</td>
+					<td><a href="https://www.google.com/url?q=https://a.co/d/0d7fk6Tg&amp;sa=D&amp;source=editors&amp;ust=1788548214401773&amp;usg=AOvVaw2X-uhTm2ZIUr0csIsdFe0j">https://a.co/d/0d7fk6Tg</a></td>
+					<td>TRUE</td>
+			</tr>
+			<tr>
+					<td>Limit Switch</td>
+					<td>2</td>
+					<td>bumper buttons</td>
+					<td>1</td>
+					<td>2</td>
+					<td><a href="https://www.google.com/url?q=https://a.co/d/0hqMnJvW&amp;sa=D&amp;source=editors&amp;ust=1788548214402639&amp;usg=AOvVaw1XZeO7J1CdOqrZ3CJ5bl7Q">https://a.co/d/0hqMnJvW</a></td>
+					<td>TRUE</td>
+			</tr>
+			<tr>
+					<td>Tape Sensors</td>
+					<td>4</td>
+					<td></td>
+					<td>1</td>
+					<td>4</td>
+					<td></td>
+					<td>TRUE</td>
+			</tr>
+			<tr>
+					<td>Battery</td>
+					<td>1</td>
+					<td>custom 3s2p Li-ion</td>
+					<td>0</td>
+					<td>0</td>
+					<td></td>
+					<td>FALSE</td>
+			</tr>
+			<tr>
+					<td>Beacon Detector</td>
+					<td>1</td>
+					<td>custom</td>
+					<td>0</td>
+					<td>0</td>
+					<td></td>
+					<td>FALSE</td>
+			</tr>
+			<tr>
+					<td>Ply Wood Sheet</td>
+					<td>4</td>
+					<td></td>
+					<td>5</td>
+					<td>20</td>
+					<td></td>
+					<td>TRUE</td>
+			</tr>
+			<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>sum</td>
+					<td>105.2</td>
+					<td></td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="mechanical-design">Mechanical Design</h2>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image14.png" alt=""  />
+</p>
+<h3 id="design-philosophy">Design Philosophy</h3>
+<p>The design is built up by three separate layers, the main chassis, the middle, and the top. The main chassis is where all of the electronics are mounted excluding the ping pong ball launcher. The middle is where the ping pong ball launcher is mounted. The top is where the beacon and the top portion of the funnel is mounted. The funnel exists between the middle and top layers. There are also walls that connect the middle and top layers on all four sides. The front wall has an opening for the barrel of the ping pong ball launcher and the two sides have openings for placing the battery, and engaging the flywheel when necessary. Also there are two 3d printed struts that connect the main chassis to the middle.</p>
+<p>As outlined in the electronics section, the guiding principle of our design is Occam&rsquo;s razor. Abiding by this principle meant seeking the simplest solution whenever possible. We utilized a modular, layered design that friction-fits together. This modularity allowed us to rapidly build a test platform while retaining the ability to add or remove components, such as removing the launcher during initial testing.</p>
+<h3 id="main-chassis">Main Chassis</h3>
+<p>The main chassis is the foundation of the bot and serves as the general connecting point for all other things. It is the bottom level of the bot.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image32.png" alt=""  />
+</p>
+<h3 id="motor-mount">Motor Mount</h3>
+<p>Each motor mount is made up of three adjoining walls. The motor is mounted to the face of the exterior wall and is also zip-tied to the chassis for more load bearing capacity.</p>
+<p>One of the challenges that we faced during the latter half of the project was that the wood glue for our motor mounts started to fail causing the bottom and middle plates to separate. To solve this we added zip-ties to mount the motor to the bottom plate.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image33.png" alt=""  />
+<img src="/portfolio-site/images/projects/ece-118-html-image23.png" alt=""  />
+</p>
+<h3 id="bumpers--tape-sensors">Bumpers &amp; Tape Sensors</h3>
+<p>The mounting of the tape sensors was done by laser cutting two holes for the led and transistor of the tape sensor to friction fit into then hot glueing them down for stability. The bumpers are mounted using metric bolts and nuts along with a custom 3d printed spacer to allow for minimal friction of the bumpers. The bumper switches and is mounted through the chassis using metric bolts and nuts.</p>
+<p>We faced a few challenges with the bumpers as we progressed through the project. The first challenge was getting the bumper switch to activate when any part of the bumper was pressed. This was fixed by moving the bumper&rsquo;s point of contact with the switch to be in the middle of the bumper, and I thank one of my classmates in the fab lab for suggesting that. The next challenge we faced with the bumpers was with them getting stuck while actuating. This was fixed by adding the custom 3d printed spacers. The last challenge we faced with the bumpers was pretty late into the project when we started testing on the big field. We found that our bot could get stuck because the bumper did not stretch out in front of the wheels. But since the bumper design was modular and laser cut it was fairly easy to extend the bumper and re-cut them.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image10.png" alt=""  />
+<img src="/portfolio-site/images/projects/ece-118-html-image19.png" alt=""  />
+<img src="/portfolio-site/images/projects/ece-118-html-image22.png" alt=""  />
+</p>
+<h3 id="ping-pong-ball-shooter">Ping Pong Ball Shooter</h3>
+<p>The ping-pong ball shooter uses a flywheel mechanism and a servo motor to advance balls into the launcher. Constructed of three main pieces, the first is laser-cut for flywheel mounting. The second is the barrel through which the balls are launched, and the third is the downward pipe for the ball gravity-feed. The first piece connects to the second via bolts into heat-set inserts; the second and third pieces are notched for alignment and secured with hot glue. The third piece includes a wall indent to allow the next ball to rest via gravity before being advanced by the servo arm.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image36.png" alt=""  />
+<img src="/portfolio-site/images/projects/ece-118-html-image2.png" alt=""  />
+</p>
+<h4 id="early-prototype">Early prototype</h4>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image9.png" alt=""  />
+<img src="/portfolio-site/images/projects/ece-118-html-image31.png" alt=""  />
+</p>
+<h4 id="ping-pong-ball-launcher-mount">Ping Pong Ball Launcher Mount</h4>
+<p>The ping pong ball launcher is mounted to the second layer using two laser cut pieces on either side of the flywheel mounting plate. Mounting this way allows us to change the angle of the launcher by cutting a new piece at a different angle.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image21.png" alt=""  />
+<img src="/portfolio-site/images/projects/ece-118-html-image16.png" alt=""  />
+</p>
+<h3 id="funnel">Funnel</h3>
+<p>The funnel is constructed using a 3d printed connector to the back of the barrel along with cardboard to add more capacity.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image35.png" alt=""  />
+<img src="/portfolio-site/images/projects/ece-118-html-image25.png" alt=""  />
+</p>
+<h2 id="electronics">Electronics</h2>
+<h3 id="electronics-design-philosophy">Electronics Design Philosophy</h3>
+<p>The general design philosophy followed Occam&rsquo;s razor, assuming the simplest solution is often the best. Guided by this, we minimized sensor count, opting for tape sensors, bumper switches, and a beacon detector. For the beacon detector, we chose a digital output for simplicity over an analog signal. Whenever possible, we used hardware solutions to avoid software complexity; for example, we used an 8V regulator between the power distribution board and the H-bridge to maintain constant motor voltage as long as the battery stayed above 9.6V. Because standard LiFe batteries sagged below this threshold quickly, we constructed a custom 3s2p Li-ion battery with a dedicated BMS to maintain voltage. To reduce complexity, we used only two drive motors at 100% duty cycle, finding that PWM was unnecessary for sufficient control. We also prioritized clean wiring; sensors are soldered directly with heat-shrink, and wires are terminated with custom female connectors for the H-bridge and regulators. Color-coding was implemented after early testing revealed that messy wiring caused blown fuses.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image26.png" alt=""  />
+</p>
+<h3 id="power-and-communications">Power and Communications</h3>
+<h3 id="power-block-diagram">Power Block Diagram</h3>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image18.png" alt=""  />
+</p>
+<h3 id="communication-block-diagram">Communication Block Diagram</h3>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image1.png" alt=""  />
+</p>
+<h3 id="voltage-regulator-board--schematic">Voltage Regulator Board / Schematic</h3>
+<p>It was extremely important to have a clean voltage regulator board with easily accessible clean electrical connections to 5v and 3.3v. By wiring the voltage regulator according to the datasheet with appropriate capacitor values and wiring the outputs of such voltage regulators to rails with male pins soldered on we are able to accomplish the aforementioned goals. Both the 5v and 3.3v rails have male pins soldered to the rails and are used in conjunction with custom connectors to easily clean electrical connections. The 8v regulator is only for the H-bridge so it is terminated to xt60.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image12.png" alt=""  />
+<img src="/portfolio-site/images/projects/ece-118-html-image8.png" alt=""  />
+</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image6.png" alt=""  />
+</p>
+<h3 id="custom-li-ion-battery">Custom Li-ion Battery</h3>
+<p>We found that the provided LiFe battery suffered from significant voltage sag, which would brown out the ESCs or the Uno when the flywheel motors activated. To resolve this, we built a custom battery using Li-ion cells and a 3s BMS. The 3s2p configuration with a 40A BMS provides a significant overhead, as the maximum draw is approximately 20A. The cells are spot-welded with nickel strips and soldered to the BMS. This 12V battery is robust and compatible with various future projects.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image3.png" alt=""  />
+<img src="/portfolio-site/images/projects/ece-118-html-image17.png" alt=""  />
+<img src="/portfolio-site/images/projects/ece-118-html-image20.png" alt=""  />
+</p>
+<h3 id="sensors">Sensors</h3>
+<p>The wiring of the sensors can generally be seen in the power and signal block diagrams, but there are a few things to note here. The power and signal wires of all sensors (tape &amp; bump) are soldered on, the power wires for the tape sensors are terminated to custom female connectors. The bump sensors are wired with the ground pin to ground and the other pin to a digital input of the Uno.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image4.png" alt=""  />
+</p>
+<h3 id="beacon-detector-board--schematic">Beacon Detector Board / Schematic</h3>
+<p>Tuning the beacon detector required several iterations. We initially designed it to detect a 2kHz signal with a 150Hz passband, attenuating 1.5kHz and 2.5kHz signals. However, since the competition beacons were often tuned closer to 2.1kHz, our original design failed to detect them properly. We adjusted the design from three filter stages down to two, widening the passband to 1.95-2.05 kHz. This proved sufficient for our needs.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image28.png" alt=""  />
+</p>
+<p>Note: the beacon detector has an on board 3.3v voltage regulator meaning it can be plugged directly into the Uno power distribution board.</p>
+<h4 id="block-diagram">Block Diagram</h4>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image13.png" alt=""  />
+</p>
+<h4 id="virtual-ground">Virtual Ground</h4>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image34.png" alt=""  />
+</p>
+<h4 id="ir-transistor-stage">IR Transistor Stage</h4>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image7.png" alt=""  />
+</p>
+<h4 id="ac-coupled-non-inverting-amplifying-stage">AC Coupled non-inverting Amplifying Stage</h4>
+<p>An AC coupled non-inverting amplifier was used to eliminate any DC signals from entering the rest of the circuit. We used a total of four of these gain stages, three with a gain of 83 and one with a gain of 48 making the total gain of the combined stages ~27 million.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image29.png" alt=""  />
+</p>
+<h4 id="filter-stage">Filter Stage</h4>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image15.png" alt=""  />
+</p>
+<h4 id="analog-to-digital-output-stage">Analog to Digital Output Stage</h4>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image30.png" alt=""  />
+</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image5.png" alt=""  />
+</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image24.png" alt=""  />
+</p>
+<h2 id="software-architecture">Software Architecture</h2>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image11.png" alt=""  />
+</p>
+<p>The firmware is built around a hierarchical, event-driven state machine. The top-level controller, the FollowTape FSM, handles everything from navigating the field and avoiding obstacles to sweeping for the opponent&rsquo;s beacon.</p>
+<p>Instead of moving blindly, it waits for a two-second startup window to let the sensors stabilize, then spins to figure out which way the tape is going. Once it finds the tape, it follows the perimeter and tracks how many corners it has passed. After three corners, it stops and begins a 360-degree sweep to locate the enemy beacon.</p>
+<p>If it hits something along the way, the bumper recovery states take over. It reverses, turns away from the obstacle based on its current direction of travel, and drives straight to clear the area before looking for the tape again. When the beacon is found, the robot records the time of the first and second edges of the IR signal to calculate the center, turns back, and fine-tunes its alignment before firing the ping-pong balls.</p>
+<p><img src="/portfolio-site/images/projects/ece-118-html-image27.png" alt=""  />
+</p>
+<p>Underneath the main FSM is the SubTape state machine, which handles the micro-adjustments for line following. It keeps the robot centered over the tape. If it drifts too far left or right, it triggers small wobble corrections. If it loses the tape completely, it searches in the opposite direction of its last known drift. This keeps the robot on track without needing constant intervention from the top-level logic.</p>
+<h2 id="programming--electrical-challenges">Programming &amp; Electrical Challenges</h2>
+<p>Challenge 1: Physical Drift and Bumper Recovery</p>
+<p>Motor tolerance variations and surface friction caused the robot to drift during perimeter navigation. When a bumper event triggered, the recovery states couldn&rsquo;t account for residual momentum, causing the robot to overshoot and lose orientation.</p>
+<p>Resolution: Recovery timing was made dynamic based on tracking direction rather than hardcoded durations, which stabilized the robot&rsquo;s path after collisions.</p>
+<p>Challenge 2: Angular Oscillation During Beacon Alignment</p>
+<p>When transitioning from navigation to target acquisition, the drivetrain&rsquo;s momentum caused the robot to overcorrect on beacon detection, producing a hunting oscillation and consistently missing shots.</p>
+<p>Resolution: A dedicated fine-tune state was added between beacon detection and launcher activation. It enforces a 50 ms settling window with a small damping routine, allowing the chassis to fully stop and confirm alignment before the flywheels spin up.</p>
+<p>Challenge 3: Inaccurate Tape, Beacon, and Bumper Event Triggers</p>
+<p>Asynchronous inputs from the tape sensors, beacon detector, and bumpers frequently generated duplicate, rapid, or false event triggers. This was caused by mechanical switch bouncing on the bumpers, optical noise on the sensors, and initialization events firing before the system fully stabilized.</p>
+<p>Resolution: Debouncing was implemented across all sensor inputs using non-blocking delay timers. Also, the INIT state was configured to explicitly ignore all peripheral sensor events during a baseline 2000ms startup window, ensuring the robot only responds to true environmental transitions once calibration is complete.</p>
+<p>Challenge 4: Fuse Failures from Motor Inrush Current</p>
+<p>During early testing, the system repeatedly blew fuses on the power distribution board when executing code that activated the drive motors or flywheel launchers simultaneously. This occurred because DC motors draw a massive spike in current (inrush current) at the exact moment they switch from a dead stop to full power, overloading the circuit&rsquo;s protection.</p>
+<p>Resolution: To mitigate this current spike, a short, non-blocking delay was implemented between the startup sequence of motor A and B across all motor control functions. This software-defined stagger safely distributes the electrical load, keeping the peak current draw well below the fuse threshold without impacting operational performance</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Building a fully autonomous robot from scratch in five weeks demanded constant iteration across mechanical, electrical, and software domains simultaneously. Our team successfully deployed a highly reliable system capable of target acquisition, perimeter navigation, and autonomous payload launching. Thanks to our custom multi-stage analog beacon detector paired with a custom-machined aluminum shielding cone, the robot could repeatedly locate the enemy beacon within a tight standard deviation of just 3 to 5 degrees. While the robot fell short during the initial tape-finding phase immediately following the boot-up beacon scan, its core subsystems were resilient enough that we successfully achieved full min-spec functionality two days before the final deadline.</p>
+<p>The most significant challenges came from high-current voltage sags, repeatedly blown fuses, mechanical bumper jamming, and the need to repeatedly iterate on the launcher’s trajectory angle. Resolving these intertwined issues taught us the vital importance of rapid prototyping for mechanical geometries, the necessity of robust over-engineering for electrical power delivery, and how critical it is to understand exactly how software instructions translate into physical electrical loads.</p>
+<p>In hindsight, we would have prioritized much earlier physical prototyping of the flywheel launcher mechanism and enforced a cleaner, more modular hierarchy in our state machine logic before code complexity scaled up. Beyond the technical skills, this project reinforced the absolute necessity of aggressive schedule management, clear task ownership, and early integration testing to ensure hardware and software components synchronized properly under a tight deadline. The experience of building a machine that operates entirely on its own — and watching it either succeed or fail in real time — was both an incredibly rewarding and profoundly relieving experience; seeing the robot autonomously execute its tasks validated weeks of intensive troubleshooting, leaving us with a deep appreciation for the iterative process of engineering and a lasting enjoyment for hands-on systems integration.</p>
+
+    </div>
+  </div>
+</article>
+</main><footer>
+  <div class="footer-inner">
+    <div class="mono">Shop notes, pulled straight from the build log.<br>More write-ups landing at <a class="site mono" href="#">nathanmilton.com</a> as they get finished.</div>
+    <div class="mono">Updated continuously — batteries don't stop failing.</div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+baseURL = "https://username.github.io/portfolio-site/"
+title = "Nathan Milton — Shop Notes"
+theme = "shopnotes"
+defaultContentLanguage = "en"
+
+[languages]
+  [languages.en]
+    locale = "en-US"
+    weight = 1
+
+[params]
+  description = "ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage."
+  heroTag = "Currently in the garage"
+  heroHeadline = "Building things that shouldn't work as well as they do."
+  heroLede = "ECE student, ebike mechanic, and battery builder. This is a running log of the builds, repairs, and rabbit holes that come out of the garage. Custom battery packs, VESC wiring, combat robots, a home server that caught fire, and more. Most of it starts with \"how hard can it be.\""
+  statProjects = "15"
+  statCategories = "7"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML"]
+
+[taxonomies]

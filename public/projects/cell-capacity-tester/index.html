@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cell Capacity Tester</title>
+<meta name="description" content="ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/portfolio-site/css/main.min.55394a604ae42fbc4bbe5ef2e475f6d06cedc3193c479de4ab2f15af66561e98.css">
+</head>
+<body><header>
+  <div class="header-inner">
+    <a href="https://username.github.io/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
+    <nav>
+      <a href="#projects">Projects</a>
+    </nav>
+  </div>
+</header>
+<main>
+<article class="project-single">
+  <div class="project-header">
+    <a href="/portfolio-site/" class="back-link">← Back to Projects</a>
+    <div class="hero-tag">E-Bikes &amp; Batteries</div>
+    <h1>Cell Capacity Tester</h1>
+    <div class="card-top">
+      <span class="status complete">
+        Complete
+        
+      </span>
+    </div>
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag">battery building</span><span class="tag">testing</span><span class="tag">21700 cells</span><span class="tag">18650</span><span class="tag">aliexpress</span><span class="tag">internal resistance</span><span class="tag">capacity tester</span>
+    </div>
+  </div>
+  <div class="project-content-wrap">
+    <aside class="project-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#the-8-channel-tester">The 8-Channel Tester</a></li>
+        <li><a href="#modifying-for-21700-cells">Modifying for 21700 Cells</a></li>
+        <li><a href="#how-to-use-the-tester">How to Use the Tester</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </aside>
+    <div class="project-body">
+      <p>When harvesting lithium-ion cells from old e-bike packs, you need a reliable way to test capacity and internal resistance. Most 8-slot capacity testers on Amazon have a major flaw: if you load all eight slots, they throttle the charge and discharge rates down to 0.5A, which takes forever when you have hundreds of cells.</p>
+<p>After several failed attempts with Amazon models, I turned to AliExpress and found exactly what I needed: a generic <strong>8-Channel 21700 18650 Lithium Battery Auto Charge/Discharge Tester</strong>.</p>
+<h3 id="the-8-channel-tester">The 8-Channel Tester</h3>
+<p>This tester handles 18650 and 21700 cells, tests internal resistance (using the DC two-wire method), features active heat dissipation, and most importantly, it can load test all eight cells simultaneously at a full 1A. It costs around $60 if you include the required 5V 10A barrel jack power supply. Note: Do not skimp on the power supply. A cheap one will shut off when load testing eight low-voltage cells at once.</p>
+<p><img src="/portfolio-site/images/projects/cell-capacity-tester-html-image5.png" alt=""  />
+</p>
+<p>It feels more like an engineering sample than a mass-market product. The back cover has no sides, and the top has exposed contacts and ribbon cables.</p>
+<h3 id="modifying-for-21700-cells">Modifying for 21700 Cells</h3>
+<p>Out of the box, it doesn&rsquo;t have an easy way to mount 21700 cell trays. I designed and 3D-printed custom sleeves that slide directly over the stock 18650 trays. I then used VHB tape to attach 21700 trays to the top of the sleeves, wiring them in with XT30 connectors and solid core wire. I also 3D-printed some triangle wedges and VHB’ed them to the back to prop the unit up at a 45-degree viewing angle.</p>
+<iframe src="https://www.printables.com/embed/1304973" width="640" height="640" scrolling="no" frameborder="0"></iframe>
+<h3 id="how-to-use-the-tester">How to Use the Tester</h3>
+<p>The best feature of this tester is its smart automatic charging/discharging mode. When you capacity test a cell, it doesn&rsquo;t leave it fully charged; it automatically drains it back down to your set storage voltage.</p>
+<p><strong>Controls &amp; Interface:</strong></p>
+<ul>
+<li><strong>Power:</strong> There is no on/off switch; plugging it in turns it on.</li>
+<li><strong>Views:</strong> The <strong>M button</strong> toggles between the 8-cell overview and the single-cell detailed view.
+<img src="/portfolio-site/images/projects/cell-capacity-tester-html-image3.png" alt=""  />
+<img src="/portfolio-site/images/projects/cell-capacity-tester-html-image4.png" alt=""  />
+</li>
+</ul>
+<p><strong>Menu &amp; Settings:</strong></p>
+<ul>
+<li>Long-press the <strong>M button</strong> to open the menu for Channel 1. You can set CHN1 to sync its parameters with all other channels, so you only configure it once.
+<img src="/portfolio-site/images/projects/cell-capacity-tester-html-image1.png" alt=""  />
+</li>
+<li><strong>Mode:</strong> Set to <code>AUTO</code> for full cycle capacity testing, <code>DSG</code> for discharging only, <code>CHG</code> for charging only, or <code>ACTI</code> for forced activation charging.</li>
+<li><strong>Voltages:</strong> <code>VOLT1</code> is your max charge voltage (adjustable between 3.7V - 4.2V). <code>VOLT2</code> is your finishing/storage voltage. You can also set a stop voltage (the lowest you want to discharge) and idle time (the rest period between cycles).</li>
+</ul>
+<p><strong>Running a Test:</strong></p>
+<ol>
+<li>Load your cells.</li>
+<li>Use the <strong>CHN button</strong> to select a specific slot, then press <strong>R/S (Run/Stop)</strong> to start or stop that single test.</li>
+<li>If you have all eight slots loaded, press and hold <strong>R/S</strong> to start all eight slots simultaneously.</li>
+</ol>
+<p>The display will show the real-time voltage, amp draw, capacity (mAh), and total test time for every cell.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>If you&rsquo;re processing large batches of salvaged cells, skip the throttled Amazon options and grab one of these generic 8-channel testers from AliExpress. Once you mount some custom 21700 trays and pair it with a solid 10A power supply, it becomes an absolute workhorse. It&rsquo;s a much better deal for a highly capable piece of testing equipment compared to anything else on the market.</p>
+
+    </div>
+  </div>
+</article>
+</main><footer>
+  <div class="footer-inner">
+    <div class="mono">Shop notes, pulled straight from the build log.<br>More write-ups landing at <a class="site mono" href="#">nathanmilton.com</a> as they get finished.</div>
+    <div class="mono">Updated continuously — batteries don't stop failing.</div>
+  </div>
+</footer>
+</body>
+</html>

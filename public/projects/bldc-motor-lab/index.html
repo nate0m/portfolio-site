@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/portfolio-site/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio-site/livereload" data-no-instant defer></script><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLDC Motor Control Lab</title>
+<meta name="description" content="ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/portfolio-site/css/main.min.12a8b1b8d9df69dcaf986322c9aae42b045d50b33594a4be10d4b3fea4c852e0.css">
+</head>
+<body><header>
+  <div class="header-inner">
+    <a href="http://localhost:1313/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
+    <nav>
+      <a href="#projects">Projects</a>
+    </nav>
+  </div>
+</header>
+<main>
+<article class="project-single">
+  <div class="project-header">
+    <a href="/portfolio-site/" class="back-link">← Back to Projects</a>
+    <div class="hero-tag">Electronics</div>
+    <h1>BLDC Motor Control Lab</h1>
+    <div class="card-top">
+      <span class="status ongoing">
+        In progress
+        
+      </span>
+    </div>
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag">BLDC</span><span class="tag">mosfets</span><span class="tag">oscilloscope</span><span class="tag">lab work</span>
+    </div>
+  </div>
+  <div class="project-body">
+    <p>Discovery</p>
+<ul>
+<li>Gate voltage relationship to current through phase</li>
+<li>Current relationship to angular velocity</li>
+<li>Observation of BEMF</li>
+<li>Analog vs digital signals at FET gates, for digital signals we think PWM would be necessary to modulate current / speed</li>
+</ul>
+<p>MVP ‘minimum viable product’</p>
+<p>Aka deliverables</p>
+<ul>
+<li>Speed control via pwm</li>
+<li>Ability to start from a stand still</li>
+<li>Sensorless control (BEMF)</li>
+<li>ESP32</li>
+</ul>
+<p>How We gon’ get There?</p>
+<ol>
+<li>
+<p>Look at the datasheet to determine the relationship between gate voltage and current through fet. Then verify this relationship in the lab by formulating an experiment and executing it.</p>
+</li>
+<li>
+<p>Rebuild crude BLDC controller with microcontroller programmed for constant angular velocity.</p>
+</li>
+<li>
+<p>Formulate and execute an experiment to measure the relationship between gate voltage and phase current, as well as angular velocity.</p>
+</li>
+<li>
+<p>Observe BEMF. Include relevant scope traces in your lab report. Yes there will be a lab report.</p>
+</li>
+<li>
+<p>Create a FSM based on your BEMF data to initiate motor rotation, accelerate, decelerate, stop, and rotate at a constant angular velocity.</p>
+</li>
+<li>
+<p>Design a BLDC controller circuit with the necessary components to observe BEMF (comparator) and the ability to accommodate either an analog or digital signal at the gate.</p>
+</li>
+<li>
+<p>Formulate and execute an experiment to test different ways of changing speeds via digital and analog signals. Document findings, what worked best and what you will implement for the final design.</p>
+</li>
+<li>
+<p>Redesign your BLDC controller and build it on a protoboard.</p>
+</li>
+<li>
+<p>PCBWAY???? JLBPCB??? ADVANCEDPCBB???</p>
+<hr>
+</li>
+</ol>
+<p><img src="/portfolio-site/images/projects/bldc-motor-lab-html-image6.png" alt=""  />
+<img src="/portfolio-site/images/projects/bldc-motor-lab-html-image3.png" alt=""  />
+</p>
+<p>What is the problem when the N type mosfets are in this configuration?</p>
+<p><img src="/portfolio-site/images/projects/bldc-motor-lab-html-image7.png" alt=""  />
+</p>
+<p>The problem is that when we open the gate of the top mosfet the voltage from source to drain will immediately become higher than the source to gate voltage instantly closing the gate.</p>
+<p>5/19</p>
+<p>How will you test opening and closing the mosfet (based on the values above)?</p>
+<p><img src="/portfolio-site/images/projects/bldc-motor-lab-html-image5.png" alt=""  />
+</p>
+<p>By recording V_ab we can know i based on different gate voltages.</p>
+<p>#1 - R = 270 Ohms</p>
+<p>Observation: With proper half bridge setup, Vcc = 12 and gate = ~3.3, we get ~5.3 volts output from mosfet. With Vcc = 4 and gate = ~7 (IE Vgs = ~2), we get a full 4 volts output</p>
+<p><img src="/portfolio-site/images/projects/bldc-motor-lab-html-image4.png" alt=""  />
+</p>
+<p>Calculating Gate Resistors</p>
+<p><img src="/portfolio-site/images/projects/bldc-motor-lab-html-image2.png" alt=""  />
+</p>
+<hr>
+<p><img src="/portfolio-site/images/projects/bldc-motor-lab-html-image1.png" alt=""  />
+</p>
+
+  </div>
+</article>
+</main><footer>
+  <div class="footer-inner">
+    <div class="mono">Shop notes, pulled straight from the build log.<br>More write-ups landing at <a class="site mono" href="#">nathanmilton.com</a> as they get finished.</div>
+    <div class="mono">Updated continuously — batteries don't stop failing.</div>
+  </div>
+</footer>
+</body>
+</html>

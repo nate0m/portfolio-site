@@ -1,0 +1,4 @@
+{{ define "main" }}
+{{/* Queue items don't have individual pages — redirect to homepage queue section */}}
+<meta http-equiv="refresh" content="0; url={{ .Site.BaseURL }}#queue">
+{{ end }}

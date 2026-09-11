@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReCycle Banks: Business Plan &amp; Project Log</title>
+<meta name="description" content="ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/portfolio-site/css/main.min.55394a604ae42fbc4bbe5ef2e475f6d06cedc3193c479de4ab2f15af66561e98.css">
+</head>
+<body><header>
+  <div class="header-inner">
+    <a href="https://username.github.io/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
+    <nav>
+      <a href="#projects">Projects</a>
+    </nav>
+  </div>
+</header>
+<main>
+<article class="project-single">
+  <div class="project-header">
+    <a href="/portfolio-site/" class="back-link">← Back to Projects</a>
+    <div class="hero-tag">E-Bikes &amp; Batteries</div>
+    <h1>ReCycle Banks: Business Plan &amp; Project Log</h1>
+    <div class="card-top">
+      <span class="status on-hold">
+        On hold
+        
+      </span>
+    </div>
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag">battery bank</span><span class="tag">business plan</span><span class="tag">recycling</span><span class="tag">21700 cells</span><span class="tag">3D printing</span><span class="tag">load testing</span><span class="tag">cell recovery</span>
+    </div>
+  </div>
+  <div class="project-content-wrap">
+    <aside class="project-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-business-plan">The Business Plan</a>
+      <ul>
+        <li><a href="#product-options">Product Options</a></li>
+        <li><a href="#sourcing--construction">Sourcing &amp; Construction</a></li>
+        <li><a href="#economics--marketing">Economics &amp; Marketing</a></li>
+      </ul>
+    </li>
+    <li><a href="#harvesting--cell-cleaning">Harvesting &amp; Cell Cleaning</a></li>
+    <li><a href="#bank-design--prototyping">Bank Design &amp; Prototyping</a>
+      <ul>
+        <li><a href="#connection-methods">Connection Methods</a></li>
+      </ul>
+    </li>
+    <li><a href="#testing--load-verification">Testing &amp; Load Verification</a>
+      <ul>
+        <li><a href="#cell-testing">Cell Testing</a></li>
+        <li><a href="#battery-bank-load-testing">Battery Bank Load Testing</a></li>
+      </ul>
+    </li>
+    <li><a href="#prototype-log">Prototype Log</a>
+      <ul>
+        <li><a href="#garden-v1">Garden V1</a></li>
+        <li><a href="#garden-v11">Garden V1.1</a></li>
+        <li><a href="#forest-v1">Forest V1</a></li>
+        <li><a href="#garden-v12">Garden V1.2</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </aside>
+    <div class="project-body">
+      <h1 id="recycle-banks-business-plan--project-log">ReCycle Banks: Business Plan &amp; Project Log</h1>
+<p><strong>Mission Statement:</strong> Remove a small amount of unnecessary waste from the world by creating portable battery banks out of discarded ebike batteries.</p>
+<hr>
+<h2 id="the-business-plan">The Business Plan</h2>
+<h3 id="product-options">Product Options</h3>
+<p>We are starting with two portable battery bank options built using high-quality cells from electric bike batteries that would have otherwise been recycled. Because of their previous application, these cells offer high capacity and high power output.</p>
+<p><strong>Simple Model</strong></p>
+<ul>
+<li>Target Application: Charging smaller devices (phones, tablets). Mimics <a href="https://www.google.com/url?q=https://a.co/d/dASeWxm&amp;sa=D">this model</a>.</li>
+<li>Specs: 5V/3A, 10,000mAh
+<img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image3.png" alt=""  />
+</li>
+</ul>
+<p><strong>Advanced Model</strong></p>
+<ul>
+<li>Target Application: Charging multiple devices, including laptops. Mimics <a href="https://www.google.com/url?q=https://a.co/d/aOOodI8&amp;sa=D">this model</a>.</li>
+<li>Specs: up to 100W output, 65W charging input, 20,000mAh
+<img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image16.png" alt=""  />
+</li>
+</ul>
+<h3 id="sourcing--construction">Sourcing &amp; Construction</h3>
+<p>Partnerships will be formed with local electric bike shops to acquire batteries that would otherwise go to recycling. These packs are disassembled and broken down into individual cells. Each cell is tested for capacity, current, and internal resistance. Failing cells are properly recycled, while passing cells are built into battery banks.</p>
+<p>The necessary circuitry (BMS, charging ICs, power delivery ports) is sourced from AliExpress. The cases will be 3D printed using PETG (made from recycled water bottles), ensuring the final product aligns with our sustainability goals.</p>
+<ul>
+<li><strong>Components:</strong> 3D printed case, AliExpress input/output/BMS board.</li>
+<li><strong>Assembly:</strong> We are exploring pre-made DIY options that rely on spring contacts rather than spot welding. This approach aligns with the vision of the company: a less wasteful product where users can easily replace degraded cells.</li>
+</ul>
+<h3 id="economics--marketing">Economics &amp; Marketing</h3>
+<p><strong>Cost Breakdown:</strong></p>
+<ul>
+<li>Cells: Basically free</li>
+<li>Case: ~$2</li>
+<li>BMS: Advanced ~$7, Basic ~$2</li>
+<li>Shipping: Buyer pays $10-$50 (depending on distance/speed)</li>
+<li>Total Build Cost: $14 - $54</li>
+</ul>
+<p><strong>Pricing &amp; Sales:</strong></p>
+<ul>
+<li>Simple: ~$60 (excluding shipping)</li>
+<li>Advanced: ~$160 (excluding shipping)</li>
+<li>Platforms: eBay, Facebook Marketplace, Shopify, or a custom self-made site.</li>
+</ul>
+<p><strong>Marketing &amp; Legal:</strong></p>
+<ul>
+<li><strong>Brand Names:</strong> ReCycle Banks, Cycle Cell, Power Cycle, ReVolt.</li>
+<li><strong>Pitch:</strong> &ldquo;The battery banks you’d buy on Amazon with all the great features, except you’re saving cells from being recycled—and they came from a bike, which is pretty cool.&rdquo;</li>
+<li><strong>Strategy:</strong> Cool YouTube videos (e.g., &ldquo;How we test cells&rdquo;, &ldquo;Cheap spot welder review&rdquo;) and a Hugo landing page linking to purchasing options.</li>
+<li><strong>Legal:</strong> Business license, product liability insurance, general liability insurance.</li>
+</ul>
+<hr>
+<h2 id="harvesting--cell-cleaning">Harvesting &amp; Cell Cleaning</h2>
+<p><img src="/portfolio-site/images/projects/cell-cleaning-html-image3.jpg" alt=""  />
+
+<img src="/portfolio-site/images/projects/cell-cleaning-html-image2.jpg" alt=""  />
+
+<img src="/portfolio-site/images/projects/cell-cleaning-html-image4.jpg" alt=""  />
+</p>
+<p>When harvesting lithium-ion cells that were originally spot-welded together, pieces of the nickel strip are left on the positive and negative terminals. Most removal methods are suboptimal: grinding with a Dremel invites rust, and pulling with pliers always leaves a burr.</p>
+<p>If you plan to spot-weld the cells again, a small burr is acceptable. However, because our battery bank design relies on spring contacts (like a TV remote), the terminals must be perfectly flat. If the spring doesn&rsquo;t have sufficient surface area contact with the terminal, resistance builds up rapidly. Under high current loads, this resistance generates dangerous heat and poses a severe fire risk. (See <a href="https://www.google.com/url?q=https://www.electro-tech-online.com/threads/spring-pressure-connection.162396/&amp;sa=D">this helpful forum post</a> for current calculations on spring contacts).</p>
+<p><strong>The Solution:</strong>
+To clean the cells safely and perfectly flush, we use a chisel on a custom lever press.</p>
+<ul>
+<li><strong>Main Inspiration:</strong>
+<ul>
+<li><img src="/portfolio-site/images/projects/cell-cleaning-html-image1.png" alt=""  />
+ <a href="https://www.google.com/url?q=https://www.youtube.com/watch?v%3DPZHpmZGRgdE&amp;sa=D"><br> How To Make Tool Spot Weld Removal For Cells Battery 18650</a></li>
+</ul>
+</li>
+<li><strong>Similar Projects:</strong>
+<ul>
+<li><a href="https://www.google.com/url?q=https://www.youtube.com/watch?v%3DsaKO6Wvg95U&amp;sa=D">Build A Tool Spot Weld Removal&hellip;</a></li>
+<li><a href="https://www.google.com/url?q=https://www.youtube.com/watch?v%3DNHZZHgvDMf0&amp;sa=D">Build a Spot Weld Removal Machine&hellip;</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="bank-design--prototyping">Bank Design &amp; Prototyping</h2>
+<h3 id="connection-methods">Connection Methods</h3>
+<p>We initially considered spot welding because it creates a strong, robust electrical connection and looks like a finished product. However, it requires significant labor and makes the packs extremely difficult to repair.</p>
+<p>We pivoted entirely to <strong>spring contacts</strong>. While they require more involved case design and can wear out over time, they are drastically easier to assemble and repair. This aligns perfectly with our vision of a sustainable, repairable product.</p>
+<ul>
+<li><img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image2.png" alt=""  />
+ Contact Plates Types</li>
+<li><img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image13.png" alt=""  />
+ Spring and Plate Types</li>
+<li><img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image6.png" alt=""  />
+</li>
+</ul>
+<p>A promising approach is using custom printed PCBs with solder pads for the contact plates, then using screws to press-fit the cells together (similar to the Gouach battery design). At this point, we are fully focused on the high-end 8-cell (65W) removable cell case.</p>
+<hr>
+<h2 id="testing--load-verification">Testing &amp; Load Verification</h2>
+<h3 id="cell-testing">Cell Testing</h3>
+<p>We follow testing guidelines similar to <a href="https://www.google.com/url?q=https://docs.gouach.com/knowledge-base/how-to-test-cells&amp;sa=D">Gouach&rsquo;s knowledge base</a>.</p>
+<ul>
+<li><strong>Capacity Test:</strong> Using an 8-cell load tester.</li>
+<li><strong>Internal Resistance (IR):</strong> Measured using an IR meter.</li>
+<li><strong>Voltage Check:</strong> Fully charged cells should rest near 4.2V.</li>
+</ul>
+<h3 id="battery-bank-load-testing">Battery Bank Load Testing</h3>
+<p>To verify the output of our assembled PD battery banks, we use an Atorch load tester paired with an FNB58 USB tester.</p>
+<ul>
+<li><a href="https://www.google.com/url?q=https://www.reddit.com/r/UsbCHardware/...">Reddit Guide: Load testing at 5V+ with FNB58</a></li>
+<li><a href="https://www.google.com/url?q=https://youtu.be/dD9JUKpBsfI?si%3DM0l3jhO3L8f6dRXQ&amp;sa=D">Video Guide</a></li>
+</ul>
+<p>The process is straightforward: use the FNB58&rsquo;s PD trigger function to request the highest possible voltage from the bank, then dial up the Atorch load tester to pull the maximum rated amps. This allows us to verify thermal performance and protocol support.</p>
+<hr>
+<h2 id="prototype-log">Prototype Log</h2>
+<p><em>Credit:</em> The 3D case models for Garden V1, Garden V1.1, and Forest V1, as well as the base model remixed for Garden V1.2, were created by <a href="https://www.printables.com/@tearandfix_1672872/">tearandfix on Printables</a>.</p>
+<h3 id="garden-v1">Garden V1</h3>
+<p><img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image7.png" alt=""  />
+</p>
+<ul>
+<li><strong>Parts:</strong> 8x Samsung 21700-50E cells, <a href="https://www.google.com/url?q=https://www.aliexpress.us/...">100W charge/discharge board</a></li>
+<li><strong>Configuration:</strong> 4s2p</li>
+<li><strong>Ports:</strong> 2x USB-A, 1x USB-C, 1x Lightning, 1x Micro USB, 1x barrel jack</li>
+<li><strong>Construction:</strong> <a href="https://www.google.com/url?q=https://www.printables.com/...">3D Model</a>, Red PETG.</li>
+<li><strong>Notes:</strong> The case was difficult to assemble because the balance wires were placed incorrectly.</li>
+</ul>
+<h3 id="garden-v11">Garden V1.1</h3>
+<p><img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image1.png" alt=""  />
+</p>
+<ul>
+<li><strong>Testing Update (04/20/2025):</strong> After heavy use, capacity remains excellent. <img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image15.jpg" alt=""  />
+</li>
+<li><strong>Notes:</strong> Corrected the balance wire placement, but the case still bulges at the seams. To fix this in future designs, we need four screws at each corner and two in the middle. We are abandoning this specific PCB—the ports aren&rsquo;t ideal, it struggles to charge multiple devices simultaneously over PD, and the screen has a film that is impossible to remove.</li>
+</ul>
+<h3 id="forest-v1">Forest V1</h3>
+<p><img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image12.png" alt=""  />
+</p>
+<ul>
+<li><strong>Parts:</strong> 5x Samsung 21700-50E cells (5s1p), 100W board.</li>
+<li><strong>Notes:</strong> Assembling the case was a massive pain; internal cell supports had to be broken off to make room for wiring. My friend Akeal now uses this as his personal battery. <img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image9.png" alt=""  />
+</li>
+</ul>
+<h3 id="garden-v12">Garden V1.2</h3>
+<p><img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image11.png" alt=""  />
+</p>
+<ul>
+<li><strong>Parts:</strong> 8x Samsung 21700-50E cells (4s2p), <a href="https://www.google.com/url?q=https://www.aliexpress.us/...">100W board (4s variant)</a>.
+<img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image5.png" alt=""  />
+</li>
+<li><strong>Construction:</strong> Remixed model using six plastic screws and Black PETG.</li>
+<li><strong>Notes:</strong> Tested at 50W discharge. <img src="/portfolio-site/images/projects/recycle-banks-business-plan-html-image10.png" alt=""  />
+ The button functionality is confusing, and the display glitches wildly if the button is held down (though it continues charging). While the screws prevent bulging better than V1.1, the front seam still isn&rsquo;t perfect. We are currently exploring spot-welding nickel strips directly to the PCB to eliminate bulky wiring entirely.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>I&rsquo;ve decided to shelve this project for now. To properly fulfill the mission statement, I would need to build a battery bank with fully replaceable cells, and I don&rsquo;t have the skills or know-how to pull that off just yet. I plan to revisit the idea after getting a few more projects under my belt. PEV batteries aren&rsquo;t going anywhere, so there will only be more cells to repurpose as the years go on.</p>
+<p>I have since gone on to make a few more of the Garden V1.2 style battery banks for myself and friends. I improved the design by soldering nickel strips directly to the PCB and spot-welding the cells to them. This eliminates the bulky wiring and makes the case much easier to assemble.</p>
+
+    </div>
+  </div>
+</article>
+</main><footer>
+  <div class="footer-inner">
+    <div class="mono">Shop notes, pulled straight from the build log.<br>More write-ups landing at <a class="site mono" href="#">nathanmilton.com</a> as they get finished.</div>
+    <div class="mono">Updated continuously — batteries don't stop failing.</div>
+  </div>
+</footer>
+</body>
+</html>

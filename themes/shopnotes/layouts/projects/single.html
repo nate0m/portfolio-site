@@ -1,0 +1,28 @@
+{{ define "main" }}
+<article class="project-single">
+  <div class="project-header">
+    <a href="{{ .Site.Home.RelPermalink }}" class="back-link">← Back to Projects</a>
+    <div class="hero-tag">{{ .Params.categoryLabel }}</div>
+    <h1>{{ .Title }}</h1>
+    <div class="card-top">
+      <span class="status {{ .Params.status }}">
+        {{ if eq .Params.status "complete" }}Complete
+        {{ else if eq .Params.status "ongoing" }}In progress
+        {{ else if eq .Params.status "on-hold" }}On hold
+        {{ else }}Idea{{ end }}
+      </span>
+    </div>
+    <div class="tags" style="margin-top:16px;">
+      {{ range .Params.tags }}<span class="tag">{{ . }}</span>{{ end }}
+    </div>
+  </div>
+  <div class="project-content-wrap">
+    <aside class="project-toc">
+      {{ .TableOfContents }}
+    </aside>
+    <div class="project-body">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+{{ end }}

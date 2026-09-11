@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIY Brushless ESC &amp; Motor Control Lab</title>
+<meta name="description" content="ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/portfolio-site/css/main.min.55394a604ae42fbc4bbe5ef2e475f6d06cedc3193c479de4ab2f15af66561e98.css">
+</head>
+<body><header>
+  <div class="header-inner">
+    <a href="https://username.github.io/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
+    <nav>
+      <a href="#projects">Projects</a>
+    </nav>
+  </div>
+</header>
+<main>
+<article class="project-single">
+  <div class="project-header">
+    <a href="/portfolio-site/" class="back-link">← Back to Projects</a>
+    <div class="hero-tag">Electronics</div>
+    <h1>DIY Brushless ESC &amp; Motor Control Lab</h1>
+    <div class="card-top">
+      <span class="status ongoing">
+        In progress
+        
+      </span>
+    </div>
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag">ESC</span><span class="tag">BLDC</span><span class="tag">microcontroller</span><span class="tag">mosfets</span><span class="tag">sensorless</span><span class="tag">lab work</span><span class="tag">oscilloscope</span>
+    </div>
+  </div>
+  <div class="project-content-wrap">
+    <aside class="project-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#high-level-design">High Level Design</a></li>
+    <li><a href="#the-motor-control-lab">The Motor Control Lab</a>
+      <ul>
+        <li><a href="#bootstrapping-the-high-side">Bootstrapping the High Side</a></li>
+      </ul>
+    </li>
+    <li><a href="#schematics-and-motor-details">Schematics and Motor Details</a></li>
+    <li><a href="#conclusion-and-next-steps">Conclusion and Next Steps</a>
+      <ul>
+        <li><a href="#reference-links">Reference Links</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </aside>
+    <div class="project-body">
+      <h2 id="introduction">Introduction</h2>
+<p>I have been working on building a custom sensorless brushless motor controller (ESC) using an Arduino, discrete half-bridges, and back-EMF sensing via comparators. This project is a deep dive into the electronics and logic required to spin a brushless DC (BLDC) motor from scratch.</p>
+<p>Before trying to design a custom PCB, I had to spend a lot of time in the lab experimenting with basic half-bridge configurations to understand exactly how gate voltage, source-drain relationships, and N-channel MOSFETs interact. Here is a log of the research, the lab experiments, and the overall design strategy for the ESC.</p>
+<h2 id="high-level-design">High Level Design</h2>
+<p>The core of a BLDC motor controller is the muscle: six MOSFETs arranged in three half-bridges.</p>
+<p><img src="/portfolio-site/images/projects/diy-esc-html-image9.png" alt=""  />
+ <a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/">source</a></p>
+<p>There are six possible combinations of current flow through the inductors of the motor. For example: FET1 and FET6 ON (A and C energized), FET1 and FET5 ON (A and B energized), FET2 and FET4 ON (B and A energized), etc. <a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/">source</a></p>
+<p>The hard part is figuring out how to determine the speed of the rotor so we can sequence the switching of these FETs correctly. Since I am building a sensorless ESC, I can&rsquo;t rely on physical hall effect sensors inside the motor. Instead, the microcontroller has to measure the back-EMF (electromotive force). This is a voltage induced on the third un-energized wire caused by the magnetic field of the permanent magnets spinning past it. <a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/">source</a></p>
+<p>By measuring that back-EMF, we can determine the exact position of the rotor.</p>
+<p><img src="/portfolio-site/images/projects/diy-esc-html-image6.png" alt=""  />
+</p>
+<p>The back-EMF of each phase follows the exact same pattern as physical hall effect sensors, just with a 30-degree phase shift. It looks like the back-EMF is simply the voltage across the inductor caused by the changing magnetic flux. We can read this using hardware comparators. When the back-EMF crosses the zero-point (going from negative to positive, or positive to negative), the comparator transitions its output. I originally thought we could just use the Arduino&rsquo;s built-in comparators to save on hardware, pulling the outputs up to 5V and reading them as digital signals.</p>
+<p>To control the actual speed of the motor, we feed a PWM signal to the MOSFET gates.</p>
+<p><img src="/portfolio-site/images/projects/diy-esc-html-image8.png" alt=""  />
+ <a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/">source</a></p>
+<h2 id="the-motor-control-lab">The Motor Control Lab</h2>
+<p>Before putting all this theory into a final design, I had to define a Minimum Viable Product (MVP) and get into the lab. The goals for the MVP were:</p>
+<ul>
+<li>Speed control via PWM</li>
+<li>Ability to start from a standstill</li>
+<li>Sensorless control via back-EMF reading</li>
+<li>ESP32 or Arduino for the brains</li>
+</ul>
+<p>My roadmap was to first look at the datasheets to determine the relationship between gate voltage and current through the FETs, then verify it in the lab. After that, I wanted to observe the back-EMF on an oscilloscope, create a finite state machine (FSM) in code to initiate rotation, and eventually test analog vs digital signals at the gates.</p>
+<p>I quickly ran into a major problem when trying to configure the N-type MOSFETs for the high side of the half-bridge.</p>
+<p>The problem is that when you open the gate of the top N-channel MOSFET, the voltage from the source to the drain immediately becomes higher than the source-to-gate voltage. This instantly closes the gate. You basically need a dedicated gate driver chip with a bootstrap capacitor to push the gate voltage higher than the source voltage, otherwise the high-side FET will never fully turn on.</p>
+<p>I set up an experiment to test opening and closing the MOSFET based on different gate voltages by recording V_ab.</p>
+<p><img src="/portfolio-site/images/projects/bldc-motor-lab-html-image5.png" alt=""  />
+</p>
+<p><strong>Observation:</strong> With a proper half-bridge setup, a Vcc of 12V, and a gate voltage of ~3.3V, we only get about ~5.3V output from the MOSFET. But with Vcc at 4V and the gate at ~7V (meaning Vgs = ~2V), we get a full 4V output.</p>
+<p>I also had to do some math to calculate the proper gate resistors to prevent ringing and protect the microcontroller pins. We also have to consider the consequences of gate-to-source pull-down resistors (around 4k ohms).</p>
+<h3 id="bootstrapping-the-high-side">Bootstrapping the High Side</h3>
+<p>So how do we actually fix the issue with the high-side N-channel MOSFET closing itself? We use a bootstrap circuit.</p>
+<p><img src="/portfolio-site/images/projects/bldc-motor-lab-html-image4.png" alt=""  />
+</p>
+<p>The concept relies on a diode and a capacitor. When the low-side MOSFET is on, the source of the high-side MOSFET gets pulled to ground, which allows the bootstrap capacitor to charge up. Then, when it is time to turn the high-side MOSFET on, that capacitor acts like a tiny floating power supply. It dumps its stored charge straight into the gate, pushing the gate voltage well above the source voltage. This keeps the high-side FET fully open and stops it from choking out the voltage to the motor.</p>
+<h2 id="schematics-and-motor-details">Schematics and Motor Details</h2>
+<p>Here are some of the reference schematics and motor specs I pulled together while figuring out the hardware design. The motor I am testing with has 12 poles.</p>
+<p><img src="/portfolio-site/images/projects/diy-esc-html-image5.png" alt=""  />
+
+<img src="/portfolio-site/images/projects/diy-esc-html-image3.png" alt=""  />
+
+<img src="/portfolio-site/images/projects/diy-esc-html-image2.png" alt=""  />
+</p>
+<h2 id="conclusion-and-next-steps">Conclusion and Next Steps</h2>
+<p>The next major step is to redesign the BLDC controller based on these lab findings, specifically integrating proper gate drivers to handle the high-side N-channel MOSFETs. I plan to build the revised circuit on a protoboard to verify the comparator logic for the back-EMF sensing. If I can successfully spin the motor and read the BEMF to commutate it, the final step will be designing a custom PCB and getting it manufactured through PCBWay or JLCPCB.</p>
+<hr>
+<h3 id="reference-links">Reference Links</h3>
+<p>Here is a dump of the articles, videos, and tutorials I used to piece this all together:</p>
+<ul>
+<li><a href="https://www.instructables.com/Make-Your-Own-ESC/">Instructables: Make Your Own ESC</a></li>
+<li><a href="https://www.instructables.com/Made-Your-Own-ESC-Brusless-Motor-STM32f030/">Instructables: Made Your Own ESC Brushless Motor STM32</a></li>
+<li><a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/">Proteshea: Brushless DC Motor Control</a></li>
+<li><a href="https://electraschematics.com/brushless-esc-schematic.html">ElectraSchematics: Brushless ESC Schematic</a></li>
+<li><a href="https://autoctrls.com/esc-schematic-for-brushless-motor/">AutoCtrls: ESC Schematic</a></li>
+<li><a href="https://electronoobs.com/eng_circuitos_tut19_sch2.php">Electronoobs Tutorial</a></li>
+<li><a href="https://www.mathworks.com/discovery/bldc-motor-control.html">MathWorks: BLDC Motor Control</a></li>
+<li><a href="https://www.digikey.com/en/articles/controlling-sensorless-bldc-motors-via-back-emf">Digikey: Controlling Sensorless BLDC Motors</a></li>
+<li><a href="https://simple-circuit.com/arduino-sensorless-bldc-motor-controller-esc/">Simple Circuit: Arduino Sensorless BLDC</a></li>
+<li>YouTube References: <a href="https://youtu.be/KdF9DmbGg6k">1</a>, <a href="https://www.youtube.com/watch?v=C4Kq0NTGSwk">2</a>, <a href="https://www.youtube.com/watch?v=wkSrmPBDRys">3</a>, <a href="https://www.youtube.com/watch?v=8swJ_Bnsgl4">4</a>, <a href="https://www.youtube.com/watch?v=o4_NeqlJgOs">5</a>, <a href="https://www.youtube.com/watch?v=lyfx8CL7AkI">6</a>, <a href="https://www.youtube.com/watch?v=AwRJsze_9m4">7</a>, <a href="https://www.youtube.com/watch?v=DXyTHhUjxjk">8</a>, <a href="https://www.youtube.com/watch?v=p-UCsIWrTpc">9</a>, <a href="https://www.youtube.com/watch?v=56p3_aORiJ0">10</a>, <a href="https://www.youtube.com/watch?v=elBdn90jwiU">11</a></li>
+</ul>
+
+    </div>
+  </div>
+</article>
+</main><footer>
+  <div class="footer-inner">
+    <div class="mono">Shop notes, pulled straight from the build log.<br>More write-ups landing at <a class="site mono" href="#">nathanmilton.com</a> as they get finished.</div>
+    <div class="mono">Updated continuously — batteries don't stop failing.</div>
+  </div>
+</footer>
+</body>
+</html>

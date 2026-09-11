@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&#34;Occam&#39;s Razor&#34; — 1lb Combat Bot</title>
+<meta name="description" content="ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/portfolio-site/css/main.min.55394a604ae42fbc4bbe5ef2e475f6d06cedc3193c479de4ab2f15af66561e98.css">
+</head>
+<body><header>
+  <div class="header-inner">
+    <a href="https://username.github.io/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
+    <nav>
+      <a href="#projects">Projects</a>
+    </nav>
+  </div>
+</header>
+<main>
+<article class="project-single">
+  <div class="project-header">
+    <a href="/portfolio-site/" class="back-link">← Back to Projects</a>
+    <div class="hero-tag">Robotics</div>
+    <h1>&#34;Occam&#39;s Razor&#34; — 1lb Combat Bot</h1>
+    <div class="card-top">
+      <span class="status complete">
+        Complete
+        
+      </span>
+    </div>
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag">antweight</span><span class="tag">brushless</span><span class="tag">2S lipo</span><span class="tag">FreeCAD</span><span class="tag">combat robotics</span>
+    </div>
+  </div>
+  <div class="project-content-wrap">
+    <aside class="project-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#component-selection">Component Selection</a></li>
+    <li><a href="#build-log--design-notes">Build Log &amp; Design Notes</a></li>
+    <li><a href="#competition-results">Competition Results</a></li>
+  </ul>
+</nav>
+    </aside>
+    <div class="project-body">
+      <h2 id="introduction">Introduction</h2>
+<p>Building a 1lb (450g) antweight combat bot. I started with a base lifter model I found on Printables to get some inspiration, but the design quickly evolved from there.</p>
+<p><img src="/portfolio-site/images/projects/occams-razor-combat-bot-html-image6.png" alt=""  />
+
+<em><a href="https://www.printables.com/model/1429733-ale-antweight-lifter-entrylevel">Base model inspiration from Printables</a></em></p>
+<h2 id="component-selection">Component Selection</h2>
+<p>The hardest part of antweights is hitting the strict 450g weight limit, so every component choice matters.</p>
+<p><strong>Brain: Malenki Nano</strong>
+<img src="/portfolio-site/images/projects/occams-razor-combat-bot-html-image8.png" alt=""  />
+</p>
+<p><strong>Drive Motors: 1100KV Brushless Motors</strong>
+I decided to go with a brushless motor because it&rsquo;s just more fun.</p>
+<p><img src="/portfolio-site/images/projects/occams-razor-combat-bot-html-image11.png" alt=""  />
+</p>
+<p>The listing says 90g, but a different listing for the exact same model says 48g. I&rsquo;m just going to have to make it work. I might need to gear it down to reduce the RPM, but I&rsquo;ll figure that out later.</p>
+<p><img src="/portfolio-site/images/projects/occams-razor-combat-bot-html-image1.png" alt=""  />
+</p>
+<p><strong>Tires: Lego Wheels (49.5mm x 20mm)</strong>
+<img src="/portfolio-site/images/projects/occams-razor-combat-bot-html-image3.png" alt=""  />
+</p>
+<p><strong>Battery: 2S Lipo</strong>
+A standard 7.4V 80C 450mAh pack.</p>
+<h2 id="build-log--design-notes">Build Log &amp; Design Notes</h2>
+<p>I debated removing the floor plate entirely because I was worried it might scrape the ground and cause driving complications. I decided to leave it in. It shouldn&rsquo;t be too much extra work to add proper mounts for the motor, battery, ESC, and brain.</p>
+<p>My biggest worry was figuring out how to mount the wheels, and hoping I wouldn&rsquo;t have to gear down the 1000KV weapon motor too much.</p>
+<p>I designed a custom rim in FreeCAD to adapt the Lego wheels to the 5mm motor shaft. I set up the CAD file so it&rsquo;s easy to change the shaft hole diameter if I end up needing a different size later.</p>
+<iframe src="https://www.printables.com/embed/1450555" width="640" height="640" scrolling="no" frameborder="0"></iframe>
+<p><img src="/portfolio-site/images/projects/occams-razor-combat-bot-html-image5.png" alt=""  />
+
+<img src="/portfolio-site/images/projects/occams-razor-combat-bot-html-image4.png" alt=""  />
+</p>
+<p>I also added the motor mounts. The whole chassis prints to 216g at 20% infill, and 262g at 30% infill.</p>
+<p><img src="/portfolio-site/images/projects/occams-razor-combat-bot-html-image2.png" alt=""  />
+</p>
+<p>After a few test fits, I updated the design to be stronger along the vertical axis and separated the electronics from the motor wells. But based on my rough calculations, I am sitting about 70g over the weight limit.</p>
+<p>I&rsquo;m going to have to lose some weight. I&rsquo;m thinking about shrinking the chassis length from 250mm down to 220mm. That cuts weight and also means I can print prototypes right at home on my Neptune 4, though I can always just print it on the X1 at Slug Works if needed.</p>
+<p><img src="/portfolio-site/images/projects/occams-razor-combat-bot-html-image10.png" alt=""  />
+</p>
+<p>I finally settled on a name: <strong>Occam&rsquo;s Razor</strong>.</p>
+<h2 id="competition-results">Competition Results</h2>
+<p>Occam&rsquo;s Razor went on to win the winter UCSC combat robotics inner group competition. I&rsquo;d love to say it was purely engineering brilliance, but honestly it was mostly because all the other bots KO&rsquo;d themselves. A win is a win.</p>
+
+    </div>
+  </div>
+</article>
+</main><footer>
+  <div class="footer-inner">
+    <div class="mono">Shop notes, pulled straight from the build log.<br>More write-ups landing at <a class="site mono" href="#">nathanmilton.com</a> as they get finished.</div>
+    <div class="mono">Updated continuously — batteries don't stop failing.</div>
+  </div>
+</footer>
+</body>
+</html>

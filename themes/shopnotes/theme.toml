@@ -1,0 +1,6 @@
+name = "Shop Notes"
+license = "MIT"
+description = "A workshop-inspired portfolio theme for Hugo."
+
+[author]
+  name = "Nathan Milton"
