@@ -1,6 +1,6 @@
 ---
 title: "Custom 16s2p Onewheel XR Battery Build"
-thumbnail: "/images/projects/ow-16s2p-battery-html-image2.png"
+thumbnail: "/images/projects/ow-16s2p-battery-html-image15.png"
 category: "ebike"
 categoryLabel: "E-Bikes & Batteries"
 status: "complete"
@@ -8,6 +8,8 @@ tags: ["Onewheel", "VESC", "16s2p", "battery building", "21700 cells", "vfBMS", 
 blurb: "Building a custom 16s2p 21700 battery pack for an XRV-converted Onewheel+ XR using a Float Life Torque Box, Fungineers vfBMS, and modified harness wiring."
 weight: 1
 date: 2026-10-17
+featured: true
+featuredWeight: 2
 ---
 
 ## Introduction

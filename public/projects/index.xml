@@ -18,7 +18,7 @@
 				<link>http://localhost:1313/portfolio-site/projects/ow-16s2p-battery/</link>
 				<pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
 				<guid>http://localhost:1313/portfolio-site/projects/ow-16s2p-battery/</guid>
-				<description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;A Onewheel is a self-balancing electric board with a single wheel in the middle. The board I ride is a Onewheel+ XR. It is an older model, but mine runs a VESC motor controller. That controller gave me a lot more torque and higher top speed. But once the controller was in, the stock battery became the bottleneck. So I decided to build a custom pack with more power and better range.&lt;/p&gt;</description>
+				<description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;A Onewheel is a self-balancing electric board with a single wheel in the middle. The board I ride is a Onewheel+ XR. It is an older model, but it is definitely not stock. It already had been upgraded with the FloatWheel XRV kit, which replaces the stock electronics with a VESC-based controller. That kit gave me a lot more torque and higher top speed. But once the XRV was running, the stock battery became the bottleneck. So I decided to build a custom pack with more power and better range.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>ECE 118: Autonomous Robot Project</title>

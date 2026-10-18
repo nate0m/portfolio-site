@@ -8,8 +8,6 @@ tags: ["72V", "21700 cells", "battery building", "spot welding", "JBD BMS"]
 blurb: "A custom 72V 15Ah battery pack built from 60 salvaged Murf bike 21700 cells in a 20s3p configuration. Uses a JBD Smart BMS and custom 3D-printed PETG cell holders."
 weight: 1
 date: 2025-08-01
-featured: true
-featuredWeight: 2
 ---
 
 It all started with the battery. The voltage and output amperage decide the other parts of the bike, so I had to figure out the battery configuration first. 
