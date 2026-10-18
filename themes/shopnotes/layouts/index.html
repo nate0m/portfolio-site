@@ -108,7 +108,4 @@
     {{ end }}
   {{ end }}
 </div>
-
-{{ $js := resources.Get "js/main.js" | minify | fingerprint }}
-<script src="{{ $js.RelPermalink }}"></script>
 {{ end }}
