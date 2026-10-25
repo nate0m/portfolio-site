@@ -11,8 +11,7 @@ defaultContentLanguage = "en"
 [params]
   description = "ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage."
   heroTag = "Currently in the garage"
-  heroHeadline = "We do these things not because they are easy, but because we thought they were going to be eas
-  "
+  heroHeadline = "We do these things not because they are easy, but because we thought they were going to be easy"
   heroLede = "ECE student, ebike mechanic, and battery builder. This is a running log of the builds, repairs, and rabbit holes that come out of the garage. Custom battery packs, VESC wiring, combat robots, a home server that caught fire, and more. Most of it starts with \"how hard can it be.\""
   statProjects = "15"
   statCategories = "7"
