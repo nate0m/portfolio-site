@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/portfolio-site/css/main.min.cecc4a3a2c59a6e9eae6fd9ef04cad29d1f8f22f9e8e72b1438ea1abec81258d.css">
+<link rel="stylesheet" href="/portfolio-site/css/main.min.b6b2127832ad3e06c57073f7d8e68e7505bd73a90bad090f14411c8d691f817f.css">
 <link rel="icon" type="image/svg+xml" href="/portfolio-site/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/portfolio-site/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/portfolio-site/favicon-16x16.png">
@@ -56,12 +56,12 @@
 <p>After probing the input and output of the BMS it was obvious that the BMS was shot. It had no output to the controller. My guess was that if the board voltage gets low enough, it bricks the BMS and if you send it in for repair to FM (Future Motion) they either revive it by reflashing the firmware or they just replace the BMS.</p>
 <p>Ok so now that we know it is the BMS, how do we fix it? Simple, we replace the BMS. But it’s not that simple because this is when FM makes it harder than it needs to be.</p>
 <p>Let&rsquo;s continue as if this were a normal repair and get a working BMS from another board of the same model. When we plug this BMS into this board it will now turn on, but it won’t work. It will have an error code. If you decode the flashing light on the power button it will be an error code 16 which means ‘incompatible hardware’. How can it be incompatible hardware if it is from the same model of board. Well lets give FM the benefit of the doubt and say that even though these two BMS’ are from the same model board they might have been manufactured at different times, and might have slightly different hardware making them incompatible. That would make sense. Lets explore this by going onto FM’s website to look for more information about BMS compatibility and see if we can buy the correct model of BMS for this board.</p>
-<p><a href="https://onewheel.com/collections/xr-parts">https://onewheel.com/collections/xr-parts</a></p>
+<p><a href="https://onewheel.com/collections/xr-parts" target="_blank" rel="noopener noreferrer">https://onewheel.com/collections/xr-parts</a></p>
 <p><img src="/portfolio-site/images/projects/fm-parts.png" alt=""  />
 </p>
 <p>They do offer some basic extension parts now—like cable harnesses, charge ports, and power buttons—but absolutely no core circuit components. There is zero information about BMS compatibility and no BMS units for sale on their website. Now here’s the kicker: this BMS functionally works with this battery and this controller. FM just blocks it out for some reason. So that’s it, there is no official way to fix this board.</p>
 <p>A new challenger appears: the open source &amp; onewheel community.</p>
-<p>A group of savvy electric engineers and hobbies have reverse engineered the communication protocol between the BMS and the controller and have found that it is <a href="https://www.google.com/url?q=https://en.wikipedia.org/wiki/RS-485&amp;sa=D&amp;source=editors&amp;ust=1788551300503848&amp;usg=AOvVaw1s5lFvqM0977mSgiqcrlg8">RS485</a> aka an industry standard serial protocol. The most important thing that this engineer found is that communication is unidirectional and only flows from BMS to the controller. So they were able to use a microcontroller (ESP32) to intercept the messages the BMS sends to the controller, store that data, and send whatever message it wants. This allows the bypassing of the BMS &lsquo;incompatibility’’, display of individual cell voltages, more accurate state of charge, and current data. This is called an <a href="https://www.google.com/url?q=https://github.com/lolwheel/Owie/tree/main&amp;sa=D&amp;source=editors&amp;ust=1788551300504422&amp;usg=AOvVaw0wMS74V2VaHxmyOJHIZqb1">OWIE</a> chip.</p>
+<p>A group of savvy electric engineers and hobbies have reverse engineered the communication protocol between the BMS and the controller and have found that it is <a href="https://www.google.com/url?q=https://en.wikipedia.org/wiki/RS-485&amp;sa=D&amp;source=editors&amp;ust=1788551300503848&amp;usg=AOvVaw1s5lFvqM0977mSgiqcrlg8" target="_blank" rel="noopener noreferrer">RS485</a> aka an industry standard serial protocol. The most important thing that this engineer found is that communication is unidirectional and only flows from BMS to the controller. So they were able to use a microcontroller (ESP32) to intercept the messages the BMS sends to the controller, store that data, and send whatever message it wants. This allows the bypassing of the BMS &lsquo;incompatibility’’, display of individual cell voltages, more accurate state of charge, and current data. This is called an <a href="https://www.google.com/url?q=https://github.com/lolwheel/Owie/tree/main&amp;sa=D&amp;source=editors&amp;ust=1788551300504422&amp;usg=AOvVaw0wMS74V2VaHxmyOJHIZqb1" target="_blank" rel="noopener noreferrer">OWIE</a> chip.</p>
 <p>Now why do I need to install this chip if this BMS works with my board. I’ve thought about this and I would love to talk to someone at FM about their decisions but from my perspective and many other members of the onewheel enthusiast they do this just to have control over the repair of their products taking it away from the consumer.</p>
 
     </div>
@@ -74,6 +74,6 @@
     <div class="mono">Updated continuously.</div>
   </div>
 </footer>
-  <script src="/portfolio-site/js/main.min.0be43c088ecb6876497a32cf3cb84b41d33a910ef0b6490064e04526ec23ddca.js"></script>
+  <script src="/portfolio-site/js/main.min.d23d634aab22d10232dfc43dbfc01e9bc0013d8bf0f5ba38ecd0e8a1e6460b2f.js"></script>
 </body>
 </html>

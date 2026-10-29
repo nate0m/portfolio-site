@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8">
+<head><script src="/portfolio-site/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio-site/livereload" data-no-instant defer></script><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Honda Element Solar &amp; Camper Setup</title>
 <meta name="description" content="ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage.">
@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/portfolio-site/css/main.min.cecc4a3a2c59a6e9eae6fd9ef04cad29d1f8f22f9e8e72b1438ea1abec81258d.css">
+<link rel="stylesheet" href="/portfolio-site/css/main.min.b6b2127832ad3e06c57073f7d8e68e7505bd73a90bad090f14411c8d691f817f.css">
 <link rel="icon" type="image/svg+xml" href="/portfolio-site/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/portfolio-site/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/portfolio-site/favicon-16x16.png">
@@ -17,7 +17,7 @@
 </head>
 <body class="is-single"><header>
   <div class="header-inner">
-    <a href="https://username.github.io/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
+    <a href="http://localhost:1313/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
     <nav>
       <a href="#projects">Projects</a>
     </nav>
@@ -73,7 +73,7 @@
       <p>In May 2025, I took off on a three-week road trip up the Pacific Northwest coast in my Honda Element. Three days before leaving, I decided I needed a reliable power setup. I had a pile of leftover solar gear sitting in the garage from an old camper van build. Most of it was dusty and slightly neglected, but the core hardware was still good. With some help from my cousin, we spent three days turning those loose components into a self-contained wooden power box.</p>
 <p>The main requirement was simple. I needed to run a 12V fridge non-stop, plus charge a phone and a laptop. If the fridge warm-thawed the groceries, the trip was ruined. Everything else was secondary.</p>
 <h2 id="mounting-and-inspiration">Mounting and Inspiration</h2>
-<p>To get panels onto the Element, I needed a rack and a mounting plan. I took cues from this <a href="https://el.life/honda-element-camper/">Honda Element camper build</a> and picked up an affordable <a href="https://a.co/d/8GLpYcN">roof rack</a> on Amazon to anchor everything.</p>
+<p>To get panels onto the Element, I needed a rack and a mounting plan. I took cues from this <a href="https://el.life/honda-element-camper/" target="_blank" rel="noopener noreferrer">Honda Element camper build</a> and picked up an affordable <a href="https://a.co/d/8GLpYcN" target="_blank" rel="noopener noreferrer">roof rack</a> on Amazon to anchor everything.</p>
 <h2 id="the-scavenged-hardware">The Scavenged Hardware</h2>
 <p>Most of these parts were standard off-the-shelf units bought roughly four years earlier from Amazon, AliExpress, or Facebook Marketplace.</p>
 <h3 id="the-4s-lithium-battery">The 4S Lithium Battery</h3>
@@ -99,14 +99,14 @@
 <ul>
 <li><strong>Compatible Voltages:</strong> 12V, 24V auto-detect</li>
 <li><strong>Max Charging Current:</strong> 40A</li>
-<li><strong>Documentation:</strong> <a href="https://drive.google.com/file/d/1g6imWmjJop1SdYVB9JajS1hJ5JC9G8RP/view?usp=drive_link">datasheet</a> and <a href="https://drive.google.com/file/d/1DaqeB_3EXXUkYRH0dtFPTh-tdEfZE0hm/view?usp=drive_link">manual</a></li>
+<li><strong>Documentation:</strong> <a href="https://drive.google.com/file/d/1g6imWmjJop1SdYVB9JajS1hJ5JC9G8RP/view?usp=drive_link" target="_blank" rel="noopener noreferrer">datasheet</a> and <a href="https://drive.google.com/file/d/1DaqeB_3EXXUkYRH0dtFPTh-tdEfZE0hm/view?usp=drive_link" target="_blank" rel="noopener noreferrer">manual</a></li>
 </ul>
 <h3 id="1500w-inverter">1500W Inverter</h3>
 <p>For running household AC gear like a laptop brick or small appliances, I kept my 1500W pure sine inverter in the loop.</p>
 <ul>
 <li><strong>DC Input:</strong> 12.5V, up to 141A draw</li>
 <li><strong>AC Output:</strong> 115V AC, 60Hz, 13A (1500W continuous)</li>
-<li><strong>Documentation:</strong> <a href="https://drive.google.com/file/d/1twf5DZJQVlRMTw0F8a4hDzSwxLWTpSSR/view?usp=drive_link">inverter manual</a></li>
+<li><strong>Documentation:</strong> <a href="https://drive.google.com/file/d/1twf5DZJQVlRMTw0F8a4hDzSwxLWTpSSR/view?usp=drive_link" target="_blank" rel="noopener noreferrer">inverter manual</a></li>
 </ul>
 <h3 id="solar-panels">Solar Panels</h3>
 <p>I planned to run two 100W Renogy panels in parallel. When I tested them in the driveway, one panel output zero volts. It was completely dead. With no time to wait for a replacement, I bolted the single working 100W panel to the roof and rolled with it.</p>
@@ -117,7 +117,7 @@
 <p>The test did not look great on paper. Out of 280Ah rated capacity, the pack gave up just over 100Ah before the BMS cut out. That is under 50% of the factory rating. Two of the four cells were noticeably weaker than the other two. The BMS kept them aligned under float charge, but once a heavy discharge load hit, the weaker pair dropped voltage fast and tripped low-voltage protection early.</p>
 <p>A skeptical reader would probably ask why on earth I trusted a three-week road trip to a degraded battery that failed half its rated capacity. The objection is fair. But 100Ah at 12V still equals 1.2 kilowatt-hours of usable juice. The 12V compressor fridge only pulls about 35 to 40 watts while cycling, which averages out to roughly 30Ah over an entire day. Even with zero solar input, 100Ah bought me three full days of cold food before reaching empty.</p>
 <h2 id="building-the-power-box">Building the Power Box</h2>
-<p>We built an open plywood crate sized specifically to cradle the four heavy cells. Keeping the battery rigid stops the terminals and busbars from vibrating loose on rough dirt roads. To keep the cells from shifting inside the crate, I used these 3D printed <a href="https://www.printables.com/model/181097-corner-brackets-for-system20-2020-2040-extrusion">corner brackets</a> to brace and secure the battery pack in place.</p>
+<p>We built an open plywood crate sized specifically to cradle the four heavy cells. Keeping the battery rigid stops the terminals and busbars from vibrating loose on rough dirt roads. To keep the cells from shifting inside the crate, I used these 3D printed <a href="https://www.printables.com/model/181097-corner-brackets-for-system20-2020-2040-extrusion" target="_blank" rel="noopener noreferrer">corner brackets</a> to brace and secure the battery pack in place.</p>
 <p><img src="/portfolio-site/images/projects/honda-element-solar-setup-html-image1.png" alt=""  />
 
 <img src="/portfolio-site/images/projects/honda-element-solar-setup-html-image7.png" alt=""  />
@@ -154,6 +154,6 @@
     <div class="mono">Updated continuously.</div>
   </div>
 </footer>
-  <script src="/portfolio-site/js/main.min.0be43c088ecb6876497a32cf3cb84b41d33a910ef0b6490064e04526ec23ddca.js"></script>
+  <script src="/portfolio-site/js/main.min.d23d634aab22d10232dfc43dbfc01e9bc0013d8bf0f5ba38ecd0e8a1e6460b2f.js"></script>
 </body>
 </html>

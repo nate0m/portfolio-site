@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal HUD</title>
+<meta name="description" content="ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/portfolio-site/css/main.min.b6b2127832ad3e06c57073f7d8e68e7505bd73a90bad090f14411c8d691f817f.css">
+<link rel="icon" type="image/svg+xml" href="/portfolio-site/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/portfolio-site/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/portfolio-site/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/portfolio-site/apple-touch-icon.png">
+<link rel="shortcut icon" href="/portfolio-site/favicon.ico">
+</head>
+<body class="is-single"><header>
+  <div class="header-inner">
+    <a href="https://username.github.io/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
+    <nav>
+      <a href="#projects">Projects</a>
+    </nav>
+  </div>
+</header>
+<main>
+<article class="project-single">
+  <div class="project-header">
+    <a href="/portfolio-site/" class="back-link">← Back to Projects</a>
+    <div class="hero-tag">Home Lab</div>
+    <h1>Personal HUD</h1>
+    <div class="card-top">
+      <div class="card-status-date">
+        <span class="status complete">
+          Complete
+          
+        </span>
+        
+        <span class="card-date">10/2026</span>
+        
+      </div>
+    </div>
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag">MagicMirror²</span><span class="tag">TrueNAS Scale</span><span class="tag">Docker</span><span class="tag">Onn 4K</span><span class="tag">Full Kiosk Browser</span>
+    </div>
+  </div>
+  <div class="project-content-wrap">
+    <aside class="project-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#hardware">Hardware</a></li>
+    <li><a href="#architecture--deployment">Architecture &amp; Deployment</a></li>
+    <li><a href="#dashboard-features">Dashboard Features</a></li>
+    <li><a href="#wrap-up">Wrap Up</a></li>
+  </ul>
+</nav>
+    </aside>
+    <div class="project-body">
+      <h2 id="background">Background</h2>
+<p>A short little day project creating a personalized hud for myself so that I can at a glance when I wake up in the morning or am leaving the house see my calendar, daily schedule, weather, and get some motivation.</p>
+<p>I had done this in the past so I had a pretty good idea of the hardware and software that I was going to use, but this time I wanted something that was easier to maintain. Previously I used a raspberry pi 3a and the opensource <a href="https://magicmirror.builders/" target="_blank" rel="noopener noreferrer">MagicMirror²</a> project to do this, but running the pi in desktop mode was a bit laggy and my auto launch implementation was a bit janky.</p>
+<p>This time I decided to stay with <a href="https://magicmirror.builders/" target="_blank" rel="noopener noreferrer">MagicMirror²</a> for the software of the hud providing the calendar, schedule, weather, and motivation.</p>
+<h2 id="hardware">Hardware</h2>
+<p>I wanted to utilize what I already had laying around the house for this project.</p>
+<p>For hardware I had recently found a 24 inch ips monitor on the side of the road, and luckily the only thing wrong with it was that it was missing a power supply. The next piece of hardware puzzle was the Onn 4k; a Walmart streaming box, I think I bought it for around $20 at the time. The last piece of hardware was my pre-existing server running TrueNAS Scale, a linux based NAS operating system.</p>
+<h2 id="architecture--deployment">Architecture &amp; Deployment</h2>
+<p>Putting these pieces together we have MagicMirror² running on the server accessible by the Onn 4k via the servers local ip address at the specific MagicMirror² port using an app called <a href="https://www.fully-kiosk.com/#get-kiosk-apps" target="_blank" rel="noopener noreferrer">Full Kiosk Browser</a> which allows you to access URLs in full screen. The Onn 4k is plugged into the monitor which is mounted on the wall in a convenient location. Currently I turn the monitor on in the morning and turn it off at night, but when I get around to it I can use software or a smart switch to automate this.</p>
+<p>For the MagicMirror² UI I was able to work off of my old implementation, and use Google&rsquo;s Antigravity to massage it into something more practical and clean. Then deployed it on TrueNAS using a docker compose file. Making changes as needed locally and syncing them to the server using a deployment script.</p>
+<h2 id="dashboard-features">Dashboard Features</h2>
+<p><img src="/portfolio-site/images/projects/personal-hud-html-image1.png" alt="magic mirror"  title="magic mirror" />
+
+<img src="/portfolio-site/images/projects/personal-hud-html-image3.png" alt="full kiosk browser launcher"  title="full kiosk browser launcher" />
+
+<img src="/portfolio-site/images/projects/personal-hud-html-image2.png" alt="neptune 4 max klipper web UI"  title="neptune 4 max klipper web UI" />
+</p>
+<p>It has my full month&rsquo;s calendar, rolling schedule, motivation quote, and hourly weather report graph with temperature, wind, and rain predictions. The quotes are always from the Tao Te Ching and change everyday. This is my favorite spiritual text and is a good way to center my thought life.</p>
+<p>Since Full Kiosk Browser allows you to have multiple URLs I added the URLs of my 3d printers allowing me to switch to them when I want to keep an eye on a print. And since it is a streaming box I can also access my Emby instance from my server to watch a movie if I like.</p>
+<h2 id="wrap-up">Wrap Up</h2>
+<p>This was a fun experience and a great example of using what you already have laying around to make something that makes your life easier at no extra cost.</p>
+
+    </div>
+  </div>
+</article>
+</main><footer>
+  <div class="footer-inner">
+    <div class="mono">Shop notes, pulled straight from the build log.<br>More write-ups landing at <a class="site mono"
+        href="#">nathanmilton.xyz</a> as they get finished.</div>
+    <div class="mono">Updated continuously.</div>
+  </div>
+</footer>
+  <script src="/portfolio-site/js/main.min.d23d634aab22d10232dfc43dbfc01e9bc0013d8bf0f5ba38ecd0e8a1e6460b2f.js"></script>
+</body>
+</html>

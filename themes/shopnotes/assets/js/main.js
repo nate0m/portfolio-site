@@ -465,15 +465,32 @@
   }
 
   /* ------------------------------------------------------------------------
+     4. Article Links - Open in New Tab
+     ------------------------------------------------------------------------ */
+  function initExternalLinks() {
+    var links = document.querySelectorAll('.project-body a');
+    links.forEach(function (link) {
+      var href = link.getAttribute('href');
+      if (href && !href.startsWith('#')) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------------
      Initialize on DOM Ready
      ------------------------------------------------------------------------ */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       initFilter();
       initArticleSlideshows();
+      initExternalLinks();
     });
   } else {
     initFilter();
     initArticleSlideshows();
+    initExternalLinks();
   }
 })();
+

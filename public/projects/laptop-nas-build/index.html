@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/portfolio-site/css/main.min.cecc4a3a2c59a6e9eae6fd9ef04cad29d1f8f22f9e8e72b1438ea1abec81258d.css">
+<link rel="stylesheet" href="/portfolio-site/css/main.min.b6b2127832ad3e06c57073f7d8e68e7505bd73a90bad090f14411c8d691f817f.css">
 <link rel="icon" type="image/svg+xml" href="/portfolio-site/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/portfolio-site/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/portfolio-site/favicon-16x16.png">
@@ -72,8 +72,8 @@
 <p>USB works for a quick prototype, but ZFS hates USB enclosures. If the USB controller glitches or disconnects for a second, the entire ZFS pool drops into a degraded state. To add more drives reliably, I need direct SATA connections.</p>
 <h2 id="storage-expansion-m2-to-sata">Storage Expansion: M.2 to SATA</h2>
 <p>Since the laptop does not have standard SATA ports on the motherboard, the plan is to adapt the internal M.2 PCIe slot into a multi-port SATA controller.</p>
-<p>I started digging through options on <a href="https://www.amazon.com/s?k=m.2&#43;to&#43;sata&amp;i=electronics&amp;crid=3NELBZ0CLTHUJ&amp;sprefix=m.2&#43;to&#43;sata%2Celectronics%2C167">Amazon</a> and <a href="https://www.newegg.com/p/pl?d=m.2&#43;to&#43;sata&#43;adapter">Newegg</a>. The key requirement is compatibility with TrueNAS Scale and ZFS. Many cheap M.2 SATA breakout boards use low-end JMicron or ASMedia port multipliers, which cause major instability under sustained parity scrubs.</p>
-<p>This <a href="https://linustechtips.com/topic/1616173-nas-storage-upgrade-help-m2-to-sata-adatper/#comment-16755459">Linus Tech Tips thread</a> broke down which chipsets negotiate genuine PCIe-to-SATA controller channels without bottlenecking the drives.</p>
+<p>I started digging through options on <a href="https://www.amazon.com/s?k=m.2&#43;to&#43;sata&amp;i=electronics&amp;crid=3NELBZ0CLTHUJ&amp;sprefix=m.2&#43;to&#43;sata%2Celectronics%2C167" target="_blank" rel="noopener noreferrer">Amazon</a> and <a href="https://www.newegg.com/p/pl?d=m.2&#43;to&#43;sata&#43;adapter" target="_blank" rel="noopener noreferrer">Newegg</a>. The key requirement is compatibility with TrueNAS Scale and ZFS. Many cheap M.2 SATA breakout boards use low-end JMicron or ASMedia port multipliers, which cause major instability under sustained parity scrubs.</p>
+<p>This <a href="https://linustechtips.com/topic/1616173-nas-storage-upgrade-help-m2-to-sata-adatper/#comment-16755459" target="_blank" rel="noopener noreferrer">Linus Tech Tips thread</a> broke down which chipsets negotiate genuine PCIe-to-SATA controller channels without bottlenecking the drives.</p>
 <h2 id="initial-case-modeling-in-freecad">Initial Case Modeling in FreeCAD</h2>
 <p>I started modeling a custom chassis in FreeCAD to hold the laptop, drives, and electronics in one compact footprint.</p>
 <p><img src="/portfolio-site/images/projects/laptop-nas-build-html-image8.png" alt=""  />
@@ -82,19 +82,19 @@
 </p>
 <p>The initial concept was rough, but it helped block out spatial relationships. I brought in existing community models for key components:</p>
 <ul>
-<li><strong>Drive caddies:</strong> Found modular <a href="https://www.printables.com/model/788261-35-hdd-cage-caddy-for-anti-vibration-screws">3.5&quot; HDD cages on Printables</a> that use anti-vibration grommets and hold two drives per cage.</li>
-<li><strong>Cooling:</strong> Sized the exhaust for two 92x92x25 mm <a href="https://a.co/d/i1cUoC0">Noctua 92mm fans</a>.</li>
+<li><strong>Drive caddies:</strong> Found modular <a href="https://www.printables.com/model/788261-35-hdd-cage-caddy-for-anti-vibration-screws" target="_blank" rel="noopener noreferrer">3.5&quot; HDD cages on Printables</a> that use anti-vibration grommets and hold two drives per cage.</li>
+<li><strong>Cooling:</strong> Sized the exhaust for two 92x92x25 mm <a href="https://a.co/d/i1cUoC0" target="_blank" rel="noopener noreferrer">Noctua 92mm fans</a>.</li>
 <li><strong>Power:</strong> Left space for buck converters and a clean AC receptacle.</li>
 </ul>
 <p>A skeptical reader would probably ask why bother building a custom box around a laptop instead of just picking up a used Dell OptiPlex tower on eBay for eighty bucks. The objection is totally fair. A used desktop gives you standard PCIe slots, native SATA power, and zero CAD headaches. But the laptop has two distinct perks: the internal battery acts as a built-in uninterruptible power supply, and the whole system idles under ten watts. Plus, designing the case is half the point of the project.</p>
 <h2 id="pivoting-to-laser-cutting">Pivoting to Laser Cutting</h2>
 <p>Printing a full multi-drive chassis on a desktop 3D printer takes days of machine time. In late October 2025, I decided to switch from 3D printing the enclosure shell to laser cutting flat sheets with interlocking finger joints.</p>
-<p>The entire box now breaks down into flat panels. FreeCAD does not do tabbed sheet-metal style box joints natively, but this <a href="https://forum.freecad.org/viewtopic.php?t=99394">FreeCAD forum thread</a> covers an add-on workbench that automates finger joints between intersecting faces.</p>
-<p>I also looked into fastener options for flat acrylic. Driving screws directly into brittle acrylic is a recipe for cracked panels. I checked out this guide on <a href="https://newscrewdriver.com/2017/06/25/testing-heat-set-inserts-in-acrylic/">testing heat-set inserts in acrylic</a>. Heat-set brass inserts melt cleanly into acrylic pilot holes, giving durable machine threads to mount the drive caddies. The fans can just use through-bolts and nuts.</p>
-<p>For the drive bays, I am also considering this alternative <a href="https://www.printables.com/model/1372686-3u-hard-drive-bay-for-8x-35in-hdds-for-10-mini-rac">8-bay 3.5&quot; drive rack</a> if I decide to expand beyond four drives.</p>
+<p>The entire box now breaks down into flat panels. FreeCAD does not do tabbed sheet-metal style box joints natively, but this <a href="https://forum.freecad.org/viewtopic.php?t=99394" target="_blank" rel="noopener noreferrer">FreeCAD forum thread</a> covers an add-on workbench that automates finger joints between intersecting faces.</p>
+<p>I also looked into fastener options for flat acrylic. Driving screws directly into brittle acrylic is a recipe for cracked panels. I checked out this guide on <a href="https://newscrewdriver.com/2017/06/25/testing-heat-set-inserts-in-acrylic/" target="_blank" rel="noopener noreferrer">testing heat-set inserts in acrylic</a>. Heat-set brass inserts melt cleanly into acrylic pilot holes, giving durable machine threads to mount the drive caddies. The fans can just use through-bolts and nuts.</p>
+<p>For the drive bays, I am also considering this alternative <a href="https://www.printables.com/model/1372686-3u-hard-drive-bay-for-8x-35in-hdds-for-10-mini-rac" target="_blank" rel="noopener noreferrer">8-bay 3.5&quot; drive rack</a> if I decide to expand beyond four drives.</p>
 <h2 id="laptop-lid--console-access">Laptop Lid &amp; Console Access</h2>
 <p>Running a laptop as a 24/7 headless server brings an annoying quirk: by default, closing the lid triggers system suspend.</p>
-<p>According to this <a href="https://www.truenas.com/community/threads/prevent-suspend-mode-when-installed-on-a-laptop.94729/">TrueNAS forum thread on laptop suspend</a>, you can disable lid-close sleep in Debian via systemd logind configs. Even so, you still need physical access to the screen and keyboard whenever the network drops or BIOS settings need tweaking.</p>
+<p>According to this <a href="https://www.truenas.com/community/threads/prevent-suspend-mode-when-installed-on-a-laptop.94729/" target="_blank" rel="noopener noreferrer">TrueNAS forum thread on laptop suspend</a>, you can disable lid-close sleep in Debian via systemd logind configs. Even so, you still need physical access to the screen and keyboard whenever the network drops or BIOS settings need tweaking.</p>
 <p><img src="/portfolio-site/images/projects/laptop-nas-build-html-image4.png" alt=""  />
 </p>
 <p>I redesigned the enclosure layout with a removable upper shelf. The hard drives sit on the upper tier, and the shelf lifts out so you can swing the laptop screen up without dismantling the entire chassis.</p>
@@ -102,7 +102,7 @@
 <p>By mid-November 2025, the laser-cut layout was coming together in CAD.</p>
 <p><img src="/portfolio-site/images/projects/laptop-nas-build-html-image1.png" alt=""  />
 </p>
-<p>I mapped the outer panels to fit onto a 24&quot;x96&quot; sheet from <a href="https://www.eplastics.com/ACRY20370-187PM24X96">ePlastics</a>, though I might use Baltic birch plywood instead for better rigidity and lower cost.</p>
+<p>I mapped the outer panels to fit onto a 24&quot;x96&quot; sheet from <a href="https://www.eplastics.com/ACRY20370-187PM24X96" target="_blank" rel="noopener noreferrer">ePlastics</a>, though I might use Baltic birch plywood instead for better rigidity and lower cost.</p>
 <p>To get toolpaths out of FreeCAD for the laser cutter, the workflow is straightforward: switch to the Draft workbench, select a face, generate a 2D Shape2DView projection, and export that projection directly as an SVG.</p>
 <p><img src="/portfolio-site/images/projects/laptop-nas-build-html-image2.png" alt=""  />
 </p>
@@ -120,6 +120,6 @@
     <div class="mono">Updated continuously.</div>
   </div>
 </footer>
-  <script src="/portfolio-site/js/main.min.0be43c088ecb6876497a32cf3cb84b41d33a910ef0b6490064e04526ec23ddca.js"></script>
+  <script src="/portfolio-site/js/main.min.d23d634aab22d10232dfc43dbfc01e9bc0013d8bf0f5ba38ecd0e8a1e6460b2f.js"></script>
 </body>
 </html>

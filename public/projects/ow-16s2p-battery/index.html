@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/portfolio-site/css/main.min.cecc4a3a2c59a6e9eae6fd9ef04cad29d1f8f22f9e8e72b1438ea1abec81258d.css">
+<link rel="stylesheet" href="/portfolio-site/css/main.min.b6b2127832ad3e06c57073f7d8e68e7505bd73a90bad090f14411c8d691f817f.css">
 <link rel="icon" type="image/svg+xml" href="/portfolio-site/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/portfolio-site/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/portfolio-site/favicon-16x16.png">
@@ -104,12 +104,12 @@
 <li><strong>Anti-fuse:</strong> You would rather risk blowing up the controller than risk an unexpected motor shutoff mid-ride.</li>
 </ul>
 <p>The obvious objection here is that putting a fuse on the discharge line of a self-balancing board invites a nosedive. If that fuse blows while you are leaning forward at 20 mph, the board cuts out and you hit the pavement hard. That objection is fair, and it is why many builders refuse to fuse the discharge leads. But a direct short without a fuse drops the board too, and then you have a thermal runaway fire between your feet.</p>
-<p>I decided to fuse both discharge and charge lines. For discharge, I used a 40A slow-blow fuse rated for 80VDC (<a href="https://www.digikey.com/en/products/detail/schurter-inc/SUT-H-6332-40A00-PGT-TT-NI/9760593">Schurter 40A fuse on DigiKey</a>). The pack operates at 67.2V max, well under the 80V rating.</p>
+<p>I decided to fuse both discharge and charge lines. For discharge, I used a 40A slow-blow fuse rated for 80VDC (<a href="https://www.digikey.com/en/products/detail/schurter-inc/SUT-H-6332-40A00-PGT-TT-NI/9760593" target="_blank" rel="noopener noreferrer">Schurter 40A fuse on DigiKey</a>). The pack operates at 67.2V max, well under the 80V rating.</p>
 <p>A 40A rating does not mean the fuse trips the instant current touches 40A. Because it is a slow-blow fuse, current has to stay above that threshold for a specific duration to blow the element. That curve handles short acceleration spikes without cutting power, but it will still pop during a sustained short.</p>
 <p><img src="/portfolio-site/images/projects/ow-16s2p-battery-html-image4.png" alt=""  />
 </p>
-<p>For the charge port, I installed a 10A fast-blow fuse rated for 125V (<a href="https://www.digikey.com/en/products/detail/littelfuse-inc/0251010-NRT1L/700760">Littelfuse 10A on DigiKey</a>). I charge at 3A, so 10A gives plenty of headroom while protecting against reverse polarity and charger faults.</p>
-<p>You can read through the community discussions on fusing over at <a href="https://pev.dev/t/which-fuse-s-should-we-use/258">pev.dev</a> and <a href="https://forum.esk8.news/t/to-fuse-or-not-to-fuse/53562?u=mariocontino">esk8.news</a>.</p>
+<p>For the charge port, I installed a 10A fast-blow fuse rated for 125V (<a href="https://www.digikey.com/en/products/detail/littelfuse-inc/0251010-NRT1L/700760" target="_blank" rel="noopener noreferrer">Littelfuse 10A on DigiKey</a>). I charge at 3A, so 10A gives plenty of headroom while protecting against reverse polarity and charger faults.</p>
+<p>You can read through the community discussions on fusing over at <a href="https://pev.dev/t/which-fuse-s-should-we-use/258" target="_blank" rel="noopener noreferrer">pev.dev</a> and <a href="https://forum.esk8.news/t/to-fuse-or-not-to-fuse/53562?u=mariocontino" target="_blank" rel="noopener noreferrer">esk8.news</a>.</p>
 <h3 id="modifying-the-wiring-harness">Modifying the Wiring Harness</h3>
 <p><img src="/portfolio-site/images/projects/ow-16s2p-battery-html-image6.png" alt=""  />
 
@@ -120,7 +120,7 @@
 <p>The trickiest packaging issue came down to the wiring harness connecting the battery box and controller box.</p>
 <p>Keep in mind, this board was not running stock electronics. It had the XRV kit installed. On a factory board, the BMS handles both charging and discharge through a single pair of main power wires. The vfBMS I chose only handles charging, so it needs separate lines for charge-in and battery-in. The wiring harness was never designed for dedicated charge leads.</p>
 <p>I solved this by repurposing six unused small-gauge wires in the harness: five original BMS communication wires, plus an extra rear light lead. I bundled them into two groups of three ~20 AWG wires for charge positive and charge negative. Three 20 AWG lines in parallel give plenty of copper for 3A charging.</p>
-<p>At the controller box, the XRV kit connects to the harness using its own 16-pin Molex connector PCB. That PCB locked down the pinout and stood in the way of running separate high-current and charge leads. So I pulled the XRV Molex connector and printed an adapter for a 20mm cable gland (<a href="https://www.printables.com/model/1179902-onewheel-xr-16-pin-molex-converter/files">Printables XR Molex Converter</a>). That gave me direct pass-through access into the controller box without being constrained by the XRV PCB.</p>
+<p>At the controller box, the XRV kit connects to the harness using its own 16-pin Molex connector PCB. That PCB locked down the pinout and stood in the way of running separate high-current and charge leads. So I pulled the XRV Molex connector and printed an adapter for a 20mm cable gland (<a href="https://www.printables.com/model/1179902-onewheel-xr-16-pin-molex-converter/files" target="_blank" rel="noopener noreferrer">Printables XR Molex Converter</a>). That gave me direct pass-through access into the controller box without being constrained by the XRV PCB.</p>
 <p>I soldered all the repurposed lines for charging (terminated with an XT30), the 3-pin rear LED connector, and the main discharge leads (XT60), then wrapped the exposed section of the harness with silicone tape for water and abrasion resistance.</p>
 <h2 id="construction">Construction</h2>
 <p>I designed the cell layout and interlocking spacers in OnShape. Once the dimensions checked out, I printed the spacers in PETG and spot-welded each half of the pack.</p>
@@ -158,6 +158,6 @@
     <div class="mono">Updated continuously.</div>
   </div>
 </footer>
-  <script src="/portfolio-site/js/main.min.0be43c088ecb6876497a32cf3cb84b41d33a910ef0b6490064e04526ec23ddca.js"></script>
+  <script src="/portfolio-site/js/main.min.d23d634aab22d10232dfc43dbfc01e9bc0013d8bf0f5ba38ecd0e8a1e6460b2f.js"></script>
 </body>
 </html>

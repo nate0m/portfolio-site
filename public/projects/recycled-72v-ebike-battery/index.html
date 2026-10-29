@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/portfolio-site/css/main.min.cecc4a3a2c59a6e9eae6fd9ef04cad29d1f8f22f9e8e72b1438ea1abec81258d.css">
+<link rel="stylesheet" href="/portfolio-site/css/main.min.b6b2127832ad3e06c57073f7d8e68e7505bd73a90bad090f14411c8d691f817f.css">
 <link rel="icon" type="image/svg+xml" href="/portfolio-site/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/portfolio-site/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/portfolio-site/favicon-16x16.png">
@@ -65,7 +65,7 @@
 <p>At first I thought about using the stock 52V 20Ah battery that comes with a Murf bike, maybe adding a bottle tube 52V 20Ah battery and running them both in parallel or series. But I ended up deciding to make a custom 72V 15Ah battery with a total of 60 21700 cells. The main reason was the high voltage allowing for a much higher motor RPM.</p>
 <h3 id="harvesting-and-testing">Harvesting and Testing</h3>
 <p>Corbin gave me a bunch of dead Murf batteries and assured me the individual cells inside were still good. Tearing down the old batteries and harvesting the cells was not very easy at first, but eventually I got the hang of it. There is a bit of a technique to it. You can use small diagonal cutters to lift and pry off the nickel strip from each string of cells.</p>
-<p>Even though I was told they were good, I bought a load tester that could test the capacity of eight cells at a time. See my post on the <a href="/portfolio-site/projects/cell-capacity-tester">cell capacity tester</a> if you are interested in that process.</p>
+<p>Even though I was told they were good, I bought a load tester that could test the capacity of eight cells at a time. See my post on the <a href="/portfolio-site/projects/cell-capacity-tester" target="_blank" rel="noopener noreferrer">cell capacity tester</a> if you are interested in that process.</p>
 <p><img src="/portfolio-site/images/projects/recycled-72v-ebike-battery-html-image3.png" alt=""  />
 </p>
 <h3 id="the-20s3p-plan">The 20s3p Plan</h3>
@@ -97,7 +97,7 @@
 <h3 id="bms-troubleshooting">BMS Troubleshooting</h3>
 <p>The JBD Smart BMS was confusing to configure at first. We ran into a few annoying issues right away. First, it would only charge at 0.5A, which turned out to just be a glitch that fixed itself after power cycling the BMS.</p>
 <p>The main problem was the BMS refusing to charge past 3.6V per cell. I thought my wiring was bad. Turns out the BMS shipped set to Lithium Iron Phosphate (LFP) chemistry instead of Li-ion. Flipping that setting in the app completely fixed the charging cutoff. We also had issues with random charging drops, which were resolved after realizing the default max capacity was set to 10Ah instead of 15Ah.</p>
-<p>For a full breakdown of how to solve these issues, disable the discharge switch lock, and configure the parameters correctly, see my dedicated post on <a href="/portfolio-site/projects/jbd-bms-configuration">JBD BMS Configuration</a>.</p>
+<p>For a full breakdown of how to solve these issues, disable the discharge switch lock, and configure the parameters correctly, see my dedicated post on <a href="/portfolio-site/projects/jbd-bms-configuration" target="_blank" rel="noopener noreferrer">JBD BMS Configuration</a>.</p>
 <p><img src="/portfolio-site/images/projects/recycled-72v-ebike-battery-html-image10.png" alt=""  />
 
 <img src="/portfolio-site/images/projects/recycled-72v-ebike-battery-html-image6.png" alt=""  />
@@ -120,6 +120,6 @@
     <div class="mono">Updated continuously.</div>
   </div>
 </footer>
-  <script src="/portfolio-site/js/main.min.0be43c088ecb6876497a32cf3cb84b41d33a910ef0b6490064e04526ec23ddca.js"></script>
+  <script src="/portfolio-site/js/main.min.d23d634aab22d10232dfc43dbfc01e9bc0013d8bf0f5ba38ecd0e8a1e6460b2f.js"></script>
 </body>
 </html>

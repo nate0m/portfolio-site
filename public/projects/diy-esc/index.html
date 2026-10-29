@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/portfolio-site/css/main.min.cecc4a3a2c59a6e9eae6fd9ef04cad29d1f8f22f9e8e72b1438ea1abec81258d.css">
+<link rel="stylesheet" href="/portfolio-site/css/main.min.b6b2127832ad3e06c57073f7d8e68e7505bd73a90bad090f14411c8d691f817f.css">
 <link rel="icon" type="image/svg+xml" href="/portfolio-site/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/portfolio-site/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/portfolio-site/favicon-16x16.png">
@@ -71,16 +71,16 @@
 <h2 id="high-level-design">High Level Design</h2>
 <p>The core of a BLDC motor controller is the muscle: six MOSFETs arranged in three half-bridges.</p>
 <p><img src="/portfolio-site/images/projects/diy-esc-html-image9.png" alt=""  />
- <a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/">source</a></p>
-<p>There are six possible combinations of current flow through the inductors of the motor. For example: FET1 and FET6 ON (A and C energized), FET1 and FET5 ON (A and B energized), FET2 and FET4 ON (B and A energized), etc. <a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/">source</a></p>
-<p>The hard part is figuring out how to determine the speed of the rotor so we can sequence the switching of these FETs correctly. Since I am building a sensorless ESC, I can&rsquo;t rely on physical hall effect sensors inside the motor. Instead, the microcontroller has to measure the back-EMF (electromotive force). This is a voltage induced on the third un-energized wire caused by the magnetic field of the permanent magnets spinning past it. <a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/">source</a></p>
+ <a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/" target="_blank" rel="noopener noreferrer">source</a></p>
+<p>There are six possible combinations of current flow through the inductors of the motor. For example: FET1 and FET6 ON (A and C energized), FET1 and FET5 ON (A and B energized), FET2 and FET4 ON (B and A energized), etc. <a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/" target="_blank" rel="noopener noreferrer">source</a></p>
+<p>The hard part is figuring out how to determine the speed of the rotor so we can sequence the switching of these FETs correctly. Since I am building a sensorless ESC, I can&rsquo;t rely on physical hall effect sensors inside the motor. Instead, the microcontroller has to measure the back-EMF (electromotive force). This is a voltage induced on the third un-energized wire caused by the magnetic field of the permanent magnets spinning past it. <a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/" target="_blank" rel="noopener noreferrer">source</a></p>
 <p>By measuring that back-EMF, we can determine the exact position of the rotor.</p>
 <p><img src="/portfolio-site/images/projects/diy-esc-html-image6.png" alt=""  />
 </p>
 <p>The back-EMF of each phase follows the exact same pattern as physical hall effect sensors, just with a 30-degree phase shift. It looks like the back-EMF is simply the voltage across the inductor caused by the changing magnetic flux. We can read this using hardware comparators. When the back-EMF crosses the zero-point (going from negative to positive, or positive to negative), the comparator transitions its output. I originally thought we could just use the Arduino&rsquo;s built-in comparators to save on hardware, pulling the outputs up to 5V and reading them as digital signals.</p>
 <p>To control the actual speed of the motor, we feed a PWM signal to the MOSFET gates.</p>
 <p><img src="/portfolio-site/images/projects/diy-esc-html-image8.png" alt=""  />
- <a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/">source</a></p>
+ <a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/" target="_blank" rel="noopener noreferrer">source</a></p>
 <h2 id="the-motor-control-lab">The Motor Control Lab</h2>
 <p>Before putting all this theory into a final design, I had to define a Minimum Viable Product (MVP) and get into the lab. The goals for the MVP were:</p>
 <ul>
@@ -116,16 +116,16 @@
 <h3 id="reference-links">Reference Links</h3>
 <p>Here is a dump of the articles, videos, and tutorials I used to piece this all together:</p>
 <ul>
-<li><a href="https://www.instructables.com/Make-Your-Own-ESC/">Instructables: Make Your Own ESC</a></li>
-<li><a href="https://www.instructables.com/Made-Your-Own-ESC-Brusless-Motor-STM32f030/">Instructables: Made Your Own ESC Brushless Motor STM32</a></li>
-<li><a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/">Proteshea: Brushless DC Motor Control</a></li>
-<li><a href="https://electraschematics.com/brushless-esc-schematic.html">ElectraSchematics: Brushless ESC Schematic</a></li>
-<li><a href="https://autoctrls.com/esc-schematic-for-brushless-motor/">AutoCtrls: ESC Schematic</a></li>
-<li><a href="https://electronoobs.com/eng_circuitos_tut19_sch2.php">Electronoobs Tutorial</a></li>
-<li><a href="https://www.mathworks.com/discovery/bldc-motor-control.html">MathWorks: BLDC Motor Control</a></li>
-<li><a href="https://www.digikey.com/en/articles/controlling-sensorless-bldc-motors-via-back-emf">Digikey: Controlling Sensorless BLDC Motors</a></li>
-<li><a href="https://simple-circuit.com/arduino-sensorless-bldc-motor-controller-esc/">Simple Circuit: Arduino Sensorless BLDC</a></li>
-<li>YouTube References: <a href="https://youtu.be/KdF9DmbGg6k">1</a>, <a href="https://www.youtube.com/watch?v=C4Kq0NTGSwk">2</a>, <a href="https://www.youtube.com/watch?v=wkSrmPBDRys">3</a>, <a href="https://www.youtube.com/watch?v=8swJ_Bnsgl4">4</a>, <a href="https://www.youtube.com/watch?v=o4_NeqlJgOs">5</a>, <a href="https://www.youtube.com/watch?v=lyfx8CL7AkI">6</a>, <a href="https://www.youtube.com/watch?v=AwRJsze_9m4">7</a>, <a href="https://www.youtube.com/watch?v=DXyTHhUjxjk">8</a>, <a href="https://www.youtube.com/watch?v=p-UCsIWrTpc">9</a>, <a href="https://www.youtube.com/watch?v=56p3_aORiJ0">10</a>, <a href="https://www.youtube.com/watch?v=elBdn90jwiU">11</a></li>
+<li><a href="https://www.instructables.com/Make-Your-Own-ESC/" target="_blank" rel="noopener noreferrer">Instructables: Make Your Own ESC</a></li>
+<li><a href="https://www.instructables.com/Made-Your-Own-ESC-Brusless-Motor-STM32f030/" target="_blank" rel="noopener noreferrer">Instructables: Made Your Own ESC Brushless Motor STM32</a></li>
+<li><a href="https://proteshea.com/brushless-dc-motor-control-with-esc-and-arduino-uno/" target="_blank" rel="noopener noreferrer">Proteshea: Brushless DC Motor Control</a></li>
+<li><a href="https://electraschematics.com/brushless-esc-schematic.html" target="_blank" rel="noopener noreferrer">ElectraSchematics: Brushless ESC Schematic</a></li>
+<li><a href="https://autoctrls.com/esc-schematic-for-brushless-motor/" target="_blank" rel="noopener noreferrer">AutoCtrls: ESC Schematic</a></li>
+<li><a href="https://electronoobs.com/eng_circuitos_tut19_sch2.php" target="_blank" rel="noopener noreferrer">Electronoobs Tutorial</a></li>
+<li><a href="https://www.mathworks.com/discovery/bldc-motor-control.html" target="_blank" rel="noopener noreferrer">MathWorks: BLDC Motor Control</a></li>
+<li><a href="https://www.digikey.com/en/articles/controlling-sensorless-bldc-motors-via-back-emf" target="_blank" rel="noopener noreferrer">Digikey: Controlling Sensorless BLDC Motors</a></li>
+<li><a href="https://simple-circuit.com/arduino-sensorless-bldc-motor-controller-esc/" target="_blank" rel="noopener noreferrer">Simple Circuit: Arduino Sensorless BLDC</a></li>
+<li>YouTube References: <a href="https://youtu.be/KdF9DmbGg6k" target="_blank" rel="noopener noreferrer">1</a>, <a href="https://www.youtube.com/watch?v=C4Kq0NTGSwk" target="_blank" rel="noopener noreferrer">2</a>, <a href="https://www.youtube.com/watch?v=wkSrmPBDRys" target="_blank" rel="noopener noreferrer">3</a>, <a href="https://www.youtube.com/watch?v=8swJ_Bnsgl4" target="_blank" rel="noopener noreferrer">4</a>, <a href="https://www.youtube.com/watch?v=o4_NeqlJgOs" target="_blank" rel="noopener noreferrer">5</a>, <a href="https://www.youtube.com/watch?v=lyfx8CL7AkI" target="_blank" rel="noopener noreferrer">6</a>, <a href="https://www.youtube.com/watch?v=AwRJsze_9m4" target="_blank" rel="noopener noreferrer">7</a>, <a href="https://www.youtube.com/watch?v=DXyTHhUjxjk" target="_blank" rel="noopener noreferrer">8</a>, <a href="https://www.youtube.com/watch?v=p-UCsIWrTpc" target="_blank" rel="noopener noreferrer">9</a>, <a href="https://www.youtube.com/watch?v=56p3_aORiJ0" target="_blank" rel="noopener noreferrer">10</a>, <a href="https://www.youtube.com/watch?v=elBdn90jwiU" target="_blank" rel="noopener noreferrer">11</a></li>
 </ul>
 
     </div>
@@ -138,6 +138,6 @@
     <div class="mono">Updated continuously.</div>
   </div>
 </footer>
-  <script src="/portfolio-site/js/main.min.0be43c088ecb6876497a32cf3cb84b41d33a910ef0b6490064e04526ec23ddca.js"></script>
+  <script src="/portfolio-site/js/main.min.d23d634aab22d10232dfc43dbfc01e9bc0013d8bf0f5ba38ecd0e8a1e6460b2f.js"></script>
 </body>
 </html>
