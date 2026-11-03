@@ -18,7 +18,7 @@ I bought an up-down desk off of Facebook Marketplace for an obscene deal (~$20) 
 
 ## Hardware Selection & Architecture
 
-The motor is labeled as a 24V model. Online research showed that it needs around 10A of starting current to get moving. I picked a 24V 15A power supply to leave some overhead, paired with a 43A IBT-2 H-bridge that gave me plenty of overkill for switching motor direction. I already had a buck converter laying around to step 24V down to 5V for the microcontroller. The microcontroller itself is an ESP-12 that was also sitting in a parts bin. It has more than enough processing power for this kind of simple job.
+The motor is labeled as a 24V model. Online research showed that it needs around 10A of starting current to get moving. I picked a 24V 15A power supply to leave some overhead, paired with a 43A H-bridge that gave me plenty of overhead for switching motor direction. I already had a buck converter laying around to step 24V down to 5V for the microcontroller. The microcontroller itself is an ESP-12 that was also sitting in a parts bin. It has more than enough processing power for this kind of simple job.
 
 ![Subsystem block diagram](/images/projects/desk-controller-html-image3.png "Subsystem block diagram")
 
@@ -35,7 +35,7 @@ I designed a custom box in CAD to house the power supply, H-bridge, buck convert
 ![CAD model of the main electronics enclosure](/images/projects/desk-controller-html-image6.png "CAD model of the main electronics enclosure")
 ![Fitting power supply and boards into the 3D printed enclosure](/images/projects/desk-controller-html-image8.png "Fitting power supply and boards into the 3D printed enclosure")
 
-I removed the cooling fan from the power supply because this cheap unit ran its fan constantly at full blast. Someone might object that pulling a cooling fan out of a 15A switching power supply is asking for trouble. For a continuous load, that objection is completely fair. But the desk only moves for ten or fifteen seconds at a time maybe twice a day, so the heatsinks never get warm enough to matter. If this were a 3D printer running for twelve hours straight, I would have kept the fan or swapped in a silent Noctua.
+I removed the cooling fan from the power supply because this cheap unit ran its fan constantly at full blast. Someone might object that pulling a cooling fan out of a 15A switching power supply is asking for trouble. For a continuous load, that objection is completely fair. But the desk only moves for ten or fifteen seconds at a time maybe twice a day, so the heatsinks never get warm enough to matter. If this were a 3D printer running for twelve hours straight, I would have kept the fan or swapped in a Noctua one.
 
 ## Testing & Calibration
 
