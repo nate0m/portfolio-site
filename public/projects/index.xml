@@ -10,7 +10,7 @@
 		
 		
 		
-			<lastBuildDate>Sat, 17 Oct 2026 00:00:00 +0000</lastBuildDate>
+			<lastBuildDate>Sun, 01 Nov 2026 00:00:00 +0000</lastBuildDate>
 		
 			<atom:link href="https://username.github.io/portfolio-site/projects/index.xml" rel="self" type="application/rss+xml" />
 			<item>
@@ -68,6 +68,13 @@
 				<pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
 				<guid>https://username.github.io/portfolio-site/projects/laptop-nas-build/</guid>
 				<description>&lt;p&gt;My current home server is just an old laptop with a couple of hard drives plugged into a USB dock. It runs TrueNAS Scale and handles backups fine, but I am rapidly running out of storage.&lt;/p&gt;&#xA;&lt;p&gt;The two-bay USB dock is completely full. Having loose drives, power bricks, and USB cables strewn across the desk is messy and precarious. I need to add more drives, get off USB, and build a unified enclosure that houses the laptop, the storage pool, cooling fans, and a dedicated power supply.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Custom Sit-Stand Desk Motor Controller</title>
+				<link>https://username.github.io/portfolio-site/projects/desk-controller/</link>
+				<pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>https://username.github.io/portfolio-site/projects/desk-controller/</guid>
+				<description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I bought an up-down desk off of Facebook Marketplace for an obscene deal (~$20) that did not have the power supply or motor driver. Using my engineering background and an AI coding assistant, I set out to build a custom motor controller using an AC-DC power supply, an H-bridge, and a microcontroller.&lt;/p&gt;&#xA;&lt;h2 id=&#34;hardware-selection--architecture&#34;&gt;Hardware Selection &amp;amp; Architecture&lt;/h2&gt;&#xA;&lt;p&gt;The motor is labeled as a 24V model. Online research showed that it needs around 10A of starting current to get moving. I picked a 24V 15A power supply to leave some overhead, paired with a 43A IBT-2 H-bridge that gave me plenty of overkill for switching motor direction. I already had a buck converter laying around to step 24V down to 5V for the microcontroller. The microcontroller itself is an ESP-12 that was also sitting in a parts bin. It has more than enough processing power for this kind of simple job.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>Cell Capacity Tester Review</title>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/portfolio-site/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio-site/livereload" data-no-instant defer></script><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Sit-Stand Desk Motor Controller</title>
+<meta name="description" content="ECE student, ebike mechanic, and battery builder. Builds, repairs, and rabbit holes from the garage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/portfolio-site/css/main.min.cd206e504567d2bbc2098042c3db05eae784b6e812c6b613609a9dfa2848a003.css">
+<link rel="icon" type="image/svg+xml" href="/portfolio-site/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/portfolio-site/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/portfolio-site/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/portfolio-site/apple-touch-icon.png">
+<link rel="shortcut icon" href="/portfolio-site/favicon.ico">
+</head>
+<body class="is-single"><header>
+  <div class="header-inner">
+    <a href="http://localhost:1313/portfolio-site/" class="brand">NATHAN MILTON <span>/</span> SHOP NOTES</a>
+    <nav>
+      <a href="#projects">Projects</a>
+    </nav>
+  </div>
+</header>
+<main>
+<article class="project-single">
+  <div class="project-header">
+    <a href="/portfolio-site/" class="back-link">← Back to Projects</a>
+    <div class="hero-tag">Electronics</div>
+    <h1>Custom Sit-Stand Desk Motor Controller</h1>
+    <div class="card-top">
+      <div class="card-status-date">
+        <span class="status complete">
+          Complete
+          
+        </span>
+        
+        <span class="card-date">11/2026</span>
+        
+      </div>
+    </div>
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag">ESP8266</span><span class="tag">ESP-12</span><span class="tag">H-Bridge</span><span class="tag">motor controller</span><span class="tag">3D printing</span><span class="tag">AutoCAD</span><span class="tag">sit-stand desk</span>
+    </div>
+  </div>
+  <div class="project-content-wrap">
+    <aside class="project-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#hardware-selection--architecture">Hardware Selection &amp; Architecture</a></li>
+    <li><a href="#motor-pinout--wiring">Motor Pinout &amp; Wiring</a></li>
+    <li><a href="#enclosure-design">Enclosure Design</a></li>
+    <li><a href="#testing--calibration">Testing &amp; Calibration</a></li>
+    <li><a href="#controls--final-assembly">Controls &amp; Final Assembly</a></li>
+    <li><a href="#retrospective">Retrospective</a></li>
+  </ul>
+</nav>
+    </aside>
+    <div class="project-body">
+      <h2 id="background">Background</h2>
+<p>I bought an up-down desk off of Facebook Marketplace for an obscene deal (~$20) that did not have the power supply or motor driver. Using my engineering background and an AI coding assistant, I set out to build a custom motor controller using an AC-DC power supply, an H-bridge, and a microcontroller.</p>
+<h2 id="hardware-selection--architecture">Hardware Selection &amp; Architecture</h2>
+<p>The motor is labeled as a 24V model. Online research showed that it needs around 10A of starting current to get moving. I picked a 24V 15A power supply to leave some overhead, paired with a 43A IBT-2 H-bridge that gave me plenty of overkill for switching motor direction. I already had a buck converter laying around to step 24V down to 5V for the microcontroller. The microcontroller itself is an ESP-12 that was also sitting in a parts bin. It has more than enough processing power for this kind of simple job.</p>
+<p><img src="/portfolio-site/images/projects/desk-controller-html-image3.png" alt="Subsystem block diagram"  title="Subsystem block diagram" />
+</p>
+<p>I sketched a simple block diagram to map the connections between subsystems. The H-bridge handles high-current power delivery to the motor. The buck converter steps 24V down to 5V to power the microcontroller and encoder. The microcontroller reads button inputs and drives the H-bridge, and the main power supply feeds both the buck converter and the H-bridge.</p>
+<h2 id="motor-pinout--wiring">Motor Pinout &amp; Wiring</h2>
+<p>To control the motor on the desk, I had to figure out what each wire did. It turned out to be straightforward. After stripping back the outer jacket and inspecting all six wires, two were noticeably thicker than the rest. Those lower-gauge leads were clearly the motor power lines. The remaining four wires were a red and black pair supplying 5V to the built-in encoder, plus two signal wires carrying the encoder pulses back to the microcontroller.</p>
+<h2 id="enclosure-design">Enclosure Design</h2>
+<p>I designed a custom box in CAD to house the power supply, H-bridge, buck converter, and microcontroller in a single compact footprint.</p>
+<p><img src="/portfolio-site/images/projects/desk-controller-html-image6.png" alt="CAD model of the main electronics enclosure"  title="CAD model of the main electronics enclosure" />
+
+<img src="/portfolio-site/images/projects/desk-controller-html-image8.png" alt="Fitting power supply and boards into the 3D printed enclosure"  title="Fitting power supply and boards into the 3D printed enclosure" />
+</p>
+<p>I removed the cooling fan from the power supply because this cheap unit ran its fan constantly at full blast. Someone might object that pulling a cooling fan out of a 15A switching power supply is asking for trouble. For a continuous load, that objection is completely fair. But the desk only moves for ten or fifteen seconds at a time maybe twice a day, so the heatsinks never get warm enough to matter. If this were a 3D printer running for twelve hours straight, I would have kept the fan or swapped in a silent Noctua.</p>
+<h2 id="testing--calibration">Testing &amp; Calibration</h2>
+<p>I wired the setup together on the bench and plugged it into the desk for initial testing. Rather than wiring hardware buttons right away, I sent commands directly from my computer to the microcontroller over serial. That let me isolate issues and verify the wiring and firmware logic quickly.</p>
+<p><img src="/portfolio-site/images/projects/desk-controller-html-image4.png" alt="Bench testing with ESP dev board and power supply"  title="Bench testing with ESP dev board and power supply" />
+</p>
+<p>A couple of issues showed up during startup. First, the motor ramped up too abruptly, so I tuned the startup speed curve in software. Second, I had to dial in current sensing on the H-bridge to reliably detect the mechanical top and bottom limits of travel without binding the frame.</p>
+<p>The encoder is not strictly necessary just to run the desk up and down. But reading encoder pulses lets the microcontroller track position accurately and support preset heights.</p>
+<h2 id="controls--final-assembly">Controls &amp; Final Assembly</h2>
+<p>Once the firmware was working on an ESP32 development board, I transferred the circuit to an ESP-12 module and soldered everything cleanly to a protoboard.</p>
+<p>For the user interface, I designed a small angled housing in CAD to hold two tactile pushbuttons on a piece of perfboard, sized to tuck neatly underneath the desk edge.</p>
+<p><img src="/portfolio-site/images/projects/desk-controller-html-image2.png" alt="CAD model of the under-desk buttons"  title="CAD model of the under-desk buttons" />
+
+<img src="/portfolio-site/images/projects/desk-controller-html-image5.png" alt="3D printed buttons mounted to the desk"  title="3D printed buttons mounted to the desk" />
+</p>
+<p><img src="/portfolio-site/images/projects/desk-controller-html-image1.png" alt="ESP-12 module soldered and wired inside the main enclosure"  title="ESP-12 module soldered and wired inside the main enclosure" />
+
+<img src="/portfolio-site/images/projects/desk-controller-html-image7.png" alt="Final controller box with lid mounted under the desk"  title="Final controller box with lid mounted under the desk" />
+</p>
+<p>I mounted the microcontroller inside the enclosure, bolted the box under the desk, and 3D printed a snap-fit lid to close it up.</p>
+<h2 id="retrospective">Retrospective</h2>
+<p>In retrospect, there are a few things I would change on a second revision. A switched receptacle for a standard AC power cord would be much cleaner than hardwiring the mains cable. An external opening or cutout for the ESP-12 micro-USB port would make firmware updates painless without opening the enclosure. And I would make the cable exit cutout in the box smaller to keep things tidy.</p>
+<p>Still, the finished controller is completely functional, works every day, and let me put a twenty-dollar desk to good use.</p>
+
+    </div>
+  </div>
+</article>
+</main><footer>
+  <div class="footer-inner">
+    <div class="mono">Shop notes, pulled straight from the build log.<br>More write-ups landing at <a class="site mono"
+        href="#">nathanmilton.xyz</a> as they get finished.</div>
+    <div class="mono">Updated continuously.</div>
+  </div>
+</footer>
+  <script src="/portfolio-site/js/main.min.3153ec2a21676312166ad952120c8a00a3594aa356210834d33fc26779a4a1a4.js"></script>
+</body>
+</html>

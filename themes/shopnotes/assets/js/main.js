@@ -7,28 +7,141 @@
   'use strict';
 
   /* ------------------------------------------------------------------------
-     1. Category Filtering (Homepage)
+     1. Category Filtering and Chronological Sorting
      ------------------------------------------------------------------------ */
-  function initFilter() {
-    var pills = document.querySelectorAll('.pill');
+  function initControls() {
+    var filterPills = document.querySelectorAll('.pill');
+    var sortPills = document.querySelectorAll('.sort-pill');
+    var viewCategory = document.getElementById('viewCategory');
+    var viewChrono = document.getElementById('viewChronological');
+    var chronoGrid = document.getElementById('chronoGrid');
+    var chronoLabel = document.getElementById('chronoLabel');
+    var singleGrid = document.getElementById('projectGrid');
     var categoryGroups = document.querySelectorAll('.category-group');
 
-    if (!pills.length || !categoryGroups.length) return;
+    if (!filterPills.length && !sortPills.length) return;
 
-    pills.forEach(function (pill) {
-      pill.addEventListener('click', function () {
-        pills.forEach(function (p) { p.classList.remove('active'); });
-        pill.classList.add('active');
+    var currentFilter = 'all';
+    var currentSort = 'category';
+    var chronoDir = 'desc';
 
-        var filter = pill.getAttribute('data-filter');
+    var catLabels = {
+      all: 'All Projects',
+      ebike: 'E-Bikes & Batteries',
+      electronics: 'Electronics',
+      robotics: 'Robotics',
+      fab: 'Fabrication & 3D Printing',
+      vehicle: 'Vehicles',
+      homelab: 'Home Lab',
+      repair: 'Right-to-Repair'
+    };
 
-        categoryGroups.forEach(function (group) {
-          if (filter === 'all' || group.getAttribute('data-category') === filter) {
-            group.classList.remove('hidden');
+    function updateView() {
+      if (chronoLabel) {
+        chronoLabel.textContent = 'Timeline: ' + (catLabels[currentFilter] || 'All Projects');
+      }
+
+      if (viewCategory && viewChrono && chronoGrid) {
+        if (currentSort === 'category') {
+          viewCategory.classList.remove('hidden');
+          viewChrono.classList.add('hidden');
+
+          categoryGroups.forEach(function (group) {
+            if (currentFilter === 'all' || group.getAttribute('data-category') === currentFilter) {
+              group.classList.remove('hidden');
+            } else {
+              group.classList.add('hidden');
+            }
+          });
+        } else {
+          viewCategory.classList.add('hidden');
+          viewChrono.classList.remove('hidden');
+
+          var cards = Array.from(chronoGrid.querySelectorAll('.card'));
+          cards.sort(function (a, b) {
+            var dateA = a.getAttribute('data-date') || '';
+            var dateB = b.getAttribute('data-date') || '';
+            return chronoDir === 'desc'
+              ? dateB.localeCompare(dateA)
+              : dateA.localeCompare(dateB);
+          });
+
+          cards.forEach(function (card) {
+            chronoGrid.appendChild(card);
+            if (currentFilter === 'all' || card.getAttribute('data-category') === currentFilter) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+        }
+      } else if (singleGrid) {
+        var sCards = Array.from(singleGrid.querySelectorAll('.card'));
+        if (currentSort === 'chrono') {
+          sCards.sort(function (a, b) {
+            var dateA = a.getAttribute('data-date') || '';
+            var dateB = b.getAttribute('data-date') || '';
+            return chronoDir === 'desc'
+              ? dateB.localeCompare(dateA)
+              : dateA.localeCompare(dateB);
+          });
+        } else {
+          sCards.sort(function (a, b) {
+            var wA = parseInt(a.getAttribute('data-weight') || '99', 10);
+            var wB = parseInt(b.getAttribute('data-weight') || '99', 10);
+            return wA - wB;
+          });
+        }
+
+        sCards.forEach(function (card) {
+          singleGrid.appendChild(card);
+          if (currentFilter === 'all' || card.getAttribute('data-category') === currentFilter) {
+            card.classList.remove('hidden');
           } else {
-            group.classList.add('hidden');
+            card.classList.add('hidden');
           }
         });
+      }
+    }
+
+    filterPills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        filterPills.forEach(function (p) { p.classList.remove('active'); });
+        pill.classList.add('active');
+        currentFilter = pill.getAttribute('data-filter') || 'all';
+        updateView();
+      });
+    });
+
+    sortPills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        var sortType = pill.getAttribute('data-sort');
+        if (sortType === 'chrono') {
+          if (currentSort === 'chrono') {
+            chronoDir = chronoDir === 'desc' ? 'asc' : 'desc';
+          } else {
+            chronoDir = 'desc';
+          }
+          currentSort = 'chrono';
+          pill.setAttribute('data-dir', chronoDir);
+          pill.innerHTML = chronoDir === 'desc'
+            ? 'Chronological <span class="sort-arrow">↓</span>'
+            : 'Chronological <span class="sort-arrow">↑</span>';
+          pill.setAttribute('title', chronoDir === 'desc'
+            ? 'Sorted newest first (click for oldest)'
+            : 'Sorted oldest first (click for newest)');
+        } else {
+          currentSort = 'category';
+          var chronoBtn = document.querySelector('.sort-pill[data-sort="chrono"]');
+          if (chronoBtn) {
+            chronoBtn.innerHTML = 'Chronological';
+            chronoBtn.setAttribute('title', 'Sort chronologically by date (click to toggle newest/oldest)');
+          }
+        }
+
+        sortPills.forEach(function (p) { p.classList.remove('active'); });
+        pill.classList.add('active');
+        updateView();
       });
     });
   }
@@ -483,12 +596,12 @@
      ------------------------------------------------------------------------ */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
-      initFilter();
+      initControls();
       initArticleSlideshows();
       initExternalLinks();
     });
   } else {
-    initFilter();
+    initControls();
     initArticleSlideshows();
     initExternalLinks();
   }

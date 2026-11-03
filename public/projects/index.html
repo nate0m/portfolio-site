@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/portfolio-site/css/main.min.b6b2127832ad3e06c57073f7d8e68e7505bd73a90bad090f14411c8d691f817f.css">
+<link rel="stylesheet" href="/portfolio-site/css/main.min.cd206e504567d2bbc2098042c3db05eae784b6e812c6b613609a9dfa2848a003.css">
 <link rel="icon" type="image/svg+xml" href="/portfolio-site/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/portfolio-site/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/portfolio-site/favicon-16x16.png">
@@ -29,9 +29,33 @@
   <div class="hero-tag">All projects</div>
   <h1>Projects</h1>
 </div>
-<div class="grid">
+
+<div class="filter-wrap">
+  <div class="controls-bar">
+    <div class="filter-bar" id="filterBar">
+      <div class="pill active" data-filter="all">All</div>
+      <div class="pill" data-filter="ebike">E-Bikes &amp; Batteries</div>
+      <div class="pill" data-filter="electronics">Electronics</div>
+      <div class="pill" data-filter="robotics">Robotics</div>
+      <div class="pill" data-filter="fab">Fabrication &amp; 3D Printing</div>
+      <div class="pill" data-filter="vehicle">Vehicles</div>
+      <div class="pill" data-filter="homelab">Home Lab</div>
+      <div class="pill" data-filter="repair">Right-to-Repair</div>
+    </div>
+    <div class="sort-bar" id="sortBar">
+      <span class="sort-label">Sort:</span>
+      <div class="sort-pill active" data-sort="default" title="Default sort by project weight">Default</div>
+      <div class="sort-pill" data-sort="chrono" data-dir="desc" title="Sort chronologically by date (click to toggle newest/oldest)">Chronological</div>
+    </div>
+  </div>
+</div>
+
+<div class="grid" id="projectGrid">
   
-  <div class="card status-complete">
+  <div class="card status-complete"
+       data-category="ebike"
+       data-date="2026-10-17"
+       data-weight="1">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status complete">
@@ -56,7 +80,10 @@
     </div>
   </div>
   
-  <div class="card status-complete">
+  <div class="card status-complete"
+       data-category="robotics"
+       data-date="2026-06-01"
+       data-weight="1">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status complete">
@@ -81,7 +108,10 @@
     </div>
   </div>
   
-  <div class="card status-complete">
+  <div class="card status-complete"
+       data-category="robotics"
+       data-date="2026-04-01"
+       data-weight="1">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status complete">
@@ -106,7 +136,10 @@
     </div>
   </div>
   
-  <div class="card status-complete">
+  <div class="card status-complete"
+       data-category="repair"
+       data-date="2026-04-01"
+       data-weight="1">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status complete">
@@ -127,7 +160,10 @@
     </div>
   </div>
   
-  <div class="card status-ongoing">
+  <div class="card status-ongoing"
+       data-category="electronics"
+       data-date="2026-01-01"
+       data-weight="1">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status ongoing">
@@ -152,7 +188,10 @@
     </div>
   </div>
   
-  <div class="card status-complete">
+  <div class="card status-complete"
+       data-category="ebike"
+       data-date="2025-08-01"
+       data-weight="1">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status complete">
@@ -177,7 +216,10 @@
     </div>
   </div>
   
-  <div class="card status-complete">
+  <div class="card status-complete"
+       data-category="vehicle"
+       data-date="2025-05-01"
+       data-weight="1">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status complete">
@@ -202,7 +244,10 @@
     </div>
   </div>
   
-  <div class="card status-ongoing">
+  <div class="card status-ongoing"
+       data-category="homelab"
+       data-date="2025-02-01"
+       data-weight="1">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status ongoing">
@@ -227,7 +272,38 @@
     </div>
   </div>
   
-  <div class="card status-complete">
+  <div class="card status-complete"
+       data-category="electronics"
+       data-date="2026-11-01"
+       data-weight="2">
+    <div class="card-top">
+      <div class="card-status-date">
+        <span class="status complete">
+          Complete
+          
+        </span>
+        
+        <span class="card-date">11/2026</span>
+        
+      </div>
+      <span class="cat">Electronics</span>
+    </div>
+    
+    <div class="card-thumb">
+      <a href="/portfolio-site/projects/desk-controller/"><img src="/portfolio-site/images/projects/desk-controller-html-image7.png" alt="Thumbnail for Custom Sit-Stand Desk Motor Controller"></a>
+    </div>
+    
+    <h3><a href="/portfolio-site/projects/desk-controller/" style="text-decoration:none;">Custom Sit-Stand Desk Motor Controller</a></h3>
+    <p>Built a custom motor controller for an up-down desk scored on Facebook Marketplace for $20 without power or driver hardware. Uses an ESP-12, a 24V 15A power supply, a 43A IBT-2 H-bridge, and a custom 3D-printed enclosure with under-desk button controls.</p>
+    <div class="tags">
+      <span class="tag">ESP8266</span><span class="tag">ESP-12</span><span class="tag">H-Bridge</span><span class="tag">motor controller</span><span class="tag">3D printing</span><span class="tag">AutoCAD</span><span class="tag">sit-stand desk</span>
+    </div>
+  </div>
+  
+  <div class="card status-complete"
+       data-category="ebike"
+       data-date="2025-08-01"
+       data-weight="2">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status complete">
@@ -252,7 +328,10 @@
     </div>
   </div>
   
-  <div class="card status-complete">
+  <div class="card status-complete"
+       data-category="fab"
+       data-date="2025-06-01"
+       data-weight="2">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status complete">
@@ -277,7 +356,10 @@
     </div>
   </div>
   
-  <div class="card status-on-hold">
+  <div class="card status-on-hold"
+       data-category="ebike"
+       data-date="2025-05-01"
+       data-weight="2">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status on-hold">
@@ -302,7 +384,10 @@
     </div>
   </div>
   
-  <div class="card status-ongoing">
+  <div class="card status-ongoing"
+       data-category="homelab"
+       data-date="2025-02-01"
+       data-weight="2">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status ongoing">
@@ -327,7 +412,10 @@
     </div>
   </div>
   
-  <div class="card status-complete">
+  <div class="card status-complete"
+       data-category="homelab"
+       data-date="2026-10-01"
+       data-weight="3">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status complete">
@@ -352,7 +440,10 @@
     </div>
   </div>
   
-  <div class="card status-complete">
+  <div class="card status-complete"
+       data-category="ebike"
+       data-date="2025-08-01"
+       data-weight="3">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status complete">
@@ -385,6 +476,6 @@
     <div class="mono">Updated continuously.</div>
   </div>
 </footer>
-  <script src="/portfolio-site/js/main.min.d23d634aab22d10232dfc43dbfc01e9bc0013d8bf0f5ba38ecd0e8a1e6460b2f.js"></script>
+  <script src="/portfolio-site/js/main.min.3153ec2a21676312166ad952120c8a00a3594aa356210834d33fc26779a4a1a4.js"></script>
 </body>
 </html>

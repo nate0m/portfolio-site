@@ -9,7 +9,7 @@ blurb: "Building a custom 16s2p 21700 battery pack for an XRV-converted Onewheel
 weight: 1
 date: 2026-10-17
 featured: true
-featuredWeight: 2
+featuredWeight: 3
 ---
 
 ## Introduction

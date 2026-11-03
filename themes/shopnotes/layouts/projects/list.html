@@ -4,9 +4,33 @@
   <div class="hero-tag">All projects</div>
   <h1>Projects</h1>
 </div>
-<div class="grid">
+
+<div class="filter-wrap">
+  <div class="controls-bar">
+    <div class="filter-bar" id="filterBar">
+      <div class="pill active" data-filter="all">All</div>
+      <div class="pill" data-filter="ebike">E-Bikes &amp; Batteries</div>
+      <div class="pill" data-filter="electronics">Electronics</div>
+      <div class="pill" data-filter="robotics">Robotics</div>
+      <div class="pill" data-filter="fab">Fabrication &amp; 3D Printing</div>
+      <div class="pill" data-filter="vehicle">Vehicles</div>
+      <div class="pill" data-filter="homelab">Home Lab</div>
+      <div class="pill" data-filter="repair">Right-to-Repair</div>
+    </div>
+    <div class="sort-bar" id="sortBar">
+      <span class="sort-label">Sort:</span>
+      <div class="sort-pill active" data-sort="default" title="Default sort by project weight">Default</div>
+      <div class="sort-pill" data-sort="chrono" data-dir="desc" title="Sort chronologically by date (click to toggle newest/oldest)">Chronological</div>
+    </div>
+  </div>
+</div>
+
+<div class="grid" id="projectGrid">
   {{ range .Pages.ByWeight }}
-  <div class="card{{ with .Params.status }} status-{{ . }}{{ end }}">
+  <div class="card{{ with .Params.status }} status-{{ . }}{{ end }}"
+       data-category="{{ .Params.category }}"
+       data-date="{{ .Date.Format "2006-01-02" }}"
+       data-weight="{{ .Params.weight | default 99 }}">
     <div class="card-top">
       <div class="card-status-date">
         <span class="status {{ .Params.status }}">

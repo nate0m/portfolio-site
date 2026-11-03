@@ -189,7 +189,7 @@ nav a:hover { color: var(--ink); }
   margin-top: 4px;
 }
 
-/* ---------- filter bar ---------- */
+/* ---------- filter & sort controls ---------- */
 .filter-wrap {
   max-width: 1120px;
   margin: 0 auto;
@@ -199,11 +199,19 @@ nav a:hover { color: var(--ink); }
   z-index: 40;
 }
 
+.controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 18px 0 22px;
+}
+
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 18px 0 22px;
 }
 
 .pill {
@@ -223,6 +231,57 @@ nav a:hover { color: var(--ink); }
   background: var(--ink);
   color: var(--paper);
   border-color: var(--ink);
+}
+
+.sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.sort-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ink-soft);
+  margin-right: 2px;
+  user-select: none;
+}
+
+.sort-pill {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--card);
+  cursor: pointer;
+  color: var(--ink-soft);
+  transition: all .15s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.sort-pill:hover { border-color: var(--ink); color: var(--ink); }
+.sort-pill.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.sort-arrow {
+  font-weight: 600;
+  display: inline-block;
+}
+
+@media (max-width: 880px) {
+  .controls-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }
 
 /* ---------- section labels ---------- */
